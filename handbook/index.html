@@ -284,10 +284,176 @@ footer a{color:var(--on-night-2)}
   .tl::before{left:59px}.tl li{grid-template-columns:44px 1fr;gap:32px}.tl li::after{left:53px}
 }
 
+/* ══════════ MOBILE APP SHELL ══════════ */
+.tabbar,.sheet,.sheet-bg,.now,.m-only,.dots{display:none}
+.optwrap{padding:0 30px 30px}
+.rv{opacity:0;transform:translateY(18px);transition:opacity .6s var(--ease),transform .6s var(--ease)!important}
+.rv.in{opacity:1;transform:none}
+@media (max-width:760px){
+  :root{--spring:cubic-bezier(.34,1.56,.64,1);--sh-1:0 1px 2px rgba(20,33,43,.05),0 4px 14px rgba(20,33,43,.06);--sh-2:0 1px 2px rgba(20,33,43,.06),0 10px 28px rgba(20,33,43,.09)}
+  html{scroll-padding-top:52px}
+  body{font-size:15px;-webkit-text-size-adjust:100%;touch-action:manipulation}
+  .wrap{padding:0 16px}
+  .btn[data-print]{display:none}
+  .m-only{display:inline}
+
+  /* top bar */
+  .top .wrap{height:52px;gap:12px}
+  .brand{font-size:16px}
+  .brand i{width:26px;height:26px;border-radius:8px;font-size:14px}
+  .top nav{display:none}
+  .now{display:block;margin-left:auto;font-size:12.5px;font-weight:600;color:var(--on-night-2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:55%}
+  .now b{color:var(--gold);font-weight:700}
+
+  /* bottom tab bar */
+  .tabbar{display:flex;position:fixed;z-index:60;left:10px;right:10px;bottom:calc(10px + env(safe-area-inset-bottom));height:64px;padding:6px;border-radius:24px;background:#0E1620;border:1px solid rgba(255,255,255,.07);box-shadow:0 12px 32px rgba(14,22,32,.34),0 2px 6px rgba(14,22,32,.22)}
+  .tabbar a,.tabbar button{all:unset;box-sizing:border-box;position:relative;z-index:1;flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;border-radius:18px;color:#8FA1B3;font-size:10.5px;font-weight:700;letter-spacing:.03em;cursor:pointer;-webkit-tap-highlight-color:transparent;transition:color .35s var(--ease),transform .45s var(--spring)}
+  .tabbar svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+  .tabbar .on{color:#0E1620}
+  .tabbar a:active,.tabbar button:active{transform:scale(.86);transition-duration:.12s}
+  .tabbar .pill{position:absolute;z-index:0;top:6px;bottom:6px;left:0;width:0;border-radius:18px;background:var(--gold);box-shadow:0 4px 14px rgba(212,170,79,.35);transition:transform .55s cubic-bezier(.22,1,.36,1),width .55s cubic-bezier(.22,1,.36,1)}
+
+  /* more sheet */
+  .sheet-bg{display:block;position:fixed;inset:0;z-index:70;background:rgba(14,22,32,.48);opacity:0;pointer-events:none;transition:opacity .35s var(--ease);touch-action:none}
+  .sheet-bg.on{opacity:1;pointer-events:auto}
+  .sheet{display:block;position:fixed;z-index:71;left:0;right:0;bottom:0;background:#fff;border-radius:26px 26px 0 0;padding:10px 12px calc(18px + env(safe-area-inset-bottom));transform:translateY(105%);transition:transform .5s cubic-bezier(.22,1,.36,1);box-shadow:0 -12px 40px rgba(14,22,32,.22);overscroll-behavior:contain}
+  .sheet.on{transform:none}
+  .sheet .grab{width:42px;height:5px;border-radius:3px;background:#D3DCE4;margin:2px auto 10px}
+  .sheet h3{font-size:13px;color:var(--muted);font-weight:700;letter-spacing:.06em;padding:0 12px 6px}
+  .sheet a{display:flex;align-items:center;gap:14px;padding:12px;border-radius:16px;color:var(--ink);text-decoration:none;font-weight:700;font-size:15.5px;transition:background .2s,transform .4s var(--spring)}
+  .sheet a:active{background:var(--ice-2);transform:scale(.97);transition-duration:.1s}
+  .sheet a .ic{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;flex:none}
+  .sheet a .ic svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+  .sheet a small{margin-left:auto;font-size:12.5px;font-weight:500;color:var(--muted)}
+
+  /* hero */
+  .hero{min-height:88vh;min-height:88svh}
+  .hero .media img{animation:none;object-position:center 70%}
+  .hero .wrap{padding-top:96px;padding-bottom:calc(96px + env(safe-area-inset-bottom))}
+  .kicker{font-size:12px;padding:4px 11px}
+  .hero h1{font-size:31px;margin:14px 0 12px}
+  .hero .lead{font-size:15px;line-height:1.75}
+  .chips{display:flex;gap:10px;margin:22px -16px 0;padding:0 16px 2px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-inline:16px;scrollbar-width:none;overscroll-behavior-x:contain}
+  .chips::-webkit-scrollbar{display:none}
+  .chip{flex:0 0 46%;scroll-snap-align:start;padding:12px 14px}
+  .chip .v{font-size:21px}
+
+  /* sections */
+  .sec{padding:48px 0}
+  .head{margin-bottom:20px}
+  h2{font-size:26px}
+
+  /* overview carousel */
+  .hl{display:flex;gap:12px;margin:0 -16px;padding:4px 16px 16px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-inline:16px;scrollbar-width:none;overscroll-behavior-x:contain}
+  .hl::-webkit-scrollbar{display:none}
+  .hl .card{flex:0 0 84%;min-height:360px;scroll-snap-align:start;border-radius:22px}
+  .hl .card h3,.hl .card:first-child h3{font-size:26px}
+  .card .body{padding:20px}
+  .dots{display:flex;justify-content:center;gap:6px;margin-top:2px}
+  .dots i{width:6px;height:6px;border-radius:3px;background:rgba(255,255,255,.22);transition:width .4s var(--ease),background .4s var(--ease)}
+  .dots i.on{width:20px;background:var(--gold)}
+
+  /* route map: pan */
+  .mapcard{margin:20px -16px 0;border-radius:0;border-left:0;border-right:0;padding:14px 0 6px;box-shadow:none}
+  .mapcard .pan{overflow-x:auto;scrollbar-width:none;overscroll-behavior-x:contain}
+  .mapcard .pan::-webkit-scrollbar{display:none}
+  .mapcard svg{width:860px;max-width:none;margin:0 16px}
+  .mapcard figcaption{padding:8px 16px 4px}
+  .mapcard figcaption .m-only{display:block;color:var(--gold);font-weight:700;margin-top:2px}
+
+  /* day switcher */
+  .days-nav{top:52px}
+  .days-nav .wrap{padding:8px 12px;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 12px,#000 calc(100% - 12px),transparent);mask-image:linear-gradient(90deg,transparent 0,#000 12px,#000 calc(100% - 12px),transparent)}
+  .seg a{min-width:72px;padding:6px 9px 7px}
+  .seg a b{font-size:12.5px}
+  .seg a span{font-size:11px}
+
+  /* day cards */
+  .day{padding:18px 0 4px;scroll-margin-top:var(--dn,62px)}
+  .day .wrap{padding:0 10px}
+  .dcard{border-radius:24px}
+  .dhero{height:256px}
+  .dhero .in{padding:18px 18px 16px;flex-direction:column;align-items:flex-start;gap:12px}
+  .dhero h2{font-size:26px}
+  .dhero .sum{font-size:13.5px;line-height:1.65}
+  .meta span{font-size:12px;padding:4px 10px}
+  .dbody{padding:18px 14px 20px;gap:18px}
+  .tl li{grid-template-columns:42px 1fr;gap:24px;padding:7px 0}
+  .tl::before{left:53px}
+  .tl li::after{left:48px;top:14px}
+  .tl time{font-size:13px}
+  .tl h4{font-size:15px}
+  .box{border-radius:16px;padding:14px 16px}
+  .optwrap{padding:0 14px 18px}
+  .opt{gap:12px;margin-top:14px}
+  .optcard{border-radius:18px}
+  .optcard .ph{height:170px}
+
+  /* tables become cards */
+  .tbl{overflow:visible;background:none;border:0;box-shadow:none;border-radius:0}
+  .tbl table{display:block;min-width:0;font-size:14px}
+  .tbl thead{display:none}
+  .tbl tbody{display:grid;gap:10px}
+  .tbl tr{display:block;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:14px 16px;box-shadow:var(--sh-1)}
+  .tbl tbody tr:hover{background:var(--card)}
+  .tbl td{display:block;padding:0;border:0;white-space:normal!important;line-height:1.6}
+  .tbl td+td{margin-top:9px}
+  .tbl td:empty{display:none}
+  .tbl td:first-child{font-weight:700;font-size:15.5px;color:var(--ink)}
+  .tbl td[data-label]:not(:first-child)::before{content:attr(data-label);display:block;font-size:11.5px;font-weight:700;letter-spacing:.04em;color:var(--muted);margin-bottom:1px}
+  .tbl td.t{display:inline-block;font-size:13px;color:var(--glacier-deep);background:var(--ice);padding:2px 10px;border-radius:999px}
+  .tbl td.t+td{margin-top:7px;font-weight:700;font-size:15px}
+  .tbl td.t+td::before{display:none!important}
+  .tbl.compact tbody{gap:0;background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:var(--sh-1)}
+  .tbl.compact tr{display:grid;grid-template-columns:1fr auto;column-gap:14px;border:0;border-bottom:1px solid var(--line);border-radius:0;box-shadow:none;padding:11px 16px}
+  .tbl.compact tr:last-child{border-bottom:0;background:var(--ice-2)}
+  .tbl.compact td:first-child{font-weight:500;font-size:14.5px}
+  .tbl.compact td:nth-child(2){margin:0;text-align:right;font-weight:700}
+  .tbl.compact td:nth-child(3){grid-column:1/-1;margin-top:2px;font-size:12.5px;color:var(--muted)}
+  .tbl.compact td::before{display:none!important}
+  .jpcard{padding:18px 16px;border-radius:18px}
+  .jpcard .tbl tr{box-shadow:none;background:var(--ice-2)}
+  .panel{padding:18px 16px;border-radius:18px}
+  .panel table,.panel tbody,.panel tr,.panel th,.panel td{display:block}
+  .panel tr{padding:10px 0;border-bottom:1px solid rgba(255,255,255,.08)}
+  .panel tr:last-child{border-bottom:0}
+  .panel th,.panel td{padding:0;border:0}
+  .panel th{font-size:12px;margin-bottom:2px}
+
+  /* tateyama strip carousel */
+  .strip{display:flex;gap:10px;margin:0 -16px 20px;padding:0 16px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-inline:16px;scrollbar-width:none;overscroll-behavior-x:contain}
+  .strip::-webkit-scrollbar{display:none}
+  .strip figure{flex:0 0 80%;height:230px;scroll-snap-align:start;border-radius:18px}
+
+  /* phrases, steps, hotels, budget */
+  .phr{grid-template-columns:1fr;gap:10px}
+  .ph-btn{border-radius:18px;padding:15px 18px}
+  .ph-btn .ja{font-size:17.5px}
+  .overlay{padding:22px}
+  .overlay .big .ja{font-size:34px}
+  .overlay .row{flex-direction:column;align-items:stretch}
+  .overlay .row .btn{justify-content:center;padding:14px 20px;font-size:16px}
+  .step{border-radius:18px;padding:15px 16px}
+  .hotel{border-radius:22px}
+  .hotel .top-band{height:84px}
+  .bigsum{padding:22px 20px;border-radius:22px}
+  .bigsum .v{font-size:40px}
+  .list-card{border-radius:18px;padding:18px}
+  .toast{bottom:calc(90px + env(safe-area-inset-bottom))}
+  footer{padding-bottom:calc(110px + env(safe-area-inset-bottom))}
+}
+/* touch: springy press feedback */
+@media (hover:none){
+  .press,.ph-btn,.btn,.seg a,.optcard{transition:transform .45s var(--spring,cubic-bezier(.34,1.56,.64,1)),box-shadow .3s var(--ease),color .4s var(--ease)}
+  .press:active,.ph-btn:active,.optcard:active{transform:scale(.965);transition-duration:.12s}
+  .btn:active{transform:scale(.94);transition-duration:.12s}
+  .seg a:active{transform:scale(.92);transition-duration:.12s}
+}
+
 /* print */
 @media print{
   body{background:#fff;color:#000;font-size:12px}
-  .top,.days-nav,.btn,.noprint,.media,.overlay,.toast,footer,.hl,.mapcard,.strip,.opt .ph{display:none!important}
+  .top,.days-nav,.btn,.noprint,.media,.overlay,.toast,footer,.tabbar,.sheet,.sheet-bg,.dots,.hl,.mapcard,.strip,.opt .ph{display:none!important}
   .hero,.sec.dark,.dhero,.bigsum,.panel{background:#fff!important;color:#000!important;min-height:0;height:auto;box-shadow:none}
   .hero .wrap{padding:0}.hero h1,.hero .lead,.dhero h2,.dhero .sum,.panel li,.panel td,.panel th,.sec.dark p{color:#000!important;text-shadow:none}
   .chip{background:#fff;border-color:#999}.chip .k,.chip .d{color:#333}
@@ -487,6 +653,7 @@ footer a{color:var(--on-night-2)}
 <header class="top">
   <div class="wrap">
     <a class="brand" href="#top"><i>山</i>2027 中部北陸</a>
+    <span class="now" id="now" aria-live="polite"></span>
     <nav aria-label="章節">
       <a href="#overview">重點</a>
       <a href="#days">每日行程</a>
@@ -530,9 +697,10 @@ footer a{color:var(--on-night-2)}
       <a class="card press" href="#d3"><div class="media"><svg aria-hidden="true"><use href="#sc-onsen"/></svg><img src="img/card-yamashiro.jpg" data-remote="https://commons.wikimedia.org/wiki/Special:FilePath/Yamashiro%20Onsen%20260124%2006.jpg?width=1600" alt="山代溫泉古總湯" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="photoFail(this)"></div><div class="body"><span class="when">4/19 一</span><h3>山代溫泉</h3><p>泡明治風格的古總湯、畫一個九谷燒杯子。</p></div></a>
       <a class="card press" href="#d6"><div class="media"><svg aria-hidden="true"><use href="#sc-nagoya"/></svg><img src="img/card-nagoya.jpg" data-remote="https://commons.wikimedia.org/wiki/Special:FilePath/Nagoya_TV_Tower_and_Oasis_21.JPG?width=1600" alt="名古屋電視塔與 Oasis 21" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="photoFail(this)"></div><div class="body"><span class="when">4/21–24</span><h3>名古屋三晚</h3><p>鰻魚飯、手羽先、競馬夜賽、NAGOYA de SHOW!。</p></div></a>
     </div>
+    <div class="dots" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i></div>
 
     <figure class="mapcard">
-      <svg viewBox="0 0 1120 430" role="img" aria-label="路線示意圖：名古屋經敦賀到金澤，山代溫泉半日來回，金澤到富山，立山縱走到扇澤、信濃大町、松本，再回名古屋">
+      <div class="pan"><svg viewBox="0 0 1120 430" role="img" aria-label="路線示意圖：名古屋經敦賀到金澤，山代溫泉半日來回，金澤到富山，立山縱走到扇澤、信濃大町、松本，再回名古屋">
         <defs>
           <marker id="m-ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#D4AA4F"/></marker>
           <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1E3A52"/><stop offset="1" stop-color="#16212E"/></linearGradient>
@@ -570,8 +738,8 @@ footer a{color:var(--on-night-2)}
         <text x="420" y="104" fill="#A9B8C6" font-size="11.5">D4 新幹線 22 分</text>
         <text x="700" y="58" fill="#EEF3F7" font-size="11.5" font-weight="700">D5 阿爾卑斯路線縱走</text>
         <text x="600" y="282" fill="#D4AA4F" font-size="12">D5 大糸線＋しなの 20:07 到名古屋</text>
-      </svg>
-      <figcaption>示意圖，非比例。白色是立山黑部阿爾卑斯路線，金色是我們自己買票的段落。</figcaption>
+      </svg></div>
+      <figcaption>示意圖，非比例。白色是立山黑部阿爾卑斯路線，金色是我們自己買票的段落。<span class="m-only">← 左右滑動看完整路線 →</span></figcaption>
     </figure>
   </div>
 </section>
@@ -605,7 +773,7 @@ footer a{color:var(--on-night-2)}
 </article></div></section>
 <section class="day pb" id="d6"><div class="wrap"><article class="dcard">
   <div class="dhero"><div class="media"><svg aria-hidden="true"><use href="#sc-torii"/></svg><img src="img/d6-atsuta.jpg" data-remote="https://commons.wikimedia.org/wiki/Special:FilePath/Atsuta-jing%C5%AB%20%28Atsuta-ku%2C%20Nagoya%29%20VLux5%20hdsr%20sa01.jpg?width=1600" alt="熱田神宮" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="photoFail(this)" style="object-position:center 62%"></div><div class="in"><div><div class="dnum">DAY 6 ／ 4月22日（四）</div><h2>鰻魚飯、熱田神宮、晚上競馬</h2><div class="sum">白天補眠加一頓蓬萊軒，晚上去名古屋競馬夜賽；沒開賽就改なばなの里。</div></div><div class="meta"><span>自由起床</span><span>住 名古屋</span></div></div></div>
-  <div class="dbody"><div><ol class="tl"><li><time>10:00</time><div><h4>コメダ珈琲 モーニング（栄）</h4><p>11:00 前點飲料送吐司</p></div></li><li><time>10:45</time><div><h4>名城線 栄 → 伝馬町，1 號出口步行 3 分</h4><p>約 15 分</p></div></li><li class="key"><time>11:15</time><div><h4>あつた蓬莱軒神宮店，門口登記排隊</h4><p>11:30 開店；ひつまぶし ¥4,950；不接受訂位，平日也可能排 30–60 分</p></div></li><li><time>13:30</time><div><h4>熱田神宮參拜、きよめ餅</h4><p>境內免費</p></div></li><li><time>14:30</time><div><h4>回飯店大浴場、午睡</h4><p>晚上要出門，下午一定要休息</p></div></li><li class="key"><time>17:00</time><div><h4>名鐵巴士中心出發，晚上二選一（見下方）</h4></div></li><li><time>21:30</time><div><h4>回到栄</h4><p>錦三喝一杯或回飯店</p></div></li></ol></div><aside class="side"><div class="box" style="padding:0;overflow:hidden"><div style="position:relative;aspect-ratio:16/9"><img style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover" src="img/unagi.jpg" data-remote="https://commons.wikimedia.org/wiki/Special:FilePath/Hitsumabushi%20by%20Daikantei.jpg?width=1600" alt="ひつまぶし" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="photoFail(this)"></div><div style="padding:12px 16px"><h4>ひつまぶし</h4><p class="small muted" style="margin:0">一碗吃三種：先原味，再加蔥和山葵，最後倒高湯。</p></div></div><div class="box alert"><h4>蓬萊軒去神宮店</h4><p class="small" style="margin:0">4/22 是四月第 4 個星期四，本店公休；神宮店週二與第 2、4 個週一休，今天有開。</p></div></aside></div><div style="padding:0 30px 30px"><h3 style="margin-bottom:4px">晚上二選一</h3><p class="small muted">2027 年 1 月下旬名古屋競馬公布賽程後決定：4/22 有夜賽就去競馬，沒有就去なばなの里。</p>
+  <div class="dbody"><div><ol class="tl"><li><time>10:00</time><div><h4>コメダ珈琲 モーニング（栄）</h4><p>11:00 前點飲料送吐司</p></div></li><li><time>10:45</time><div><h4>名城線 栄 → 伝馬町，1 號出口步行 3 分</h4><p>約 15 分</p></div></li><li class="key"><time>11:15</time><div><h4>あつた蓬莱軒神宮店，門口登記排隊</h4><p>11:30 開店；ひつまぶし ¥4,950；不接受訂位，平日也可能排 30–60 分</p></div></li><li><time>13:30</time><div><h4>熱田神宮參拜、きよめ餅</h4><p>境內免費</p></div></li><li><time>14:30</time><div><h4>回飯店大浴場、午睡</h4><p>晚上要出門，下午一定要休息</p></div></li><li class="key"><time>17:00</time><div><h4>名鐵巴士中心出發，晚上二選一（見下方）</h4></div></li><li><time>21:30</time><div><h4>回到栄</h4><p>錦三喝一杯或回飯店</p></div></li></ol></div><aside class="side"><div class="box" style="padding:0;overflow:hidden"><div style="position:relative;aspect-ratio:16/9"><img style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover" src="img/unagi.jpg" data-remote="https://commons.wikimedia.org/wiki/Special:FilePath/Hitsumabushi%20by%20Daikantei.jpg?width=1600" alt="ひつまぶし" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="photoFail(this)"></div><div style="padding:12px 16px"><h4>ひつまぶし</h4><p class="small muted" style="margin:0">一碗吃三種：先原味，再加蔥和山葵，最後倒高湯。</p></div></div><div class="box alert"><h4>蓬萊軒去神宮店</h4><p class="small" style="margin:0">4/22 是四月第 4 個星期四，本店公休；神宮店週二與第 2、4 個週一休，今天有開。</p></div></aside></div><div class="optwrap"><h3 style="margin-bottom:4px">晚上二選一</h3><p class="small muted">2027 年 1 月下旬名古屋競馬公布賽程後決定：4/22 有夜賽就去競馬，沒有就去なばなの里。</p>
 <div class="opt">
 <div class="optcard press"><div class="ph"><span class="badge">首選</span><div class="media"><svg aria-hidden="true"><use href="#sc-keiba"/></svg><img src="img/ev-keiba.jpg" data-remote="https://commons.wikimedia.org/wiki/Special:FilePath/%E3%82%A2%E3%83%B3%E3%83%87%E3%82%B9%E3%83%93%E3%82%A8%E3%83%B3%E3%83%88%20%E9%96%A2%E6%9D%B1%E3%82%AA%E3%83%BC%E3%82%AF%E3%82%B9%E5%85%A5%E7%B7%9A%E6%99%82.jpg?width=1600" alt="地方競馬夜賽（川崎競馬場）" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="photoFail(this)" style="object-position:center 40%"></div></div><div class="bd"><h4>名古屋競馬夜賽</h4><ul>
 <li>名鐵巴士中心 4 樓 21 號乘車處，免費接駁約 40 分</li><li>夜賽日 13:30 開門，最後一場約 20:40</li><li>劃卡投注看賠率就能買，每人抓 ¥3,000，邊喝啤酒邊看</li></ul></div></div>
@@ -770,7 +938,7 @@ footer a{color:var(--on-night-2)}
           <div class="bar"><span>行李</span><i style="width:6%"></i><span>¥3,020</span></div>
         </div>
       </div>
-      <div class="tbl">
+      <div class="tbl compact">
         <table>
           <thead><tr><th>項目</th><th>日圓</th><th>備註</th></tr></thead>
           <tbody>
@@ -892,6 +1060,27 @@ footer a{color:var(--on-night-2)}
   </div>
 </footer>
 
+<nav class="tabbar" id="tabbar" aria-label="快速導覽">
+  <a href="#top" data-tab="top"><svg viewBox="0 0 24 24"><path d="M3.5 11 12 4l8.5 7"/><path d="M6 9.5V20h12V9.5"/><path d="M10 20v-5h4v5"/></svg><span>總覽</span></a>
+  <a href="#days" data-tab="days"><svg viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15.5" rx="3.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg><span>行程</span></a>
+  <a href="#tateyama" data-tab="tateyama"><svg viewBox="0 0 24 24"><path d="M2.5 19.5 9 8.5l3.6 6 2.4-3.3 6.5 8.3z"/><path d="M7.3 11.4 9 12.6l1.6-1.2"/></svg><span>立山</span></a>
+  <a href="#tickets" data-tab="tickets"><svg viewBox="0 0 24 24"><path d="M3.5 7h17v3.2a1.8 1.8 0 0 0 0 3.6V17h-17v-3.2a1.8 1.8 0 0 0 0-3.6z"/><path d="M14.5 7.5v1.5M14.5 11.2v1.6M14.5 15v1.5"/></svg><span>票券</span></a>
+  <a href="#phrases" data-tab="phrases"><svg viewBox="0 0 24 24"><path d="M4 5.5h16v10.5h-8.5L7 19.5V16H4z"/><path d="M8 9.5h8M8 12.5h5"/></svg><span>日文</span></a>
+  <button type="button" data-tab="more" id="more-btn" aria-haspopup="dialog"><svg viewBox="0 0 24 24"><path d="M4.5 7h15M4.5 12h15M4.5 17h15"/></svg><span>更多</span></button>
+  <i class="pill" aria-hidden="true"></i>
+</nav>
+<div class="sheet-bg" id="sheet-bg"></div>
+<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-label="更多章節">
+  <div class="grab" aria-hidden="true"></div>
+  <h3>更多章節</h3>
+  <a href="#overview"><span class="ic" style="background:#E7EEF5;color:var(--glacier-deep)"><svg viewBox="0 0 24 24"><path d="M9 4 3.5 6v14L9 18l6 2 5.5-2V4L15 6z"/><path d="M9 4v14M15 6v14"/></svg></span>四個重點與路線圖</a>
+  <a href="#booking"><span class="ic" style="background:var(--gold-soft);color:var(--gold-ink)"><svg viewBox="0 0 24 24"><circle cx="12" cy="13" r="7.5"/><path d="M12 9v4l2.5 2M9.5 3h5"/></svg></span>訂票時程<small>3/2 起開搶</small></a>
+  <a href="#budget"><span class="ic" style="background:var(--ok-soft);color:var(--ok)"><svg viewBox="0 0 24 24"><path d="M7 4.5 12 11l5-6.5M6.5 11h11M6.5 15h11M12 11v9"/></svg></span>預算<small>每人約 ¥163,000</small></a>
+  <a href="#stay"><span class="ic" style="background:#EFE9F7;color:var(--kz)"><svg viewBox="0 0 24 24"><path d="M3.5 19V8M3.5 15h17v4M20.5 15v-3a3 3 0 0 0-3-3H11v6"/><circle cx="7.3" cy="11.5" r="1.8"/></svg></span>住宿與行李<small>3 間飯店</small></a>
+  <a href="#risk"><span class="ic" style="background:var(--red-soft);color:var(--red)"><svg viewBox="0 0 24 24"><path d="M12 3.5 21 19.5H3z"/><path d="M12 10v4.5M12 17v.3"/></svg></span>備案與緊急聯絡</a>
+  <a href="#sources"><span class="ic" style="background:#E9EEF2;color:var(--muted)"><svg viewBox="0 0 24 24"><path d="M5 5.5h14M5 10h14M5 14.5h9"/><path d="m15 18 2 2 3.5-4"/></svg></span>出發前再確認</a>
+</div>
+
 <div class="overlay" id="ov" role="dialog" aria-modal="true" aria-label="日文小卡">
   <div class="big"><div class="ja" id="ov-ja"></div><div class="zh" id="ov-zh"></div>
     <div class="row"><button class="btn" type="button" id="ov-copy">複製日文</button><button class="btn ghost" type="button" id="ov-close" style="color:#fff">關閉</button></div>
@@ -902,7 +1091,6 @@ footer a{color:var(--on-night-2)}
 <script>
 (function(){
   var buzz=function(){ try{ if(navigator.vibrate) navigator.vibrate(10); }catch(e){} };
-  document.addEventListener('pointerdown',function(e){ if(e.target.closest('.press,.btn,.ph-btn,.seg a')) buzz(); },{passive:true});
   var toast=document.getElementById('toast'),tt;
   function say(m){ toast.textContent=m; toast.classList.add('on'); clearTimeout(tt); tt=setTimeout(function(){toast.classList.remove('on');},1600); }
   // print one section
@@ -932,6 +1120,84 @@ footer a{color:var(--on-night-2)}
       if(/^d\d$/.test(id)){ mark(chips,id); mark(top,'days'); moveInd(document.querySelector('.seg a[href="#'+id+'"]')); }
       else mark(top,id); }); },{rootMargin:'-35% 0px -60% 0px'});
     document.querySelectorAll('main section[id]').forEach(function(s){ io.observe(s); });
+  }
+})();
+</script>
+<script>
+(function(){
+  var mq=window.matchMedia('(max-width:760px)');
+  document.addEventListener('touchstart',function(){},{passive:true}); // enables :active on iOS
+  // haptics: Android vibrate, iOS 18+ switch trick
+  var hap=(function(){
+    if(navigator.vibrate) return function(){ try{navigator.vibrate(8);}catch(e){} };
+    var ios=/iP(hone|ad|od)/.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
+    if(!ios) return function(){};
+    var lab=document.createElement('label'),inp=document.createElement('input');
+    inp.type='checkbox'; inp.setAttribute('switch',''); inp.tabIndex=-1; lab.appendChild(inp);
+    lab.setAttribute('aria-hidden','true'); lab.style.cssText='position:fixed;left:-200px;top:0;width:1px;height:1px;opacity:0;pointer-events:none';
+    document.body.appendChild(lab);
+    return function(){ try{ lab.click(); }catch(e){} };
+  })();
+  window.__hap=hap;
+  document.addEventListener('click',function(e){ if(e.target.closest('.tabbar a,.tabbar button,.seg a,.ph-btn,.sheet a,.card,.btn,#ov-copy')) hap(); });
+
+  // table labels for card layout
+  document.querySelectorAll('.tbl table').forEach(function(t){
+    var ths=[].map.call(t.querySelectorAll('thead th'),function(th){return th.textContent.trim();});
+    if(!ths.length) return;
+    t.querySelectorAll('tbody tr').forEach(function(tr){ [].forEach.call(tr.children,function(td,i){ if(ths[i]) td.setAttribute('data-label',ths[i]); }); });
+  });
+
+  // tab bar
+  var bar=document.getElementById('tabbar'), pill=bar.querySelector('.pill'), tabs=[].slice.call(bar.querySelectorAll('[data-tab]'));
+  var cur=null;
+  function place(el,instant){ if(!el) return; if(instant) pill.style.transition='none'; pill.style.width=el.offsetWidth+'px'; pill.style.transform='translateX('+(el.offsetLeft-6)+'px)'; if(instant){ pill.offsetWidth; pill.style.transition=''; } }
+  function setTab(name,instant){ if(name===cur&&!instant) return; cur=name; var el=null; tabs.forEach(function(t){ var on=t.dataset.tab===name; t.classList.toggle('on',on); if(on) el=t; }); place(el,instant); }
+  function tabFor(id){ if(id==='top') return 'top'; if(id==='overview') return 'top'; if(/^d\d$/.test(id)||id==='days') return 'days'; if(id==='tateyama'||id==='tickets'||id==='phrases') return id; return 'more'; }
+  // current-section label in top bar
+  var now=document.getElementById('now'), names={overview:'四個重點',tateyama:'立山日專章',tickets:'交通票券',phrases:'日文小卡',booking:'訂票時程',budget:'預算',stay:'住宿與行李',risk:'備案與緊急聯絡',sources:'出發前再確認'};
+  document.querySelectorAll('.seg a').forEach(function(a){ names[a.getAttribute('href').slice(1)]='<b>'+a.querySelector('b').textContent+'</b>　'+a.querySelector('span').textContent; });
+  var lastNow='';
+  function setNow(id){ var t=names[id]||''; if(t===lastNow) return; lastNow=t; now.innerHTML=t; if(now.animate&&t) now.animate([{opacity:0,transform:'translateY(5px)'},{opacity:1,transform:'none'}],{duration:280,easing:'cubic-bezier(.2,.8,.2,1)'}); }
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(!e.isIntersecting) return; var id=e.target.id; setTab(tabFor(id)); setNow(id); }); },{rootMargin:'-40% 0px -55% 0px'});
+    document.querySelectorAll('main section[id]').forEach(function(s){ io.observe(s); });
+  }
+  setTab('top',true);
+  window.addEventListener('resize',function(){ var on=bar.querySelector('.on'); place(on,true); measure(); });
+
+  // more sheet with drag-to-close
+  var sheet=document.getElementById('sheet'), bg=document.getElementById('sheet-bg'), moreBtn=document.getElementById('more-btn');
+  function openSheet(){ sheet.classList.add('on'); bg.classList.add('on'); }
+  function closeSheet(){ sheet.style.transform=''; sheet.classList.remove('on'); bg.classList.remove('on'); }
+  moreBtn.addEventListener('click',openSheet);
+  bg.addEventListener('click',closeSheet);
+  sheet.querySelectorAll('a').forEach(function(a){ a.addEventListener('click',closeSheet); });
+  var y0=null,dy=0;
+  sheet.addEventListener('touchstart',function(e){ y0=e.touches[0].clientY; dy=0; sheet.style.transition='none'; },{passive:true});
+  sheet.addEventListener('touchmove',function(e){ if(y0===null) return; dy=Math.max(0,e.touches[0].clientY-y0); sheet.style.transform='translateY('+dy+'px)'; },{passive:true});
+  sheet.addEventListener('touchend',function(){ sheet.style.transition=''; if(dy>70) closeSheet(); else sheet.style.transform=''; y0=null; });
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape') closeSheet(); });
+
+  // carousel dots
+  var hl=document.querySelector('.hl'), dots=[].slice.call(document.querySelectorAll('.dots i')), dTick=false;
+  if(hl&&dots.length) hl.addEventListener('scroll',function(){ if(dTick) return; dTick=true; requestAnimationFrame(function(){ var c=hl.children[0], w=c.offsetWidth+12, i=Math.round(hl.scrollLeft/w); if(hl.scrollLeft+hl.clientWidth>=hl.scrollWidth-4) i=dots.length-1; dots.forEach(function(d,k){ d.classList.toggle('on',k===i); }); dTick=false; }); },{passive:true});
+
+  // sticky offset for day anchors
+  var dn=document.querySelector('.days-nav');
+  function measure(){ if(dn) document.documentElement.style.setProperty('--dn',dn.offsetHeight+'px'); }
+  measure();
+
+  // map: start panned to the middle
+  var pan=document.querySelector('.mapcard .pan'); if(pan&&mq.matches) pan.scrollLeft=(pan.scrollWidth-pan.clientWidth)*0.15;
+
+  // reveal on scroll (mobile only)
+  if(mq.matches&&'IntersectionObserver' in window&&!window.matchMedia('(prefers-reduced-motion:reduce)').matches){
+    var items=[].slice.call(document.querySelectorAll('.dcard,.hl .card,.box,.optcard,.tbl tr,.panel,.step,.ph-btn,.jpcard,.bigsum,.hotel,.list-card,.strip figure'));
+    var vh=window.innerHeight;
+    items.forEach(function(el){ if(el.getBoundingClientRect().top>vh) el.classList.add('rv'); });
+    var ro=new IntersectionObserver(function(es){ var k=0; es.forEach(function(e){ if(!e.isIntersecting) return; var el=e.target; ro.unobserve(el); el.style.transitionDelay=(k++*55)+'ms'; el.classList.add('in'); setTimeout(function(){ el.classList.remove('rv','in'); el.style.transitionDelay=''; },700+k*55); }); },{rootMargin:'0px 0px -8% 0px'});
+    items.forEach(function(el){ if(el.classList.contains('rv')) ro.observe(el); });
   }
 })();
 </script>
