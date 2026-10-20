@@ -1,0 +1,939 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0E1620">
+<title>2027 中部北陸旅遊手冊 4/17–4/24</title>
+<meta name="description" content="2027/4/17–4/24 金澤・山代溫泉・富山・立山黑部・名古屋 8 天 7 夜：每日時刻、票券、預算、行李、住宿、日文小卡。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Noto+Serif+TC:wght@700;900&display=swap">
+<script>
+function photoFail(el){ if(el.dataset.remote){var r=el.dataset.remote;el.dataset.remote='';el.src=r;return;} el.remove(); }
+</script>
+<style>
+:root{
+  --night:#0E1620; --night-2:#16212E; --night-3:#1F2D3D; --on-night:#EEF3F7; --on-night-2:#A9B8C6;
+  --bg:#EEF2F6; --card:#FFFFFF; --ink:#14212B; --muted:#5C6B78; --line:#DCE4EB;
+  --ice:#DCE9F3; --ice-2:#F2F6FA; --glacier:#2F6B9A; --glacier-deep:#1E4A6E;
+  --gold:#D4AA4F; --gold-ink:#8A6A14; --gold-soft:#FBF2DC; --red:#B9391F; --red-soft:#FBE6E0; --ok:#2C7A52; --ok-soft:#E0F2E7;
+  --kz:#6C4AA0; --ys:#B9663A; --ty:#1E7A96; --tk:#4F7698; --ng:#C0582E;
+  --r-lg:20px; --r-md:14px; --r-sm:10px;
+  --sh-1:0 1px 2px rgba(20,33,43,.06),0 2px 8px rgba(20,33,43,.06);
+  --sh-2:0 2px 6px rgba(20,33,43,.08),0 12px 32px rgba(20,33,43,.10);
+  --sh-3:0 6px 16px rgba(20,33,43,.12),0 24px 56px rgba(20,33,43,.16);
+  --f-display:"Noto Serif TC","Songti TC",serif;
+  --f-body:"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;
+  --ease:cubic-bezier(.2,.8,.2,1);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:116px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:15.5px;line-height:1.7;font-variant-numeric:tabular-nums;-webkit-tap-highlight-color:transparent}
+a{color:var(--glacier)}
+:focus-visible{outline:3px solid var(--gold);outline-offset:3px;border-radius:6px}
+h1,h2,h3,h4{margin:0;line-height:1.25;text-wrap:balance}
+h1,h2{font-family:var(--f-display);font-weight:900}
+h1{font-size:clamp(34px,5vw,62px);letter-spacing:.01em}
+h2{font-size:clamp(26px,3vw,36px)}
+h3{font-size:19px;font-weight:700}
+h4{font-size:15.5px;font-weight:700}
+p{margin:0 0 10px}
+ul,ol{margin:0;padding-left:1.3em}
+li{margin-bottom:4px}
+.wrap{max-width:1160px;margin:0 auto;padding:0 28px}
+.muted{color:var(--muted)}
+.small{font-size:13.5px}
+
+/* ── top bar ── */
+.top{position:sticky;top:0;z-index:30;background:#0E1620;border-bottom:1px solid rgba(255,255,255,.07)}
+.top .wrap{display:flex;align-items:center;gap:18px;height:58px}
+.brand{display:flex;align-items:center;gap:10px;color:var(--on-night);text-decoration:none;font-family:var(--f-display);font-weight:900;font-size:17px;white-space:nowrap}
+.brand i{width:28px;height:28px;border-radius:8px;background:linear-gradient(140deg,#fff,#cfe0ee);display:grid;place-items:center;font-style:normal;font-size:15px;color:var(--night);box-shadow:0 2px 8px rgba(0,0,0,.3)}
+.top nav{margin-left:auto;display:flex;gap:4px;overflow-x:auto;scrollbar-width:none}
+.top nav::-webkit-scrollbar{display:none}
+.top nav a{color:var(--on-night-2);text-decoration:none;font-size:13.5px;padding:7px 12px;border-radius:999px;white-space:nowrap;transition:background .2s,color .2s}
+.top nav a:hover{color:var(--on-night);background:rgba(255,255,255,.08)}
+.top nav a.current{color:var(--night);background:var(--gold)}
+
+/* ── hero ── */
+.hero{position:relative;min-height:88vh;display:flex;align-items:flex-end;color:var(--on-night);overflow:hidden;background:var(--night)}
+.media{position:absolute;inset:0}
+.media img,.media svg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.media img{z-index:1}
+.hero .media img{animation:kb 22s var(--ease) both;object-position:center 72%}
+@keyframes kb{from{transform:scale(1.08)}to{transform:scale(1)}}
+.hero .shade{position:absolute;inset:0;z-index:2;background:linear-gradient(180deg,rgba(14,22,32,.25) 0%,rgba(14,22,32,.15) 35%,rgba(14,22,32,.88) 82%,var(--night) 100%)}
+.hero .wrap{position:relative;z-index:3;width:100%;padding-top:140px;padding-bottom:44px}
+.kicker{display:inline-flex;gap:8px;align-items:center;font-size:13px;font-weight:700;color:var(--night);background:var(--gold);padding:5px 12px;border-radius:999px;box-shadow:0 4px 14px rgba(212,170,79,.35)}
+.hero h1{margin:16px 0 14px;text-shadow:0 4px 30px rgba(0,0,0,.45)}
+.hero .lead{font-size:17.5px;max-width:58ch;color:#E3EAF0;text-shadow:0 1px 10px rgba(0,0,0,.5)}
+.chips{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin-top:30px}
+.chip{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.14);border-radius:var(--r-md);padding:14px 16px}
+.chip .k{font-size:11.5px;letter-spacing:.12em;color:var(--on-night-2)}
+.chip .v{font-family:var(--f-display);font-weight:900;font-size:25px;line-height:1.15;margin-top:4px}
+.chip .d{font-size:12.5px;color:var(--on-night-2);margin-top:3px;line-height:1.5}
+
+/* ── sections ── */
+.sec{padding:72px 0}
+.sec.dark{background:var(--night);color:var(--on-night)}
+.sec.dark .muted,.sec.dark p{color:var(--on-night-2)}
+.sec.tint{background:linear-gradient(180deg,#E3ECF4,#EEF2F6)}
+.sec.gold{background:linear-gradient(180deg,#F8EBCB,#FBF4E3)}
+.head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:12px 24px;margin-bottom:26px}
+.head .tag{display:block;font-size:13px;font-weight:700;color:var(--glacier);margin-bottom:6px}
+.sec.dark .head .tag{color:var(--gold)}
+.sec.gold .head .tag{color:var(--gold-ink)}
+.head p{max-width:62ch;margin:8px 0 0}
+
+/* pressable: tactile feedback */
+.press{transition:transform .18s var(--ease),box-shadow .25s var(--ease)}
+@media (hover:hover){.press:hover{transform:translateY(-4px);box-shadow:var(--sh-3)}}
+.press:active{transform:scale(.975);transition-duration:.08s}
+
+/* ── highlight cards ── */
+.hl{display:grid;grid-template-columns:1.3fr 1fr 1fr;grid-template-rows:auto auto;gap:18px}
+.hl .card:first-child{grid-row:span 2}
+.hl .card:last-child{grid-column:span 2}
+.card{position:relative;display:block;border-radius:var(--r-lg);overflow:hidden;background:var(--night-2);color:var(--on-night);text-decoration:none;box-shadow:var(--sh-2);isolation:isolate;min-height:250px}
+.card .media::after{content:"";position:absolute;inset:0;z-index:2;background:linear-gradient(180deg,rgba(14,22,32,0) 35%,rgba(14,22,32,.9))}
+.card .body{position:absolute;left:0;right:0;bottom:0;z-index:3;padding:20px 22px}
+.card .when{display:inline-block;font-size:12px;font-weight:700;background:rgba(10,16,24,.42);border:1px solid rgba(255,255,255,.25);padding:3px 10px;border-radius:999px;margin-bottom:8px}
+.card h3{font-family:var(--f-display);font-size:24px;font-weight:900;margin-bottom:6px}
+.card p{font-size:13.5px;color:#D9E2EA;margin:0;max-width:44ch}
+.hl .card:first-child h3{font-size:32px}
+
+/* ── route map ── */
+.mapcard{margin-top:22px;background:var(--night-2);border:1px solid rgba(255,255,255,.07);border-radius:var(--r-lg);padding:18px 18px 10px;box-shadow:var(--sh-2)}
+.mapcard svg{width:100%;height:auto;display:block}
+.mapcard figcaption{font-size:12.5px;color:var(--on-night-2);padding:6px 4px}
+svg text{font-family:var(--f-body)}
+
+/* ── tables ── */
+.tbl{overflow-x:auto;border-radius:var(--r-md);background:var(--card);box-shadow:var(--sh-1);border:1px solid var(--line)}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:620px}
+th,td{padding:11px 14px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line)}
+tr:last-child td{border-bottom:0}
+thead th{font-size:12.5px;color:var(--muted);font-weight:700;background:var(--ice-2);white-space:nowrap}
+tbody tr{transition:background .15s}
+tbody tr:hover{background:#F7FAFC}
+td.t{white-space:nowrap;font-weight:700;color:var(--glacier-deep)}
+td.w{white-space:nowrap}
+
+/* pills */
+.pill{display:inline-block;font-size:12px;font-weight:700;padding:2px 9px;border-radius:999px;white-space:nowrap;vertical-align:1px}
+.pill.act{background:var(--gold-soft);color:var(--gold-ink)}
+.pill.cash{background:var(--gold-soft);color:var(--gold-ink)}
+.pill.bad{background:var(--red-soft);color:var(--red)}
+.pill.ok{background:var(--ok-soft);color:var(--ok)}
+.pill.info{background:var(--ice);color:var(--glacier-deep)}
+
+/* ── day switcher ── */
+.days-nav{position:sticky;top:58px;z-index:20;background:#EEF2F6;border-bottom:1px solid var(--line)}
+.days-nav{position:sticky}
+.days-nav .wrap{display:flex;overflow-x:auto;padding-top:10px;padding-bottom:10px;scrollbar-width:none;scroll-behavior:smooth}
+.days-nav .wrap::-webkit-scrollbar{display:none}
+.seg{position:relative;display:inline-flex;gap:2px;padding:4px;border-radius:14px;background:rgba(20,33,43,.06);box-shadow:inset 0 0 0 1px rgba(20,33,43,.06)}
+.seg a{position:relative;z-index:1;flex:none;display:flex;flex-direction:column;align-items:center;justify-content:center;min-width:92px;padding:7px 14px 8px;border-radius:10px;text-decoration:none;color:var(--muted);transition:color .4s var(--ease)}
+.seg a b{font-size:13px;font-weight:600;letter-spacing:.01em;line-height:1.3}
+.seg a span{font-size:11.5px;line-height:1.3;opacity:.8}
+@media (hover:hover){.seg a:not(.current):hover{color:var(--ink)}}
+.seg a.current{color:#fff}
+.seg .ind{position:absolute;z-index:0;top:4px;bottom:4px;left:0;width:0;border-radius:10px;background:var(--night);box-shadow:0 1px 2px rgba(14,22,32,.2),0 6px 16px rgba(14,22,32,.18);transition:transform .55s cubic-bezier(.22,1,.36,1),width .55s cubic-bezier(.22,1,.36,1);will-change:transform,width}
+.days-nav .prog{position:absolute;left:0;bottom:-1px;height:2px;width:100%;transform-origin:0 50%;transform:scaleX(0);background:var(--gold)}
+
+/* ── day block ── */
+.day{padding:44px 0 20px}
+.dcard{background:var(--card);border-radius:var(--r-lg);box-shadow:var(--sh-2);overflow:hidden}
+.dhero{position:relative;height:340px;color:var(--on-night);display:flex;align-items:flex-end;background:var(--night)}
+.dhero .media::after{content:"";position:absolute;inset:0;z-index:2;background:linear-gradient(180deg,rgba(14,22,32,0) 30%,rgba(14,22,32,.88))}
+.dhero .in{position:relative;z-index:3;padding:24px 30px;width:100%;display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.dnum{font-size:13px;font-weight:700;color:var(--gold)}
+.dhero h2{margin:4px 0 4px;text-shadow:0 2px 16px rgba(0,0,0,.5)}
+.dhero .sum{font-size:14px;color:#D7E0E8;max-width:60ch}
+.meta{display:flex;gap:8px;flex-wrap:wrap}
+.meta span{font-size:12.5px;font-weight:700;background:rgba(10,16,24,.42);border:1px solid rgba(255,255,255,.22);padding:5px 11px;border-radius:999px;white-space:nowrap}
+.meta span.early{background:var(--gold);color:var(--night);border-color:var(--gold)}
+.dbody{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:30px;padding:28px 30px 30px}
+.side>*+*{margin-top:14px}
+
+/* timeline */
+.tl{list-style:none;margin:0;padding:0;position:relative}
+.tl::before{content:"";position:absolute;left:67px;top:8px;bottom:8px;width:2px;background:var(--line)}
+.tl li{position:relative;display:grid;grid-template-columns:52px 1fr;gap:34px;padding:8px 0;margin:0}
+.tl time{font-weight:700;color:var(--muted);font-size:14px;text-align:right;padding-top:1px}
+.tl li::after{content:"";position:absolute;left:61px;top:15px;width:12px;height:12px;border-radius:50%;background:var(--card);border:2px solid var(--line)}
+.tl li.key time{color:var(--glacier-deep)}
+.tl li.key::after{background:var(--glacier);border-color:var(--glacier);box-shadow:0 0 0 4px var(--ice)}
+.tl h4{margin-bottom:2px}
+.tl p{margin:0;font-size:13.5px;color:var(--muted)}
+
+/* side boxes */
+.box{border-radius:var(--r-md);padding:16px 18px;background:var(--ice-2);border:1px solid var(--line)}
+.box h4{margin-bottom:8px;display:flex;align-items:center;gap:8px}
+.box ul{font-size:13.5px}
+.box.warn{background:var(--gold-soft);border-color:#EED9A6}
+.box.alert{background:var(--red-soft);border-color:#F2C7BC}
+.eat{display:grid;gap:8px}
+.eat div{display:grid;grid-template-columns:auto 1fr;gap:10px;align-items:start;font-size:13.5px}
+.eat b{font-size:12px;color:var(--night);background:var(--ice);border-radius:6px;padding:1px 7px;margin-top:2px}
+.opt{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:20px}
+.optcard{border-radius:var(--r-md);overflow:hidden;background:var(--card);box-shadow:var(--sh-1);border:1px solid var(--line)}
+.optcard .ph{position:relative;height:150px;background:var(--night)}
+.optcard .bd{padding:14px 16px}
+.optcard .bd h4{margin-bottom:6px}
+.optcard .badge{position:absolute;left:12px;top:12px;z-index:3;font-size:12px;font-weight:700;padding:3px 10px;border-radius:999px;background:var(--gold);color:var(--night)}
+.optcard ul{font-size:13.5px}
+
+/* tateyama strip */
+.strip{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:24px}
+.strip figure{margin:0;position:relative;height:200px;border-radius:var(--r-md);overflow:hidden;box-shadow:var(--sh-2)}
+.strip figcaption{position:absolute;left:12px;bottom:10px;z-index:3;font-size:13px;font-weight:700;color:#fff;text-shadow:0 1px 8px rgba(0,0,0,.6)}
+.strip figure .media::after{content:"";position:absolute;inset:0;z-index:2;background:linear-gradient(180deg,transparent 50%,rgba(0,0,0,.6))}
+.sec.dark .tbl td,.sec.dark .tbl th{color:var(--ink)}
+.cols2{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:22px}
+.panel{background:var(--night-2);border:1px solid rgba(255,255,255,.08);border-radius:var(--r-md);padding:20px 22px}
+.panel h3{margin-bottom:10px}
+.panel li,.panel td,.panel th{color:#D7E0E8}
+.panel table{min-width:0;font-size:13.5px}
+.panel th{background:none;color:var(--gold);white-space:nowrap;border-color:rgba(255,255,255,.08)}
+.panel td{border-color:rgba(255,255,255,.08)}
+.panel ol li{margin-bottom:8px}
+
+/* booking steps */
+.steps{display:grid;gap:12px}
+.step{display:grid;grid-template-columns:150px 1fr;gap:18px;align-items:start;background:var(--card);border-radius:var(--r-md);padding:16px 18px;box-shadow:var(--sh-1);border:1px solid var(--line)}
+.step .when{font-weight:900;color:var(--glacier-deep);font-size:15px}
+.step .when small{display:block;font-weight:500;color:var(--muted);font-size:12px}
+.step.hot{border-left:5px solid var(--gold)}
+.step h4{margin-bottom:3px}
+.step p{margin:0;font-size:13.5px;color:var(--muted)}
+
+/* phrase cards */
+.phr{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
+.ph-btn{all:unset;box-sizing:border-box;cursor:pointer;display:block;background:var(--card);border-radius:var(--r-md);padding:16px 18px;box-shadow:var(--sh-1);border:1px solid var(--line)}
+.ph-btn .zh{font-size:12.5px;color:var(--muted);display:block;margin-bottom:4px}
+.ph-btn .ja{font-size:17px;font-weight:700;display:block;line-height:1.5;font-family:"Hiragino Sans","Yu Gothic","Noto Sans JP","Noto Sans TC",sans-serif}
+.ph-btn .use{font-size:12px;color:var(--glacier);display:block;margin-top:8px}
+.overlay{position:fixed;inset:0;z-index:100;background:rgba(14,22,32,.94);display:none;align-items:center;justify-content:center;padding:28px}
+.overlay.on{display:flex;animation:fade .2s var(--ease)}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+.overlay .big{max-width:900px;text-align:center;color:#fff}
+.overlay .big .ja{font-size:clamp(34px,6vw,72px);font-weight:900;line-height:1.35;font-family:"Hiragino Sans","Yu Gothic","Noto Sans JP","Noto Sans TC",sans-serif;animation:pop .25s var(--ease)}
+@keyframes pop{from{transform:scale(.94);opacity:0}to{transform:none;opacity:1}}
+.overlay .big .zh{margin-top:18px;color:var(--on-night-2);font-size:17px}
+.overlay .row{margin-top:28px;display:flex;gap:12px;justify-content:center}
+.btn{all:unset;box-sizing:border-box;cursor:pointer;display:inline-flex;align-items:center;gap:8px;font-size:14.5px;font-weight:700;padding:11px 20px;border-radius:999px;background:var(--gold);color:var(--night);box-shadow:0 6px 18px rgba(212,170,79,.35)}
+.btn.ghost{background:transparent;color:inherit;border:1.5px solid currentColor;box-shadow:none}
+.toast{position:fixed;left:50%;bottom:28px;z-index:120;transform:translate(-50%,20px);opacity:0;background:var(--night);color:#fff;padding:11px 18px;border-radius:999px;font-size:14px;box-shadow:var(--sh-3);transition:all .25s var(--ease);pointer-events:none}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+
+/* jp ticket card */
+.jpcard{background:#fff;border-radius:var(--r-md);padding:22px 24px;box-shadow:var(--sh-2);border:2px solid var(--ink);margin-top:18px;font-family:"Hiragino Sans","Yu Gothic","Noto Sans JP","Noto Sans TC",sans-serif}
+.jpcard h3{margin-bottom:8px}
+.jpcard table{min-width:0}
+.jpcard td{white-space:nowrap}
+.jpcard td:nth-child(4){white-space:normal}
+
+/* budget */
+.budget{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.6fr);gap:22px;align-items:start}
+.bigsum{background:var(--night);color:var(--on-night);border-radius:var(--r-lg);padding:26px 28px;box-shadow:var(--sh-3)}
+.bigsum .v{font-family:var(--f-display);font-weight:900;font-size:46px;line-height:1.1}
+.bigsum .d{color:var(--on-night-2);font-size:14px;margin-top:6px}
+.bars{margin-top:22px;display:grid;gap:10px}
+.bar{display:grid;grid-template-columns:70px 1fr 74px;gap:10px;align-items:center;font-size:13px}
+.bar i{display:block;height:10px;border-radius:999px;background:linear-gradient(90deg,var(--gold),#F1D58F)}
+.bar span:last-child{text-align:right;color:var(--on-night-2)}
+
+/* hotels */
+.hotels{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.hotel{background:var(--card);border-radius:var(--r-lg);box-shadow:var(--sh-2);overflow:hidden}
+.hotel .top-band{height:96px;position:relative;display:flex;align-items:flex-end;padding:14px 18px;color:#fff}
+.hotel .top-band b{font-family:var(--f-display);font-size:22px}
+.hotel .top-band span{position:absolute;right:16px;top:14px;font-size:12px;font-weight:700;background:rgba(255,255,255,.2);padding:3px 10px;border-radius:999px}
+.hotel .bd{padding:16px 18px}
+.hotel h3{font-size:17px;margin-bottom:8px}
+.hotel ul{font-size:13.5px}
+.hotel .alt{margin-top:10px;font-size:12.5px;color:var(--muted)}
+
+/* misc */
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.list-card{background:var(--card);border-radius:var(--r-md);padding:20px 22px;box-shadow:var(--sh-1);border:1px solid var(--line)}
+.list-card h3{margin-bottom:10px}
+.list-card ul{font-size:14px}
+.src ol{font-size:13px;columns:2;column-gap:28px}
+.src li{break-inside:avoid;overflow-wrap:anywhere}
+footer{background:var(--night);color:var(--on-night-2);font-size:12.5px;padding:34px 0 50px;line-height:1.8}
+footer a{color:var(--on-night-2)}
+
+/* responsive */
+@media (max-width:1000px){
+  .hl{grid-template-columns:1fr 1fr}.hl .card:first-child{grid-row:auto;grid-column:span 2}.hl .card:last-child{grid-column:span 2}
+  .chips{grid-template-columns:repeat(2,1fr)}
+  .dbody,.cols2,.grid2,.budget,.opt{grid-template-columns:1fr}
+  .hotels,.strip{grid-template-columns:1fr}
+  .src ol{columns:1}
+}
+@media (max-width:640px){
+  .wrap{padding:0 16px}
+  .hl{grid-template-columns:1fr}.hl .card:first-child,.hl .card:last-child{grid-column:auto}
+  .dhero{height:260px}.dhero .in{padding:18px}.dbody{padding:20px 16px}
+  .step{grid-template-columns:1fr;gap:6px}
+  .sec{padding:52px 0}
+  .tl::before{left:59px}.tl li{grid-template-columns:44px 1fr;gap:32px}.tl li::after{left:53px}
+}
+
+/* print */
+@media print{
+  body{background:#fff;color:#000;font-size:12px}
+  .top,.days-nav,.btn,.noprint,.media,.overlay,.toast,footer,.hl,.mapcard,.strip,.opt .ph{display:none!important}
+  .hero,.sec.dark,.dhero,.bigsum,.panel{background:#fff!important;color:#000!important;min-height:0;height:auto;box-shadow:none}
+  .hero .wrap{padding:0}.hero h1,.hero .lead,.dhero h2,.dhero .sum,.panel li,.panel td,.panel th,.sec.dark p{color:#000!important;text-shadow:none}
+  .chip{background:#fff;border-color:#999}.chip .k,.chip .d{color:#333}
+  .dcard,.tbl,.step,.jpcard,.list-card,.hotel,.optcard,.box{box-shadow:none}
+  .sec{padding:12px 0}
+  .day,.pb{page-break-before:always}
+  body[data-print] main>*{display:none!important}
+  body[data-print="tickets"] #tickets{display:block!important}
+  body[data-print="tickets"] #tickets .screen-only{display:none}
+  body[data-print="tateyama"] #tateyama{display:block!important}
+}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<defs>
+ <linearGradient id="g-dawn" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8FB3D1"/><stop offset=".6" stop-color="#D9E6F0"/><stop offset="1" stop-color="#F4F7FA"/></linearGradient>
+ <linearGradient id="g-night" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0B1622"/><stop offset=".7" stop-color="#1E3550"/><stop offset="1" stop-color="#2E4B6B"/></linearGradient>
+ <linearGradient id="g-dusk" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2B3F5C"/><stop offset=".55" stop-color="#C98E6B"/><stop offset="1" stop-color="#E9C28F"/></linearGradient>
+ <linearGradient id="g-spring" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#9CC3DE"/><stop offset="1" stop-color="#E8F1F6"/></linearGradient>
+ <linearGradient id="g-water" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4E7FA3"/><stop offset="1" stop-color="#1F3D57"/></linearGradient>
+ <linearGradient id="g-snowwall" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#C9D9E6"/></linearGradient>
+ <linearGradient id="g-snowwall2" x1="1" y1="0" x2="0" y2="0"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#BFD1E0"/></linearGradient>
+</defs>
+
+<symbol id="sc-snow" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
+ <rect width="1600" height="900" fill="url(#g-dawn)"/>
+ <path d="M520 470 L700 330 L800 380 L900 300 L1080 470Z" fill="#E7EFF5"/>
+ <path d="M0 900 L0 40 C120 30 300 60 640 520 L700 900Z" fill="url(#g-snowwall)"/>
+ <path d="M1600 900 L1600 20 C1480 30 1300 70 960 520 L900 900Z" fill="url(#g-snowwall2)"/>
+ <g stroke="#B7CADA" stroke-width="3" fill="none" opacity=".7">
+  <path d="M0 160 C180 170 330 230 480 360"/><path d="M0 300 C160 310 320 360 560 470"/><path d="M0 460 C200 470 380 520 620 600"/><path d="M0 620 C200 630 420 680 650 720"/>
+  <path d="M1600 140 C1420 150 1270 210 1120 340"/><path d="M1600 290 C1440 300 1280 350 1040 460"/><path d="M1600 450 C1400 460 1220 510 980 590"/><path d="M1600 610 C1400 620 1180 670 950 710"/>
+ </g>
+ <path d="M640 900 L760 520 L840 520 L960 900Z" fill="#6D7E8C"/>
+ <path d="M790 540 L790 900" stroke="#E9EEF2" stroke-width="5" stroke-dasharray="28 22"/>
+ <g transform="translate(762 560)"><rect width="76" height="62" rx="8" fill="#2F6B9A"/><rect x="8" y="8" width="60" height="22" rx="3" fill="#DCE9F3"/><circle cx="16" cy="64" r="7" fill="#14212B"/><circle cx="60" cy="64" r="7" fill="#14212B"/></g>
+ <g fill="#14212B"><circle cx="560" cy="800" r="9"/><rect x="552" y="810" width="16" height="44" rx="6"/><circle cx="600" cy="790" r="9"/><rect x="592" y="800" width="16" height="44" rx="6"/></g>
+</symbol>
+
+<symbol id="sc-kenroku" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
+ <rect width="1600" height="900" fill="url(#g-spring)"/>
+ <path d="M0 520 C300 470 600 500 900 480 C1200 460 1400 500 1600 480 L1600 900 L0 900Z" fill="#5E8A5A"/>
+ <rect y="600" width="1600" height="300" fill="url(#g-water)"/>
+ <g fill="#2E4A2C"><ellipse cx="1180" cy="330" rx="260" ry="70"/><ellipse cx="1060" cy="420" rx="230" ry="60"/><ellipse cx="1270" cy="470" rx="200" ry="55"/></g>
+ <path d="M1160 600 C1150 520 1180 440 1150 330" stroke="#3B2A1E" stroke-width="26" fill="none"/>
+ <path d="M300 640 C420 600 560 600 680 640" stroke="#7A6450" stroke-width="16" fill="none"/>
+ <g fill="#5A5248">
+  <rect x="740" y="470" width="26" height="190"/><rect x="866" y="500" width="22" height="170"/>
+  <path d="M700 470 L930 470 L900 430 L730 430Z"/><rect x="760" y="400" width="110" height="34" rx="4"/><path d="M740 400 L890 400 L845 360 L785 360Z"/><circle cx="815" cy="350" r="12"/>
+ </g>
+ <g stroke="#9EC1DA" stroke-width="3" opacity=".5"><path d="M200 720H500"/><path d="M900 760H1300"/><path d="M600 820H1000"/></g>
+</symbol>
+
+<symbol id="sc-gassho" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
+ <rect width="1600" height="900" fill="url(#g-spring)"/>
+ <path d="M0 470 L250 220 L460 400 L700 180 L980 430 L1240 200 L1600 460 L1600 900 L0 900Z" fill="#7C93A8"/>
+ <path d="M700 180 L640 236 L700 225 L760 240Z M1240 200 L1180 256 L1240 246 L1300 258Z M250 220 L200 268 L250 260 L300 270Z" fill="#FFFFFF"/>
+ <path d="M0 620 C400 560 1200 560 1600 620 L1600 900 L0 900Z" fill="#8A9A5B"/>
+ <path d="M0 760 C400 720 1200 720 1600 760 L1600 900 L0 900Z" fill="#A08560"/>
+ <g>
+  <path d="M260 700 L420 420 L580 700Z" fill="#6B5537"/><path d="M300 700 L420 470 L540 700" fill="#8C7048"/><rect x="300" y="700" width="240" height="70" fill="#4A3A27"/><rect x="390" y="600" width="60" height="40" fill="#E9D9B0"/>
+  <path d="M700 690 L900 330 L1100 690Z" fill="#6B5537"/><path d="M750 690 L900 390 L1050 690" fill="#8C7048"/><rect x="750" y="690" width="300" height="80" fill="#4A3A27"/><rect x="860" y="560" width="80" height="50" fill="#E9D9B0"/>
+  <path d="M1170 710 L1300 480 L1430 710Z" fill="#6B5537"/><path d="M1200 710 L1300 520 L1400 710" fill="#8C7048"/><rect x="1200" y="710" width="200" height="60" fill="#4A3A27"/>
+ </g>
+ <g fill="#F2B8C6" opacity=".95"><circle cx="600" cy="600" r="60"/><circle cx="650" cy="570" r="50"/><circle cx="560" cy="560" r="44"/><circle cx="1110" cy="640" r="46"/><circle cx="1150" cy="610" r="38"/></g>
+ <rect x="600" y="620" width="10" height="120" fill="#4A3A27"/><rect x="1128" y="650" width="8" height="90" fill="#4A3A27"/>
+</symbol>
+
+<symbol id="sc-nagoya" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
+ <rect width="1600" height="900" fill="url(#g-night)"/>
+ <g fill="#FFFFFF" opacity=".7"><circle cx="140" cy="90" r="2"/><circle cx="420" cy="150" r="1.6"/><circle cx="1320" cy="80" r="2"/><circle cx="1500" cy="200" r="1.6"/><circle cx="980" cy="60" r="1.6"/></g>
+ <g fill="#16263A"><rect x="0" y="560" width="160" height="340"/><rect x="170" y="500" width="120" height="400"/><rect x="1260" y="520" width="140" height="380"/><rect x="1410" y="470" width="190" height="430"/><rect x="980" y="600" width="120" height="300"/></g>
+ <g fill="#C9A24B" opacity=".55"><rect x="20" y="600" width="12" height="10"/><rect x="60" y="640" width="12" height="10"/><rect x="200" y="540" width="12" height="10"/><rect x="240" y="600" width="12" height="10"/><rect x="1300" y="560" width="12" height="10"/><rect x="1450" y="520" width="12" height="10"/><rect x="1500" y="600" width="12" height="10"/></g>
+ <g stroke="#C9C2B0" stroke-width="7" fill="none">
+  <path d="M660 900 L770 300 L830 300 L940 900"/><path d="M700 700 L900 700"/><path d="M730 520 L870 520"/><path d="M680 820 L920 820"/>
+  <path d="M672 820 L900 700 M700 700 L928 820 M720 600 L880 520 M730 520 L890 600"/>
+ </g>
+ <rect x="745" y="250" width="110" height="60" rx="6" fill="#E9E2CF"/><rect x="790" y="120" width="20" height="130" fill="#E9E2CF"/>
+ <path d="M300 760 C500 690 1100 690 1300 760 C1100 800 500 800 300 760Z" fill="#7FC6D6" opacity=".55"/>
+ <path d="M300 760 C500 720 1100 720 1300 760" stroke="#BFE7EE" stroke-width="4" fill="none"/>
+ <rect y="840" width="1600" height="60" fill="#0B1622"/>
+</symbol>
+
+<symbol id="sc-gate" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
+ <rect width="1600" height="900" fill="url(#g-night)"/>
+ <path d="M300 900 L300 420 C500 220 1100 220 1300 420 L1300 900" fill="#1B3048" stroke="#6F8BA6" stroke-width="3"/>
+ <g stroke="#6F8BA6" stroke-width="2" opacity=".6"><path d="M400 330 L1200 900"/><path d="M1200 330 L400 900"/><path d="M800 230 L800 900"/><path d="M540 260 L1000 900"/><path d="M1060 260 L600 900"/></g>
+ <g fill="#8C6239">
+  <path d="M520 900 L560 400 L640 400 L680 900Z"/><path d="M920 900 L960 400 L1040 400 L1080 900Z"/>
+  <rect x="500" y="330" width="600" height="80" rx="10"/>
+ </g>
+ <g stroke="#B88A5A" stroke-width="5" fill="none" opacity=".8"><path d="M540 880 C600 760 560 640 620 420"/><path d="M600 880 C640 760 580 600 600 420"/><path d="M940 880 C1000 760 960 640 1020 420"/><path d="M1000 880 C1040 760 980 600 1000 420"/></g>
+ <rect y="860" width="1600" height="40" fill="#0B1622"/>
+ <g fill="#F2D38A" opacity=".8"><circle cx="560" cy="860" r="6"/><circle cx="1040" cy="860" r="6"/></g>
+</symbol>
+
+<symbol id="sc-chaya" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
+ <rect width="1600" height="900" fill="url(#g-dusk)"/>
+ <path d="M0 900 L560 520 L1040 520 L1600 900Z" fill="#B8A38A"/>
+ <g>
+  <path d="M0 260 L520 400 L520 600 L0 860Z" fill="#5A3A24"/>
+  <path d="M0 230 L540 380 L540 410 L0 270Z" fill="#2E2A2A"/>
+  <path d="M1600 260 L1080 400 L1080 600 L1600 860Z" fill="#5A3A24"/>
+  <path d="M1600 230 L1060 380 L1060 410 L1600 270Z" fill="#2E2A2A"/>
+ </g>
+ <g stroke="#2E1F14" stroke-width="5" opacity=".8">
+  <path d="M60 320 L60 820"/><path d="M110 334 L110 795"/><path d="M160 347 L160 770"/><path d="M210 360 L210 745"/><path d="M260 374 L260 720"/><path d="M310 387 L310 695"/><path d="M360 400 L360 670"/><path d="M410 413 L410 645"/><path d="M460 427 L460 620"/>
+  <path d="M1540 320 L1540 820"/><path d="M1490 334 L1490 795"/><path d="M1440 347 L1440 770"/><path d="M1390 360 L1390 745"/><path d="M1340 374 L1340 720"/><path d="M1290 387 L1290 695"/><path d="M1240 400 L1240 670"/><path d="M1190 413 L1190 645"/><path d="M1140 427 L1140 620"/>
+ </g>
+ <path d="M520 400 L800 300 L1080 400 L1080 520 L520 520Z" fill="#6E5A4A" opacity=".4"/>
+ <g fill="#F2C46B"><ellipse cx="250" cy="440" rx="22" ry="34"/><ellipse cx="1350" cy="440" rx="22" ry="34"/><ellipse cx="440" cy="470" rx="14" ry="22"/><ellipse cx="1160" cy="470" rx="14" ry="22"/></g>
+</symbol>
+
+<symbol id="sc-canal" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
+ <rect width="1600" height="900" fill="url(#g-spring)"/>
+ <path d="M0 470 L280 300 L520 430 L800 260 L1060 420 L1320 280 L1600 450 L1600 560 L0 560Z" fill="#8FA7BC"/>
+ <path d="M760 290 L800 260 L840 290Z M1290 300 L1320 280 L1350 300Z M250 320 L280 300 L310 320Z" fill="#FFFFFF"/>
+ <rect y="560" width="1600" height="60" fill="#7FA36E"/>
+ <rect y="620" width="1600" height="280" fill="url(#g-water)"/>
+ <g fill="#E9EEF2"><rect x="380" y="380" width="70" height="240"/><rect x="1150" y="380" width="70" height="240"/><rect x="370" y="360" width="90" height="30"/><rect x="1140" y="360" width="90" height="30"/></g>
+ <path d="M450 470 L1150 470" stroke="#E9EEF2" stroke-width="12"/>
+ <path d="M300 600 C600 560 1000 560 1300 600" stroke="#E9EEF2" stroke-width="10" fill="none"/>
+ <g stroke="#B9D3E6" stroke-width="3" opacity=".6"><path d="M200 700H600"/><path d="M900 740H1400"/><path d="M500 820H1000"/></g>
+ <g transform="translate(1320 520)"><rect width="140" height="80" fill="#2E4A2C"/><rect x="10" y="20" width="120" height="44" fill="#DCE9F3" opacity=".9"/></g>
+</symbol>
+
+<symbol id="sc-dam" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
+ <rect width="1600" height="900" fill="url(#g-spring)"/>
+ <path d="M0 520 L260 160 L520 420 L760 120 L1040 400 L1300 140 L1600 480 L1600 900 L0 900Z" fill="#5E7489"/>
+ <path d="M260 160 L170 285 L260 260 L340 290Z M760 120 L660 250 L760 220 L860 250Z M1300 140 L1200 270 L1300 245 L1400 280Z" fill="#FFFFFF"/>
+ <path d="M0 520 C300 500 520 520 700 540 L700 900 L0 900Z" fill="url(#g-water)"/>
+ <path d="M640 540 C820 470 1120 470 1300 540 L1300 600 C1120 540 820 540 640 600Z" fill="#D9DDE0"/>
+ <path d="M640 600 C820 540 1120 540 1300 600 L1240 900 L700 900Z" fill="#B7BEC4"/>
+ <g stroke="#9AA3AB" stroke-width="3" opacity=".7"><path d="M760 570 L780 900"/><path d="M880 552 L890 900"/><path d="M1000 550 L1000 900"/><path d="M1120 556 L1110 900"/></g>
+ <path d="M1300 540 L1600 520 L1600 900 L1240 900Z" fill="#4C6070"/>
+</symbol>
+
+<symbol id="sc-torii" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
+ <rect width="1600" height="900" fill="url(#g-spring)"/>
+ <g fill="#2E4A2C"><path d="M0 900 L0 120 L120 60 L240 140 L260 900Z"/><path d="M1600 900 L1600 100 L1480 50 L1360 140 L1340 900Z"/><path d="M220 900 L260 220 L360 160 L420 260 L440 900Z" opacity=".85"/><path d="M1380 900 L1340 220 L1240 160 L1180 260 L1160 900Z" opacity=".85"/></g>
+ <path d="M440 900 L700 560 L900 560 L1160 900Z" fill="#CDBFA6"/>
+ <g fill="#5A4636">
+  <rect x="560" y="300" width="40" height="560"/><rect x="1000" y="300" width="40" height="560"/>
+  <path d="M470 250 C650 230 950 230 1130 250 L1120 290 L480 290Z"/><rect x="520" y="350" width="560" height="28"/><rect x="785" y="290" width="30" height="60"/>
+ </g>
+</symbol>
+
+
+<symbol id="sc-onsen" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
+ <rect width="1600" height="900" fill="url(#g-dusk)"/>
+ <path d="M0 520 L300 360 L620 480 L940 330 L1260 470 L1600 380 L1600 900 L0 900Z" fill="#4A5B4A"/>
+ <rect y="700" width="1600" height="200" fill="#8C7B66"/>
+ <g>
+  <rect x="520" y="420" width="560" height="280" fill="#6B4A2E"/>
+  <path d="M470 430 L800 300 L1130 430Z" fill="#3A3330"/>
+  <rect x="600" y="330" width="400" height="20" fill="#2E2A2A"/>
+  <path d="M560 340 L800 230 L1040 340Z" fill="#3A3330"/>
+  <g fill="#F2D38A" opacity=".85"><rect x="560" y="470" width="80" height="60"/><rect x="680" y="470" width="80" height="60"/><rect x="840" y="470" width="80" height="60"/><rect x="960" y="470" width="80" height="60"/></g>
+  <rect x="760" y="580" width="80" height="120" fill="#2E1F14"/>
+  <path d="M740 560 L860 560 L860 600 L740 600Z" fill="#E9E2CF"/>
+ </g>
+ <g fill="#F2C46B"><ellipse cx="460" cy="640" rx="20" ry="30"/><ellipse cx="1140" cy="640" rx="20" ry="30"/></g>
+ <g fill="none" stroke="#FFFFFF" stroke-width="10" stroke-linecap="round" opacity=".45">
+  <path d="M300 760 C280 700 330 670 300 610"/><path d="M360 770 C340 700 390 660 360 600"/><path d="M1260 760 C1240 700 1290 670 1260 610"/><path d="M1320 770 C1300 700 1350 660 1320 600"/>
+ </g>
+</symbol>
+
+<symbol id="sc-keiba" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
+ <rect width="1600" height="900" fill="url(#g-night)"/>
+ <g fill="#F2E9C9"><rect x="180" y="90" width="12" height="330"/><rect x="1400" y="90" width="12" height="330"/></g>
+ <g fill="#FFF6D6"><circle cx="186" cy="90" r="34"/><circle cx="1406" cy="90" r="34"/></g>
+ <g fill="#FFF6D6" opacity=".18"><path d="M186 90 L-200 900 L600 900Z"/><path d="M1406 90 L1000 900 L1800 900Z"/></g>
+ <path d="M0 560 C400 500 1200 500 1600 560 L1600 900 L0 900Z" fill="#2E5A3C"/>
+ <path d="M0 640 C400 590 1200 590 1600 640 L1600 760 C1200 710 400 710 0 760Z" fill="#8C6A47"/>
+ <path d="M0 640 C400 590 1200 590 1600 640" stroke="#F4F7FA" stroke-width="6" fill="none"/>
+ <g fill="#14212B" transform="translate(620 560)">
+  <path d="M0 80 C30 40 90 30 140 40 L190 20 L210 34 L180 60 C200 80 200 110 190 130 L170 130 L172 100 L120 100 L100 140 L80 140 L92 100 C60 104 30 100 10 120 L-10 120 Z"/>
+  <circle cx="120" cy="20" r="14"/>
+ </g>
+ <g fill="#14212B" transform="translate(860 575) scale(.85)">
+  <path d="M0 80 C30 40 90 30 140 40 L190 20 L210 34 L180 60 C200 80 200 110 190 130 L170 130 L172 100 L120 100 L100 140 L80 140 L92 100 C60 104 30 100 10 120 L-10 120 Z"/>
+  <circle cx="120" cy="20" r="14"/>
+ </g>
+ <rect x="0" y="380" width="1600" height="60" fill="#0E1B29"/>
+ <g fill="#C9A24B" opacity=".7"><rect x="300" y="396" width="40" height="10"/><rect x="380" y="396" width="40" height="10"/><rect x="1100" y="396" width="40" height="10"/><rect x="1180" y="396" width="40" height="10"/></g>
+</symbol>
+<symbol id="sc-plane" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
+ <rect width="1600" height="900" fill="url(#g-dusk)"/>
+ <rect y="700" width="1600" height="200" fill="#1F3D57"/>
+ <g fill="#FFFFFF" opacity=".55"><ellipse cx="300" cy="300" rx="180" ry="26"/><ellipse cx="1250" cy="220" rx="220" ry="30"/><ellipse cx="900" cy="420" rx="160" ry="20"/></g>
+ <g transform="translate(980 300) rotate(-12)" fill="#10171E"><path d="M-260 0 C-140 -18 140 -18 260 0 C140 18 -140 18 -260 0Z"/><path d="M-40 0 L-140 -150 L-90 -150 L60 0Z"/><path d="M-40 0 L-140 150 L-90 150 L60 0Z"/><path d="M200 0 L240 -70 L262 -70 L250 0Z"/></g>
+</symbol>
+</defs>
+</svg>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#top"><i>山</i>2027 中部北陸</a>
+    <nav aria-label="章節">
+      <a href="#overview">重點</a>
+      <a href="#days">每日行程</a>
+      <a href="#tateyama">立山日</a>
+      <a href="#tickets">票券</a>
+      <a href="#phrases">日文小卡</a>
+      <a href="#booking">訂票時程</a>
+      <a href="#budget">預算</a>
+      <a href="#stay">住宿行李</a>
+      <a href="#risk">備案</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="media"><svg aria-hidden="true"><use href="#sc-snow"/></svg><img src="img/hero-snow.jpg" data-remote="https://commons.wikimedia.org/wiki/Special:FilePath/%E5%AE%A4%E5%A0%82%E9%9B%AA%E3%81%AE%E5%A4%A7%E8%B0%B701.jpg?width=1600" alt="立山雪之大谷" loading="eager" decoding="async" referrerpolicy="no-referrer" onerror="photoFail(this)"></div>
+  <div class="shade"></div>
+  <div class="wrap">
+    <span class="kicker">2027.04.17 – 04.24・5 人・8 天 7 夜</span>
+    <h1>走進十幾公尺的雪牆，<br>再回名古屋大吃三天</h1>
+    <p class="lead">金澤三晚、富山一晚，4/21 從富山翻過立山黑部，當晚直達名古屋再住三晚。全程只住三間飯店，只有立山那天要早起。</p>
+    <div class="chips">
+      <div class="chip"><div class="k">DATES</div><div class="v">4/17–4/24</div><div class="d">六出發、六回來，請假 5 天</div></div>
+      <div class="chip"><div class="k">HOTELS</div><div class="v">3 間</div><div class="d">金澤 3・富山 1・名古屋 3</div></div>
+      <div class="chip"><div class="k">EARLY</div><div class="v">1 天</div><div class="d">4/21 立山 06:15 起床</div></div>
+      <div class="chip"><div class="k">PER PERSON</div><div class="v">約 NT$34,000</div><div class="d">不含機票，2026 年票價估算</div></div>
+      <div class="chip"><div class="k">CASH</div><div class="v">¥3–4 萬</div><div class="d">巴士、溫泉、競馬、秀場用現金</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- OVERVIEW -->
+<section class="sec dark" id="overview">
+  <div class="wrap">
+    <div class="head"><div><span class="tag">這趟主要在看什麼</span><h2>四個重點</h2></div></div>
+    <div class="hl">
+      <a class="card press" href="#d5"><div class="media"><svg aria-hidden="true"><use href="#sc-snow"/></svg><img src="img/card-tateyama.jpg" data-remote="https://commons.wikimedia.org/wiki/Special:FilePath/080504%20Murodo-sanso%20Mount%20Masago%20Tateyama%20Japan02s5.jpg?width=1600" alt="室堂與立山連峰" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="photoFail(this)"></div><div class="body"><span class="when">4/21 三</span><h3>立山黑部縱走</h3><p>纜車、高原巴士、雪之大谷、空中纜車、黑部水壩，一天之內從富山翻到長野，再搭特急回名古屋。</p></div></a>
+      <a class="card press" href="#d2"><div class="media"><svg aria-hidden="true"><use href="#sc-chaya"/></svg><img src="img/card-kanazawa.jpg" data-remote="https://commons.wikimedia.org/wiki/Special:FilePath/Ishikawa%20Higashi%20Chaya%20gai%20at%20night%20xl.jpg?width=1600" alt="夜晚的金澤ひがし茶屋街" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="photoFail(this)"></div><div class="body"><span class="when">4/17–19</span><h3>金澤</h3><p>兼六園、近江町海鮮丼、21 世紀美術館，晚上的ひがし茶屋街。</p></div></a>
+      <a class="card press" href="#d3"><div class="media"><svg aria-hidden="true"><use href="#sc-onsen"/></svg><img src="img/card-yamashiro.jpg" data-remote="https://commons.wikimedia.org/wiki/Special:FilePath/Yamashiro%20Onsen%20260124%2006.jpg?width=1600" alt="山代溫泉古總湯" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="photoFail(this)"></div><div class="body"><span class="when">4/19 一</span><h3>山代溫泉</h3><p>泡明治風格的古總湯、畫一個九谷燒杯子。</p></div></a>
+      <a class="card press" href="#d6"><div class="media"><svg aria-hidden="true"><use href="#sc-nagoya"/></svg><img src="img/card-nagoya.jpg" data-remote="https://commons.wikimedia.org/wiki/Special:FilePath/Nagoya_TV_Tower_and_Oasis_21.JPG?width=1600" alt="名古屋電視塔與 Oasis 21" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="photoFail(this)"></div><div class="body"><span class="when">4/21–24</span><h3>名古屋三晚</h3><p>鰻魚飯、手羽先、競馬夜賽、NAGOYA de SHOW!。</p></div></a>
+    </div>
+
+    <figure class="mapcard">
+      <svg viewBox="0 0 1120 430" role="img" aria-label="路線示意圖：名古屋經敦賀到金澤，山代溫泉半日來回，金澤到富山，立山縱走到扇澤、信濃大町、松本，再回名古屋">
+        <defs>
+          <marker id="m-ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#D4AA4F"/></marker>
+          <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1E3A52"/><stop offset="1" stop-color="#16212E"/></linearGradient>
+        </defs>
+        <path d="M0 0 H1120 V60 C1000 30, 860 10, 700 48 C560 86, 420 70, 300 96 C200 118, 120 160, 0 150 Z" fill="url(#sea)"/>
+        <text x="40" y="44" fill="#6F8BA6" font-size="13">日本海</text>
+        <text x="600" y="36" fill="#6F8BA6" font-size="12">富山灣</text>
+        <path d="M250 430 C 290 350, 360 360, 400 430 Z" fill="url(#sea)"/>
+        <text x="300" y="412" fill="#6F8BA6" font-size="12">伊勢灣</text>
+        <g fill="none" stroke="#3B5068" stroke-width="1.4"><path d="M700 150 l22 -34 l22 34"/><path d="M745 160 l26 -42 l26 42"/><path d="M800 150 l22 -34 l22 34"/><path d="M850 170 l24 -38 l24 38"/><path d="M760 205 l20 -30 l20 30"/><path d="M820 215 l20 -30 l20 30"/></g>
+        <text x="880" y="232" fill="#6F8BA6" font-size="12">北阿爾卑斯</text>
+        <g fill="none" stroke="#D4AA4F" stroke-width="2.4" stroke-linecap="round">
+          <path d="M312 371 C 330 360, 350 345, 366 320"/>
+          <path d="M366 320 C 200 300, 120 220, 225 95" stroke-dasharray="6 5"/>
+          <path d="M225 95 C 200 130, 170 160, 150 196" stroke-dasharray="2 5" stroke-width="1.8"/>
+          <path d="M225 95 C 330 60, 450 64, 539 72"/>
+          <path d="M539 72 C 600 78, 640 84, 672 91"/>
+          <path d="M672 91 L755 92 L794 94 L825 95" stroke="#EEF3F7" stroke-width="3.2"/>
+          <path d="M825 95 C 860 96, 890 98, 906 104"/>
+          <path d="M906 104 C 940 118, 960 130, 967 147"/>
+          <path d="M967 147 C 820 240, 560 300, 366 320" marker-end="url(#m-ar)"/>
+        </g>
+        <circle cx="312" cy="371" r="6" fill="#D4AA4F"/><text x="300" y="396" fill="#EEF3F7" font-size="12.5" text-anchor="middle">中部國際機場</text>
+        <circle cx="366" cy="320" r="10" fill="#C0582E" stroke="#EEF3F7" stroke-width="2"/><text x="382" y="341" fill="#EEF3F7" font-size="15" font-weight="700">名古屋 3 晚</text>
+        <circle cx="225" cy="95" r="10" fill="#6C4AA0" stroke="#EEF3F7" stroke-width="2"/><text x="150" y="126" fill="#EEF3F7" font-size="15" font-weight="700">金澤 3 晚</text>
+        <circle cx="150" cy="196" r="6" fill="#B9663A"/><text x="40" y="222" fill="#EEF3F7" font-size="12.5">山代溫泉（半日來回）</text>
+        <circle cx="539" cy="72" r="10" fill="#1E7A96" stroke="#EEF3F7" stroke-width="2"/><text x="520" y="52" fill="#EEF3F7" font-size="15" font-weight="700">富山 1 晚</text>
+        <circle cx="672" cy="91" r="5" fill="#EEF3F7"/><text x="656" y="116" fill="#A9B8C6" font-size="11.5">立山站</text>
+        <circle cx="755" cy="92" r="5" fill="#EEF3F7"/><text x="740" y="80" fill="#EEF3F7" font-size="12" font-weight="700">室堂</text>
+        <circle cx="794" cy="94" r="5" fill="#EEF3F7"/><text x="782" y="118" fill="#A9B8C6" font-size="11.5">黑部水壩</text>
+        <circle cx="825" cy="95" r="5" fill="#EEF3F7"/><text x="832" y="86" fill="#A9B8C6" font-size="11.5">扇澤</text>
+        <circle cx="906" cy="104" r="5" fill="#D4AA4F"/><text x="916" y="108" fill="#A9B8C6" font-size="11.5">信濃大町</text>
+        <circle cx="967" cy="147" r="6" fill="#D4AA4F"/><text x="980" y="152" fill="#EEF3F7" font-size="12.5">松本（轉しなの）</text>
+        <text x="40" y="276" fill="#D4AA4F" font-size="12">D1 しらさぎ＋つるぎ 經敦賀 2h47</text>
+        <text x="420" y="104" fill="#A9B8C6" font-size="11.5">D4 新幹線 22 分</text>
+        <text x="700" y="58" fill="#EEF3F7" font-size="11.5" font-weight="700">D5 阿爾卑斯路線縱走</text>
+        <text x="600" y="282" fill="#D4AA4F" font-size="12">D5 大糸線＋しなの 20:07 到名古屋</text>
+      </svg>
+      <figcaption>示意圖，非比例。白色是立山黑部阿爾卑斯路線，金色是我們自己買票的段落。</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- DAYS -->
+<div class="days-zone" id="days">
+<div class="days-nav noprint">
+  <div class="wrap"><nav class="seg" aria-label="每日行程"><a href="#d1"><b>4/17 六</b><span>抵達金澤</span></a><a href="#d2"><b>4/18 日</b><span>金澤</span></a><a href="#d3"><b>4/19 一</b><span>山代溫泉</span></a><a href="#d4"><b>4/20 二</b><span>富山</span></a><a href="#d5"><b>4/21 三</b><span>立山黑部</span></a><a href="#d6"><b>4/22 四</b><span>名古屋</span></a><a href="#d7"><b>4/23 五</b><span>名古屋</span></a><a href="#d8"><b>4/24 六</b><span>回台北</span></a><i class="ind" aria-hidden="true"></i></nav></div>
+  <div class="prog" aria-hidden="true"></div>
+</div>
+
+<section class="day" id="d1"><div class="wrap"><article class="dcard">
+  <div class="dhero"><div class="media"><svg aria-hidden="true"><use href="#sc-gate"/></svg><img src="img/d1-gate.jpg" data-remote="https://commons.wikimedia.org/wiki/Special:FilePath/Kanazawa-STA%20Tsuzumi-mon.jpg?width=1600" alt="金澤站鼓門" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="photoFail(this)"></div><div class="in"><div><div class="dnum">DAY 1 ／ 4月17日（六）</div><h2>台北 → 名古屋 → 金澤</h2><div class="sum">今天只做一件事：把人和票都帶到金澤。到了就吃おでん、泡湯。</div></div><div class="meta"><span class="early">05:00 起床</span><span>住 金澤</span></div></div></div>
+  <div class="dbody"><div><ol class="tl"><li><time>05:50</time><div><h4>台北車站 A1 機捷集合</h4><p>06:00 直達車 → 06:35 第一航廈，NT$160</p></div></li><li><time>06:40</time><div><h4>虎航櫃檯報到、託運</h4><p>先在網路報到可省時間</p></div></li><li class="key"><time>09:00</time><div><h4>IT206 起飛</h4></div></li><li><time>12:55</time><div><h4>中部機場第 2 航廈落地</h4><p>虎航沒有空橋，走階梯下機；Visit Japan Web 的 QR 先截圖。2026 年實際落地多在 12:39–13:11</p></div></li><li><time>13:50</time><div><h4>走到 Access Plaza 名鐵站，約 10 分</h4><p>到月台才買 μチケット，不要事先買死班次</p></div></li><li class="key"><time>14:07</time><div><h4>μ-SKY → 名鐵名古屋</h4><p>趕不上就搭 14:37，一樣接得上 15:48</p></div></li><li><time>14:45</time><div><h4>JR 名古屋站中央口，5489 機器領票</h4><p>付款的實體信用卡＋預約號碼＋電話末 4 碼，把しらさぎ和 4/21 的しなの一起領</p></div></li><li><time>15:20</time><div><h4>買天むす或便當上車吃</h4></div></li><li class="key"><time>15:48</time><div><h4>特急しらさぎ11號 → 17:26 敦賀</h4><p>全車指定席</p></div></li><li><time>17:38</time><div><h4>敦賀換北陸新幹線つるぎ34號 → 18:35 金澤</h4><p>轉乘 12 分，官方標準 8 分；同一棟樓上下轉乘</p></div></li><li><time>18:45</time><div><h4>ドーミーイン金沢入住</h4><p>東口步行 2 分</p></div></li><li><time>19:30</time><div><h4>晚餐：金澤おでん</h4><p>累了就選站內的黒百合</p></div></li><li><time>21:30</time><div><h4>大浴場、免費夜鳴きそば</h4></div></li></ol></div><aside class="side"><div class="box"><h4>晚餐三選一</h4><div class="eat"><div><b>站內</b><span>黒百合（金澤站あんと內），11:00–22:00，可刷卡，最省力</span></div><div><b>片町</b><span>赤玉本店，週一休，可刷卡；週六晚上要排隊</span></div><div><b>片町</b><span>菊一，週二三休，<span class="pill cash">只收現金</span></span></div></div></div><div class="box warn"><h4>飛機晚到怎麼辦</h4><ul><li>μ-SKY 每 30 分一班，晚一班沒關係</li><li>晚超過 1 小時：在 e5489 把しらさぎ改 17:48 的 13 號再領票（領票前改班免費），金澤 20:36 到</li></ul></div></aside></div>
+</article></div></section>
+<section class="day pb" id="d2"><div class="wrap"><article class="dcard">
+  <div class="dhero"><div class="media"><svg aria-hidden="true"><use href="#sc-kenroku"/></svg><img src="img/d2-kenroku.jpg" data-remote="https://commons.wikimedia.org/wiki/Special:FilePath/Kenrokuen%202011-04%20%285840979505%29.jpg?width=1600" alt="四月的兼六園霞ヶ池" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="photoFail(this)" style="object-position:center 35%"></div><div class="in"><div><div class="dnum">DAY 2 ／ 4月18日（日）</div><h2>金澤市區</h2><div class="sum">兼六園到茶屋街這一圈，走路加巴士就夠。21 世紀美術館和鈴木大拙館週一休，所以排今天。</div></div><div class="meta"><span>自由起床</span><span>住 金澤</span></div></div></div>
+  <div class="dbody"><div><ol class="tl"><li><time>09:00</time><div><h4>一人上 21 美官網做泳池「順番待ち予約」</h4><p>當天 9:00 起開放，沒有事前預約；另外要買展覽票</p></div></li><li><time>09:30</time><div><h4>金澤站東口巴士 → 兼六園下</h4><p>Suica 可用</p></div></li><li class="key"><time>10:00</time><div><h4>兼六園 → 金澤城公園</h4><p>兼六園 ¥320，7:00–18:00；菱櫓・五十間長屋 ¥320，9:00–16:30</p></div></li><li><time>11:45</time><div><h4>近江町市場午餐</h4><p>週日有不少店休息，到現場挑有開的；回轉壽司もりもり寿し是備案</p></div></li><li><time>13:30</time><div><h4>21 世紀美術館</h4><p>展覽區 10:00–18:00；泳池地下部每組 5 分鐘，叫號後 20 分內要到</p></div></li><li><time>15:00</time><div><h4>鈴木大拙館</h4><p>¥310，9:30–17:00（最後入館 16:30）</p></div></li><li><time>16:00</time><div><h4>ひがし茶屋街、主計町</h4><p>志摩 ¥500，9:30–17:30；傍晚亮燈最好看</p></div></li><li><time>18:30</time><div><h4>晚餐：片町居酒屋或加賀料理</h4><p>いたる本店等，先用 Google Maps 確認週日有開</p></div></li></ol></div><aside class="side"><div class="box" style="padding:0;overflow:hidden"><div style="position:relative;aspect-ratio:3/2"><img style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover" src="img/kenroku-kotoji.jpg" data-remote="https://commons.wikimedia.org/wiki/Special:FilePath/Kotoji%20Toro%20%28lantern%29%20-%20Kenroku-en%20-%20Kanazawa%2C%20Japan%20-%20DSC09657.jpg?width=1600" alt="兼六園徽軫燈籠" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="photoFail(this)"></div><div style="padding:12px 16px"><h4>兼六園的代表畫面</h4><p class="small muted" style="margin:0">徽軫燈籠在霞ヶ池邊，從正門進去往右走約 5 分鐘。</p></div></div><div class="box"><h4>吃什麼</h4><div class="eat"><div><b>午</b><span>近江町海鮮丼 ¥2,500–4,000，5 人分兩桌比較快</span></div><div><b>晚</b><span>のどぐろ、治部煮、能登牛；人均 ¥4,000–6,000，建議當天早上先訂</span></div></div></div></aside></div>
+</article></div></section>
+<section class="day pb" id="d3"><div class="wrap"><article class="dcard">
+  <div class="dhero"><div class="media"><svg aria-hidden="true"><use href="#sc-onsen"/></svg><img src="img/d3-yamashiro.jpg" data-remote="https://commons.wikimedia.org/wiki/Special:FilePath/Yamashiro%20Onsen%20260124%2005.jpg?width=1600" alt="山代溫泉古總湯" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="photoFail(this)"></div><div class="in"><div><div class="dnum">DAY 3 ／ 4月19日（一）</div><h2>山代溫泉半日</h2><div class="sum">新幹線 18 分鐘到加賀溫泉，再轉巴士 13 分鐘。泡湯、畫九谷燒、吃午餐，下午回金澤。</div></div><div class="meta"><span>08:00 起床</span><span>住 金澤</span></div></div></div>
+  <div class="dbody"><div><ol class="tl"><li><time>08:45</time><div><h4>金澤站售票機買新幹線自由席</h4><p>¥2,640；新幹線不能直接刷 Suica</p></div></li><li class="key"><time>09:05</time><div><h4>つるぎ13號 → 09:23 加賀溫泉</h4></div></li><li class="key"><time>09:50</time><div><h4>北鐵加賀巴士（2 號乘車處）→ 10:03 山代溫泉</h4><p>¥290，不能用 IC 卡，可信用卡感應或現金</p></div></li><li><time>10:05</time><div><h4>先去總湯洗身體，再泡古總湯</h4><p>古總湯沒有淋浴和水龍頭；共通券 ¥1,000；毛巾自備</p></div></li><li><time>11:15</time><div><h4>九谷焼体験ギャラリーCoCo 彩繪</h4><p>¥1,800 起＋送料 ¥1,000，約 1–1.5 小時；週四休</p></div></li><li><time>12:45</time><div><h4>溫泉街午餐</h4><p>湯の曲輪周邊，Google Maps 篩「營業中」、挑有照片菜單的店</p></div></li><li class="key"><time>14:17</time><div><h4>巴士 → 14:33 加賀溫泉站</h4></div></li><li><time>14:50</time><div><h4>つるぎ24號 → 15:09 金澤</h4><p>下一班 15:20 → 15:39</p></div></li><li><time>15:30</time><div><h4>自由時間</h4><p>今井金箔本店（金箔明信片 ¥1,650、20 分、不用預約）或回飯店泡湯</p></div></li><li><time>19:00</time><div><h4>晚餐：金澤咖哩或拉麵</h4><p>ゴーゴーカレー金沢駅店、チャンピオンカレー、8 番らーめん</p></div></li></ol></div><aside class="side"><div class="box alert"><h4>九谷燒要先問清楚</h4><ul><li>作品要燒製，10 天到 2 週後才寄出，回台前收不到</li><li>能不能寄台灣還沒查到：出發前 email 問，或當場用日文小卡問</li><li>不能寄就不畫，改買成品</li></ul></div><div class="box"><h4>為什麼不去白川鄉</h4><p class="small" style="margin:0">四月下旬已經沒有雪景、田裡也還沒灌水，北鐵觀光巴士週一不開；來回 5 小時只看合掌屋，對我們不划算。</p></div></aside></div>
+</article></div></section>
+<section class="day pb" id="d4"><div class="wrap"><article class="dcard">
+  <div class="dhero"><div class="media"><svg aria-hidden="true"><use href="#sc-canal"/></svg><img src="img/d4-canal.jpg" data-remote="https://commons.wikimedia.org/wiki/Special:FilePath/Fugan-unga%20Kansui%20Park%20013.jpg?width=1600" alt="富岩運河環水公園天門橋" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="photoFail(this)"></div><div class="in"><div><div class="dnum">DAY 4 ／ 4月20日（二）</div><h2>金澤 → 富山</h2><div class="sum">早上寄行李、退房，中午 22 分鐘到富山。下午慢慢逛，晚上吃壽司早睡。</div></div><div class="meta"><span>自由起床</span><span>住 富山</span></div></div></div>
+  <div class="dbody"><div><ol class="tl"><li class="key"><time>09:30</time><div><h4>大行李交櫃檯寄黑貓到名古屋飯店</h4><p>160 尺寸 ¥3,020 現金；接下來兩天只帶隨身包</p></div></li><li><time>10:00</time><div><h4>長町武家屋敷散步</h4><p>野村家營業時間待確認</p></div></li><li><time>11:30</time><div><h4>退房 → 金澤站買新幹線自由席</h4><p>¥2,860</p></div></li><li><time>12:30</time><div><h4>新幹線 → 約 12:55 富山</h4></div></li><li><time>13:10</time><div><h4>午餐：白えび亭（富山站とやマルシェ）</h4><p>白蝦天丼；官網寫 11:00–21:00，不接受訂位</p></div></li><li><time>14:30</time><div><h4>富山市玻璃美術館</h4><p>¥200，9:30–18:00；第 1、3 個週三休，今天有開</p></div></li><li class="key"><time>15:00</time><div><h4>看立山天氣預報，決定明天照走或改 4/22</h4><p>WEB 票前一天 15:00 前改日期免費</p></div></li><li><time>16:00</time><div><h4>富岩運河環水公園、星巴克</h4><p>天門橋看夕陽</p></div></li><li><time>18:30</time><div><h4>晚餐：富山灣壽司</h4><p>すし玉富山駅店；或站前居酒屋吃螢火魷、白蝦</p></div></li><li><time>20:00</time><div><h4>買明天早餐ます寿司或超商</h4></div></li><li><time>21:30</time><div><h4>睡覺</h4><p>明天 06:15 起床</p></div></li></ol></div><aside class="side"><div class="box"><h4>想喝酒的替代下午</h4><p class="small" style="margin:0">富山港線路面電車 21 分到岩瀨老街，桝田酒造的角打ち「沙石」可以喝滿壽泉，營業時間出發前再確認。</p></div><div class="box"><h4>飯店選離電鐵富山近的</h4><p class="small" style="margin:0">明天 06:50 要到電鐵富山站，住站前最省時。</p></div></aside></div>
+</article></div></section>
+<section class="day pb" id="d5"><div class="wrap"><article class="dcard">
+  <div class="dhero"><div class="media"><svg aria-hidden="true"><use href="#sc-snow"/></svg><img src="img/d5-otani.jpg" data-remote="https://commons.wikimedia.org/wiki/Special:FilePath/080504%20Tateyama%20otani-road%20Tateyama%20Japan02s3.jpg?width=1600" alt="巴士開過雪之大谷" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="photoFail(this)"></div><div class="in"><div><div class="dnum">DAY 5 ／ 4月21日（三）</div><h2>立山黑部縱走 → 名古屋</h2><div class="sum">全程唯一的早起日。從富山上山，雪牆、空中纜車、黑部水壩，傍晚下到長野，搭特急回名古屋。</div></div><div class="meta"><span class="early">06:15 起床</span><span>住 名古屋</span></div></div></div>
+  <div class="dbody"><div><ol class="tl"><li><time>06:50</time><div><h4>電鐵富山站領 WEB 票</h4></div></li><li class="key"><time>07:14</time><div><h4>富山地鐵 → 08:20 立山</h4></div></li><li class="key"><time>08:40</time><div><h4>立山纜車 → 高原巴士 → 約 09:45 室堂</h4><p>纜車時段已指定</p></div></li><li><time>09:45</time><div><h4>雪之大谷、みくりが池</h4><p>9:30 開放，團客 10:30 後才多</p></div></li><li><time>11:30</time><div><h4>室堂午餐</h4></div></li><li class="key"><time>13:00</time><div><h4>離開室堂 → 大觀峰 → 黑部平 → 黑部湖</h4></div></li><li><time>14:05</time><div><h4>走黑部水壩</h4></div></li><li class="key"><time>15:15</time><div><h4>扇澤 Alpico 巴士 → 15:50 信濃大町</h4></div></li><li class="key"><time>16:36</time><div><h4>大糸線 → 約 17:31 松本</h4><p>這班一定要搭</p></div></li><li class="key"><time>17:52</time><div><h4>特急しなの → 20:07 名古屋</h4></div></li></ol></div><aside class="side"><div class="box warn"><h4>完整時刻、票券、天氣判斷</h4><p class="small" style="margin:0 0 10px">都在下方的立山日專章，可以單獨列印帶上山。</p><a class="btn" href="#tateyama" style="font-size:13px;padding:8px 16px">看立山日專章</a></div></aside></div>
+</article></div></section>
+<section class="day pb" id="d6"><div class="wrap"><article class="dcard">
+  <div class="dhero"><div class="media"><svg aria-hidden="true"><use href="#sc-torii"/></svg><img src="img/d6-atsuta.jpg" data-remote="https://commons.wikimedia.org/wiki/Special:FilePath/Atsuta-jing%C5%AB%20%28Atsuta-ku%2C%20Nagoya%29%20VLux5%20hdsr%20sa01.jpg?width=1600" alt="熱田神宮" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="photoFail(this)" style="object-position:center 62%"></div><div class="in"><div><div class="dnum">DAY 6 ／ 4月22日（四）</div><h2>鰻魚飯、熱田神宮、晚上競馬</h2><div class="sum">白天補眠加一頓蓬萊軒，晚上去名古屋競馬夜賽；沒開賽就改なばなの里。</div></div><div class="meta"><span>自由起床</span><span>住 名古屋</span></div></div></div>
+  <div class="dbody"><div><ol class="tl"><li><time>10:00</time><div><h4>コメダ珈琲 モーニング（栄）</h4><p>11:00 前點飲料送吐司</p></div></li><li><time>10:45</time><div><h4>名城線 栄 → 伝馬町，1 號出口步行 3 分</h4><p>約 15 分</p></div></li><li class="key"><time>11:15</time><div><h4>あつた蓬莱軒神宮店，門口登記排隊</h4><p>11:30 開店；ひつまぶし ¥4,950；不接受訂位，平日也可能排 30–60 分</p></div></li><li><time>13:30</time><div><h4>熱田神宮參拜、きよめ餅</h4><p>境內免費</p></div></li><li><time>14:30</time><div><h4>回飯店大浴場、午睡</h4><p>晚上要出門，下午一定要休息</p></div></li><li class="key"><time>17:00</time><div><h4>名鐵巴士中心出發，晚上二選一（見下方）</h4></div></li><li><time>21:30</time><div><h4>回到栄</h4><p>錦三喝一杯或回飯店</p></div></li></ol></div><aside class="side"><div class="box" style="padding:0;overflow:hidden"><div style="position:relative;aspect-ratio:16/9"><img style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover" src="img/unagi.jpg" data-remote="https://commons.wikimedia.org/wiki/Special:FilePath/Hitsumabushi%20by%20Daikantei.jpg?width=1600" alt="ひつまぶし" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="photoFail(this)"></div><div style="padding:12px 16px"><h4>ひつまぶし</h4><p class="small muted" style="margin:0">一碗吃三種：先原味，再加蔥和山葵，最後倒高湯。</p></div></div><div class="box alert"><h4>蓬萊軒去神宮店</h4><p class="small" style="margin:0">4/22 是四月第 4 個星期四，本店公休；神宮店週二與第 2、4 個週一休，今天有開。</p></div></aside></div><div style="padding:0 30px 30px"><h3 style="margin-bottom:4px">晚上二選一</h3><p class="small muted">2027 年 1 月下旬名古屋競馬公布賽程後決定：4/22 有夜賽就去競馬，沒有就去なばなの里。</p>
+<div class="opt">
+<div class="optcard press"><div class="ph"><span class="badge">首選</span><div class="media"><svg aria-hidden="true"><use href="#sc-keiba"/></svg><img src="img/ev-keiba.jpg" data-remote="https://commons.wikimedia.org/wiki/Special:FilePath/%E3%82%A2%E3%83%B3%E3%83%87%E3%82%B9%E3%83%93%E3%82%A8%E3%83%B3%E3%83%88%20%E9%96%A2%E6%9D%B1%E3%82%AA%E3%83%BC%E3%82%AF%E3%82%B9%E5%85%A5%E7%B7%9A%E6%99%82.jpg?width=1600" alt="地方競馬夜賽（川崎競馬場）" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="photoFail(this)" style="object-position:center 40%"></div></div><div class="bd"><h4>名古屋競馬夜賽</h4><ul>
+<li>名鐵巴士中心 4 樓 21 號乘車處，免費接駁約 40 分</li><li>夜賽日 13:30 開門，最後一場約 20:40</li><li>劃卡投注看賠率就能買，每人抓 ¥3,000，邊喝啤酒邊看</li></ul></div></div>
+<div class="optcard press"><div class="ph"><span class="badge">備案</span><div class="media"><svg aria-hidden="true"><use href="#sc-nagoya"/></svg><img src="img/ev-nabana.jpg" data-remote="https://commons.wikimedia.org/wiki/Special:FilePath/Nabana%20no%20Sato%20Chapel%20Illumination.jpg?width=1600" alt="なばなの里燈光" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="photoFail(this)"></div></div><div class="bd"><h4>なばなの里燈光秀</h4><ul>
+<li>名鐵巴士中心直達巴士約 30–35 分</li><li>¥2,500，含 ¥1,000 園內消費券，拿去吃晚餐</li><li>會期到 2027/5/31；平日晚上以情侶家庭為主，看完燈光隧道就走</li></ul></div></div>
+</div></div>
+</article></div></section>
+<section class="day pb" id="d7"><div class="wrap"><article class="dcard">
+  <div class="dhero"><div class="media"><svg aria-hidden="true"><use href="#sc-nagoya"/></svg><img src="img/d7-castle.jpg" data-remote="https://commons.wikimedia.org/wiki/Special:FilePath/Nagoya%20Castle%28Larger%29.jpg?width=1600" alt="名古屋城" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="photoFail(this)"></div><div class="in"><div><div class="dnum">DAY 7 ／ 4月23日（五）</div><h2>名古屋城、大須，晚上看秀</h2><div class="sum">白天輕鬆逛吃，晚上 21:00 場 NAGOYA de SHOW!。</div></div><div class="meta"><span>自由起床</span><span>住 名古屋</span></div></div></div>
+  <div class="dbody"><div><ol class="tl"><li><time>09:30</time><div><h4>喫茶店早餐</h4></div></li><li><time>10:00</time><div><h4>名城線 栄 → 名古屋城站，3 分</h4><p>¥210</p></div></li><li class="key"><time>10:15</time><div><h4>名古屋城本丸御殿</h4><p>¥1,000（2026/10 起調漲）；9:00–16:30，御殿最後入場 16:00；天守閣封閉中，看本丸御殿的金箔障壁畫</p></div></li><li><time>12:30</time><div><h4>午餐：矢場とん 矢場町本店</h4><p>味噌豬排，排隊常見</p></div></li><li><time>14:00</time><div><h4>大須觀音、大須商店街</h4><p>古著、小吃、電器</p></div></li><li><time>17:00</time><div><h4>回飯店休息</h4></div></li><li><time>18:45</time><div><h4>晚餐：鳥開総本家（手羽先、親子丼）或味仙矢場店（台灣拉麵）</h4><p>19:30 前吃完，走到錦 3</p></div></li><li class="key"><time>20:30</time><div><h4>NAGOYA de SHOW! 入場</h4><p>錦 3-18-12 Minex88 8F，栄站步行 5 分；帶護照</p></div></li><li><time>21:00</time><div><h4>開演，約 90 分</h4><p>不想看的人在錦三酒吧等，22:45 飯店會合</p></div></li></ol></div><aside class="side"><div class="box"><h4>NAGOYA de SHOW!</h4><ul><li>一般席預約 ¥4,500＋稅，含 1 杯飲料</li><li>小費代幣另抓 ¥2,000–5,000</li><li><span class="pill cash">不收電子錢包</span>，帶現金</li><li>未滿 20 歲不能入場，會查證件</li></ul></div><div class="box"><h4>車迷的分頭行動選項</h4><p class="small" style="margin:0">豐田產業技術紀念館：¥1,000，週一休；有 8 種語言的免費語音導覽 App，英文導覽團 14:00 紡織館、15:15 汽車館。從名古屋站搭名鐵 1 站到栄生。</p></div></aside></div>
+</article></div></section>
+<section class="day pb" id="d8"><div class="wrap"><article class="dcard">
+  <div class="dhero"><div class="media"><svg aria-hidden="true"><use href="#sc-plane"/></svg><img src="img/d8-musky.jpg" data-remote="https://commons.wikimedia.org/wiki/Special:FilePath/Nagoya%20Railway%202000.jpg?width=1600" alt="名鐵 μ-SKY 機場特急" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="photoFail(this)" style="object-position:center 60%"></div><div class="in"><div><div class="dnum">DAY 8 ／ 4月24日（六）</div><h2>名古屋 → 台北</h2><div class="sum">睡飽、退房，10:00 出發就夠。</div></div><div class="meta"><span>08:00 起床</span></div></div></div>
+  <div class="dbody"><div><ol class="tl"><li><time>08:30</time><div><h4>早餐：飯店，或名古屋站月台的住よし きしめん</h4></div></li><li><time>09:45</time><div><h4>退房 → 地下鐵 → 名鐵名古屋</h4><p>售票機買 μチケット</p></div></li><li class="key"><time>10:19</time><div><h4>μ-SKY → 10:48 中部機場</h4><p>備案 10:49 → 11:17</p></div></li><li class="key"><time>11:00</time><div><h4>走到第 2 航廈虎航 B 櫃檯</h4><p>約 10 分；櫃檯 13:00 截止</p></div></li><li><time>13:45</time><div><h4>IT207 → 15:50 桃園</h4><p>機捷回台北約 17:30</p></div></li></ol></div><aside class="side"><div class="box warn"><h4>退稅與伴手禮</h4><p class="small" style="margin:0">伴手禮在前幾天買好；中部機場第 2 航廈商店較少。</p></div></aside></div>
+</article></div></section>
+
+</div>
+
+<!-- TATEYAMA -->
+<section class="sec dark pb" id="tateyama">
+  <div class="wrap">
+    <div class="head"><div><span class="tag">全程最重要的一天</span><h2>立山黑部日專章</h2><p>4/21（三），備用 4/22（四）。只有立山站纜車能事先指定時段，其他各段都是現場依序排隊；13:00 離開室堂，距離最後一班接續還有 2 小時以上。時刻為 2026 年資料。</p></div><button class="btn ghost noprint" type="button" data-print="tateyama">只列印這一章</button></div>
+    <div class="strip">
+      <figure><div class="media"><svg aria-hidden="true"><use href="#sc-snow"/></svg><img src="img/strip-snow.jpg" data-remote="https://commons.wikimedia.org/wiki/Special:FilePath/%E5%AE%A4%E5%A0%82%E9%9B%AA%E3%81%AE%E5%A4%A7%E8%B0%B702.jpg?width=1600" alt="雪之大谷" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="photoFail(this)"></div><figcaption>雪之大谷 9:30–15:00</figcaption></figure>
+      <figure><div class="media"><svg aria-hidden="true"><use href="#sc-snow"/></svg><img src="img/card-tateyama.jpg" data-remote="https://commons.wikimedia.org/wiki/Special:FilePath/080504%20Murodo-sanso%20Mount%20Masago%20Tateyama%20Japan02s5.jpg?width=1600" alt="室堂與立山連峰" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="photoFail(this)"></div><figcaption>室堂 2,450 m</figcaption></figure>
+      <figure><div class="media"><svg aria-hidden="true"><use href="#sc-dam"/></svg><img src="img/strip-kurobe.jpg" data-remote="https://commons.wikimedia.org/wiki/Special:FilePath/%E9%BB%92%E9%83%A8%E3%83%80%E3%83%A001.jpg?width=1600" alt="春天殘雪的黑部水壩" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="photoFail(this)"></div><figcaption>春天的黑部水壩</figcaption></figure>
+    </div>
+    <div class="tbl">
+      <table>
+        <thead><tr><th>時刻</th><th>動作</th><th>備註</th></tr></thead>
+        <tbody>
+          <tr><td class="t">06:15</td><td>起床，吃前一天買的ます寿司</td><td>大行李已寄名古屋，只帶隨身包</td></tr>
+          <tr><td class="t">06:50</td><td>電鐵富山站：先看官網「運行情報」，再到 WEBきっぷ自動受取機掃 QR 領票（連扇澤巴士券）</td><td>停駛時「還沒領票」才能免手續費退款，所以先確認再領</td></tr>
+          <tr><td class="t">07:14</td><td>富山地鐵普通車 → 08:20 立山</td><td>含在 WEB 票內，不加特急料金</td></tr>
+          <tr><td class="t">08:40</td><td>立山纜車 → 美女平 → 高原巴士 50 分 → 約 09:45 室堂</td><td>纜車時段 WEB 票指定，免排隊；巴士約每 40 分一班</td></tr>
+          <tr><td class="t">09:45</td><td>雪之大谷步道、みくりが池雪地、室堂平</td><td>團客 10:30 後大量湧入，步道一開放就進去</td></tr>
+          <tr><td class="t">11:30</td><td>室堂ターミナル午餐：立山そば、ホテル立山餐廳</td><td>ホテル立山 2026/8 停止住宿，官方說餐廳與賣店繼續營業；2027 年 4 月營業時間待確認，帶備用乾糧</td></tr>
+          <tr><td class="t">13:00</td><td>立山隧道電氣巴士 → 大觀峰 → 立山空中纜車 → 黑部平 → 黑部纜車 → 黑部湖</td><td>各段 5–10 分鐘、每 20–30 分一班，依序上車；大觀峰展望台停 15 分</td></tr>
+          <tr><td class="t">14:05</td><td>步行黑部水壩堤頂，約 15–20 分</td><td>四月沒有觀光放水；レストハウス 10:00–15:00，黑部水壩咖哩約 ¥1,300</td></tr>
+          <tr><td class="t">14:35</td><td>關電隧道電氣巴士 → 14:51 扇澤</td><td>每小時 :05、:35</td></tr>
+          <tr><td class="t">15:15</td><td>Alpico 路線巴士 → 15:50 信濃大町駅前</td><td>¥2,000（2026/4/15 起）；用 WEB 票的巴士券或現金（車上只能換千圓鈔）；備案 15:35、16:05</td></tr>
+          <tr><td class="t">16:36</td><td>JR 大糸線普通車 → 約 17:31 松本</td><td>¥720，可用 Suica。<b>這班一定要搭</b>：下一班 17:13 是往小淵沢，趕不上しなの</td></tr>
+          <tr><td class="t">17:52</td><td>特急しなの → 20:07 名古屋</td><td>指定席（4/21 不是全車指定期間，也有自由席）；備案 19:07 → 21:21</td></tr>
+          <tr><td class="t">20:30</td><td>栄的飯店入住，行李在櫃檯</td><td>宵夜：山本屋本店（到凌晨 2:00）或味仙矢場店</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="cols2">
+      <div class="panel">
+        <h3>WEBきっぷ（2026 年條款，2027 待公布）</h3>
+        <table><tbody>
+          <tr><th>買什麼</th><td>「電鉄富山→扇沢」單程 ¥12,360（含地鐵車資）＋扇澤→信濃大町巴士券 ¥2,000</td></tr>
+          <tr><th>指定時段</th><td>立山站纜車 8:40（備選 9:00）</td></tr>
+          <tr><th>開賣</th><td>2026 年先行版 3/2 10:00，4/21–30 乘車日從 3/9 10:00；標準版從 3/19 15:00</td></tr>
+          <tr><th>付款</th><td>1–14 人一筆；只收信用卡（3D Secure）</td></tr>
+          <tr><th>改期與取消</th><td>標準版乘車前一天 15:00 前可免費改日期；之後取消每人 ¥500。先行版乘車前 10 天後取消每人 ¥1,000</td></tr>
+          <tr><th>停駛</th><td>停駛且還沒領票 → 免手續費退款</td></tr>
+        </tbody></table>
+      </div>
+      <div class="panel">
+        <h3>天氣怎麼決定</h3>
+        <ol>
+          <li><b>4/20 15:00 前</b>：看 tenki.jp「立山（室堂）」預報。4/21 暴風雪而 4/22 較好 → WEB 票免費改 4/22、富山加住一晚、取消名古屋 4/21 那晚、しなの改 4/22。</li>
+          <li><b>4/21 05:30</b>：再看官網運行情報。高原巴士停駛 → 不領票、申請退款，改走上面同一套。</li>
+          <li>只有雪之大谷步道關閉：照走，從巴士上看雪壁。</li>
+          <li>兩天都停駛：富山搭特急ひだ直達名古屋，約 3 小時 50 分。</li>
+        </ol>
+        <p class="small" style="margin-top:10px">裝備：室堂約 0–3°C，羽絨外套、手套、毛帽、墨鏡、防滑鞋、防曬、暖暖包。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKETS -->
+<section class="sec gold pb" id="tickets">
+  <div class="wrap">
+    <div class="head"><div><span class="tag">印這一頁帶去售票處</span><h2>交通票券總表</h2><p>全程單買。JR 的兩張特急票在 e5489 訂好、第一天在名古屋站一次領；訂不到就把日文卡遞給名古屋站售票處。</p></div><button class="btn noprint" type="button" data-print="tickets">只列印票券頁</button></div>
+    <div class="screen-only">
+    <div class="tbl">
+      <table>
+        <thead><tr><th>日期・段</th><th>票種與價格（2026）</th><th>怎麼買</th><th>何時買</th><th>備註</th></tr></thead>
+        <tbody>
+          <tr><td class="w">4/17 中部機場→名鐵名古屋</td><td>μ-SKY ¥1,430（運賃 980＋μチケット 450）</td><td>機場名鐵站售票機；運賃可刷 Suica</td><td>當場</td><td>到站才買，看當下最近一班（:07 或 :37）</td></tr>
+          <tr><td class="w">4/17 名古屋→金澤</td><td>しらさぎ11號＋つるぎ34號 指定席 ¥9,080</td><td>e5489 一筆訂，含敦賀轉乘</td><td>3/17 10:00</td><td>領票前可免費改班；JR 東海站可領含 JR 東海區間的預約，萬一不行改在金澤站領</td></tr>
+          <tr><td class="w">4/19 金澤⇄加賀溫泉</td><td>新幹線自由席 ¥2,640 ×2</td><td>站內售票機</td><td>當場</td><td>つるぎ、はくたか都停</td></tr>
+          <tr><td class="w">4/19 加賀溫泉⇄山代溫泉</td><td>北鐵加賀巴士 ¥290 ×2</td><td>上車付；不能用 IC 卡，可信用卡感應</td><td>當場</td><td>去 09:50、回 14:17</td></tr>
+          <tr><td class="w">4/20 金澤→富山</td><td>新幹線自由席 ¥2,860</td><td>站內售票機</td><td>當場</td><td></td></tr>
+          <tr><td class="w">4/21 電鐵富山→扇澤</td><td>WEBきっぷ ¥12,360＋巴士券 ¥2,000</td><td>官網，5 人一筆，指定 8:40 纜車</td><td>開賣當天</td><td>電鐵富山站機器掃 QR 領</td></tr>
+          <tr><td class="w">4/21 信濃大町→松本</td><td>大糸線 ¥720</td><td>Suica</td><td>當場</td><td></td></tr>
+          <tr><td class="w">4/21 松本→名古屋</td><td>しなの指定席 ¥6,360</td><td>e5489，名古屋領</td><td>3/21 10:00</td><td>提早到松本可在松本站改 16:54</td></tr>
+          <tr><td class="w">4/22 晚</td><td>競馬接駁免費；なばなの里門票 ¥2,500（含 ¥1,000 消費券）</td><td>名鐵巴士中心</td><td>當天</td><td>二選一</td></tr>
+          <tr><td class="w">4/22–23 名古屋市內</td><td>地下鐵 24 小時券 ¥760 或 Suica</td><td>站內售票機</td><td>當場</td><td>平日沒有 ¥620 的ドニチエコ</td></tr>
+          <tr><td class="w">4/23 NAGOYA de SHOW!</td><td>一般席預約 ¥4,500＋稅</td><td>官網繁中介面</td><td>4/1–4/9</td><td>21:00 場，帶護照</td></tr>
+          <tr><td class="w">4/24 名鐵名古屋→機場</td><td>μ-SKY ¥1,430</td><td>名鐵名古屋售票機</td><td>當場</td><td>10:19 或 10:49</td></tr>
+        </tbody>
+      </table>
+    </div>
+    </div>
+    <div class="jpcard">
+      <h3>JR 名古屋駅 みどりの窓口用</h3>
+      <p>以下のきっぷをお願いします。大人 5 名、できるだけ並びの席で、クレジットカードで支払います。</p>
+      <div class="tbl" style="box-shadow:none">
+        <table>
+          <thead><tr><th>№</th><th>乗車日</th><th>区間</th><th>列車</th><th>発</th><th>着</th><th>席</th><th>人数</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td>2027年4月17日（土）</td><td>名古屋 → 金沢</td><td>特急しらさぎ11号 ＋ 北陸新幹線つるぎ34号（敦賀乗換）</td><td>15:48</td><td>18:35</td><td>普通車指定席</td><td>大人 5</td></tr>
+            <tr><td>2</td><td>2027年4月21日（水）</td><td>松本 → 名古屋</td><td>特急しなの</td><td>17:52</td><td>20:07</td><td>普通車指定席</td><td>大人 5</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="small" style="margin-top:10px">e5489 で予約済みの場合：「e5489 で予約済みです。きっぷの受取りをお願いします。予約番号：________　電話番号下 4 桁：____」<br>※ 2027年3月のダイヤ改正後は列車番号・時刻が変わる場合があります。</p>
+    </div>
+    <div class="jpcard">
+      <h3>電鉄富山駅用（QR 機器有問題時）</h3>
+      <p>立山黒部 WEBきっぷを予約しています。電鉄富山 → 扇沢、4月21日、立山ケーブルカー 8:40 発、大人 5 名。受取りをお願いします。予約番号：________</p>
+    </div>
+  </div>
+</section>
+
+<!-- PHRASES -->
+<section class="sec pb" id="phrases">
+  <div class="wrap">
+    <div class="head"><div><span class="tag">點一下放大給店員看</span><h2>日文小卡</h2><p>點卡片會全螢幕放大，直接把手機轉給店員；也可以一鍵複製貼到翻譯 App。</p></div></div>
+    <div class="phr"><button class="ph-btn press" type="button" data-ja="5名です。予約していません。" data-zh="5 位，沒有預約"><span class="zh">5 位，沒有預約</span><span class="ja">5名です。予約していません。</span><span class="use">餐廳入口</span></button><button class="ph-btn press" type="button" data-ja="カードで払えますか？" data-zh="可以刷卡嗎？"><span class="zh">可以刷卡嗎？</span><span class="ja">カードで払えますか？</span><span class="use">結帳前</span></button><button class="ph-btn press" type="button" data-ja="写真付きのメニューはありますか？" data-zh="有附照片的菜單嗎？"><span class="zh">有附照片的菜單嗎？</span><span class="ja">写真付きのメニューはありますか？</span><span class="use">點餐</span></button><button class="ph-btn press" type="button" data-ja="これと同じものをください。" data-zh="請給我和這個一樣的"><span class="zh">請給我和這個一樣的</span><span class="ja">これと同じものをください。</span><span class="use">指著隔壁桌或菜單</span></button><button class="ph-btn press" type="button" data-ja="これを台湾に送れますか？送料はいくらですか？" data-zh="這個可以寄到台灣嗎？運費多少？"><span class="zh">這個可以寄到台灣嗎？運費多少？</span><span class="ja">これを台湾に送れますか？送料はいくらですか？</span><span class="use">九谷燒 CoCo</span></button><button class="ph-btn press" type="button" data-ja="この荷物を名古屋のホテルに送りたいです。" data-zh="我想把行李寄到名古屋的飯店"><span class="zh">我想把行李寄到名古屋的飯店</span><span class="ja">この荷物を名古屋のホテルに送りたいです。</span><span class="use">4/20 金澤飯店櫃檯</span></button><button class="ph-btn press" type="button" data-ja="今日チェックインします。宅配の荷物は届いていますか？" data-zh="今天入住，有寄來的行李嗎？"><span class="zh">今天入住，有寄來的行李嗎？</span><span class="ja">今日チェックインします。宅配の荷物は届いていますか？</span><span class="use">4/21 名古屋飯店</span></button><button class="ph-btn press" type="button" data-ja="名前を書いて待ちますか？何分くらいですか？" data-zh="要寫名字排隊嗎？大概等多久？"><span class="zh">要寫名字排隊嗎？大概等多久？</span><span class="ja">名前を書いて待ちますか？何分くらいですか？</span><span class="use">蓬萊軒</span></button><button class="ph-btn press" type="button" data-ja="馬券の買い方を教えてください。" data-zh="請教我怎麼買馬券"><span class="zh">請教我怎麼買馬券</span><span class="ja">馬券の買い方を教えてください。</span><span class="use">名古屋競馬</span></button><button class="ph-btn press" type="button" data-ja="お会計をお願いします。別々で払います。" data-zh="請結帳，分開付"><span class="zh">請結帳，分開付</span><span class="ja">お会計をお願いします。別々で払います。</span><span class="use">結帳</span></button><button class="ph-btn press" type="button" data-ja="この電車は〇〇駅に止まりますか？" data-zh="這班車有停這個車站嗎？"><span class="zh">這班車有停這個車站嗎？</span><span class="ja">この電車は〇〇駅に止まりますか？</span><span class="use">月台</span></button><button class="ph-btn press" type="button" data-ja="台湾人です。助けてください。" data-zh="我們是台灣人，請幫幫我們"><span class="zh">我們是台灣人，請幫幫我們</span><span class="ja">台湾人です。助けてください。</span><span class="use">緊急</span></button></div>
+  </div>
+</section>
+
+<!-- BOOKING -->
+<section class="sec tint pb" id="booking">
+  <div class="wrap">
+    <div class="head"><div><span class="tag">什麼時候要做什麼</span><h2>訂票時程</h2><p>依 2026 年規則推估，開賣日以官方公告為準。金色框是一定要準時搶的。</p></div></div>
+    <div class="steps">
+      <div class="step hot press"><div class="when">現在</div><div><h4>機票：虎航 IT206 4/17、IT207 4/24，5 人同一訂單</h4><p>tigersmart 含 20 kg 託運。去程 09:00 桃園 T1 → 12:55 中部 T2；回程 13:45 → 15:50，週六只有這一班。</p></div></div>
+      <div class="step hot press"><div class="when">現在</div><div><h4>飯店 3 間：金澤 4/17–20、富山 4/20、名古屋 4/21–24</h4><p>全部選免費取消方案；名古屋訂房備註寫「4/20 寄出 5 件行李，4/21 入住」。</p></div></div>
+      <div class="step press"><div class="when">2026/12</div><div><h4>看 2027 年立山開山日公告</h4><p>2024–2026 都是 4/15，延一天也不影響 4/21。</p></div></div>
+      <div class="step press"><div class="when">2027/1 下旬</div><div><h4>名古屋競馬公布 2027 年度賽程</h4><p>查 4/22（四）有沒有夜賽；沒有就決定改なばなの里。</p></div></div>
+      <div class="step press"><div class="when">2027/1–3</div><div><h4>旅平險、eSIM、Visit Japan Web；email 問九谷燒 CoCo 能否寄台灣</h4><p>CoCo 不能寄國外的話，4/19 就只逛不畫、改買成品。</p></div></div>
+      <div class="step hot press"><div class="when">3/2–3/9 10:00<small>先行版</small></div><div><h4>立山 WEBきっぷ「電鉄富山→扇沢」4/21，8:40 纜車，加購扇澤巴士券</h4><p>限量，開賣當天買。沒搶到就 3/19 15:00 買標準版。</p></div></div>
+      <div class="step hot press"><div class="when">3/17 10:00</div><div><h4>e5489：4/17 しらさぎ11號＋つるぎ34號，5 席</h4><p>乘車日一個月前 10:00 開賣。</p></div></div>
+      <div class="step hot press"><div class="when">3/21 10:00</div><div><h4>e5489：4/21 しなの 松本 17:52 → 名古屋 20:07，5 席</h4><p>訂不到就 4/17 在名古屋窗口用日文卡買。</p></div></div>
+      <div class="step press"><div class="when">4/1–4/9</div><div><h4>NAGOYA de SHOW! 4/23 21:00 場，一般席 5 人</h4><p>官網預約價 ¥4,500，當日 ¥5,000。</p></div></div>
+      <div class="step press"><div class="when">4/10</div><div><h4>最後確認</h4><p>2027/3 改點後的班次、蓬萊軒神宮店 4/22、室堂餐廳營業時間、白えび亭營業時間。</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- BUDGET -->
+<section class="sec pb" id="budget">
+  <div class="wrap">
+    <div class="head"><div><span class="tag">一個人大概花多少</span><h2>預算</h2></div></div>
+    <div class="budget">
+      <div class="bigsum">
+        <div class="small" style="color:var(--on-night-2)">每人，不含機票</div>
+        <div class="v">¥163,000</div>
+        <div class="d">約 NT$34,300（1 日圓＝0.21 台幣）；加機票約 NT$47,000</div>
+        <div class="bars">
+          <div class="bar"><span>住宿</span><i style="width:100%"></i><span>¥53,000</span></div>
+          <div class="bar"><span>餐費</span><i style="width:85%"></i><span>¥45,000</span></div>
+          <div class="bar"><span>交通</span><i style="width:82%"></i><span>¥43,600</span></div>
+          <div class="bar"><span>秀・競馬</span><i style="width:21%"></i><span>¥11,000</span></div>
+          <div class="bar"><span>門票體驗</span><i style="width:14%"></i><span>¥7,450</span></div>
+          <div class="bar"><span>行李</span><i style="width:6%"></i><span>¥3,020</span></div>
+        </div>
+      </div>
+      <div class="tbl">
+        <table>
+          <thead><tr><th>項目</th><th>日圓</th><th>備註</th></tr></thead>
+          <tbody>
+            <tr><td>μ-SKY ×2</td><td>2,860</td><td></td></tr>
+            <tr><td>名古屋→金澤 しらさぎ＋つるぎ</td><td>9,080</td><td>指定席</td></tr>
+            <tr><td>金澤⇄加賀溫泉＋山代巴士</td><td>5,860</td><td>自由席 2,640×2＋290×2</td></tr>
+            <tr><td>金澤→富山 新幹線</td><td>2,860</td><td>自由席</td></tr>
+            <tr><td>立山 WEBきっぷ</td><td>12,360</td><td>電鐵富山→扇澤</td></tr>
+            <tr><td>扇澤巴士＋大糸線</td><td>2,720</td><td></td></tr>
+            <tr><td>しなの 松本→名古屋</td><td>6,360</td><td>指定席</td></tr>
+            <tr><td>名古屋地下鐵等</td><td>1,500</td><td>推估</td></tr>
+            <tr><td><b>交通小計</b></td><td><b>43,600</b></td><td></td></tr>
+            <tr><td>門票與體驗</td><td>7,450</td><td>兼六園、金澤城、21 美、大拙館、志摩、古總湯共通券 1,000、九谷燒 1,800＋送料 1,000、玻璃美術館、名古屋城 1,000</td></tr>
+            <tr><td>住宿 7 晚</td><td>53,000</td><td>2 人房與 3 人房分攤，2026 年房價推估</td></tr>
+            <tr><td>餐費</td><td>45,000</td><td>推估，喝酒另計</td></tr>
+            <tr><td>競馬或なばなの里、NAGOYA de SHOW!</td><td>11,000</td><td></td></tr>
+            <tr><td>黑貓 160 尺寸</td><td>3,020</td><td>現金</td></tr>
+            <tr><td><b>合計</b></td><td><b>約 163,000</b></td><td></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <p class="small muted" style="margin-top:14px">現金：每人帶 ¥30,000–40,000。山代巴士、溫泉售票機、扇澤巴士、黑貓、競馬投注、NAGOYA de SHOW!（不收電子錢包）、菊一用現金；其餘多可刷卡或 Suica。一人管公款，用 Splitwise 記帳。</p>
+  </div>
+</section>
+
+<!-- STAY + LUGGAGE -->
+<section class="sec tint pb" id="stay">
+  <div class="wrap">
+    <div class="head"><div><span class="tag">三個城市，三間飯店</span><h2>住宿與行李</h2><p>都選有大浴場、離車站近、可拆 2＋3 房型的飯店。ドーミーイン系取消規則：入住 2 天前免費、前一天 50%。房價是 2026 年訂房網起價，2027 年 4 月尚未開放。</p></div></div>
+    <div class="hotels">
+      <article class="hotel press"><div class="top-band" style="background:linear-gradient(120deg,var(--kz),#9A7BC9)"><b>金澤</b><span>4/17–20・3 晚</span></div><div class="bd"><h3>ドーミーイン金沢（加賀の湯）</h3><ul><li>金澤站東口步行 2 分，新幹線就在門口</li><li>ハイダーツイン可住 3 人；和洋室可住 5 人</li><li>天然溫泉、露天、免費夜鳴きそば</li><li>2 人 1 房 ¥11,000 起</li></ul><div class="alt">備選：御宿野乃金沢（近江町旁）、三井ガーデン金沢</div></div></article>
+      <article class="hotel press"><div class="top-band" style="background:linear-gradient(120deg,var(--ty),#4FB0C9)"><b>富山</b><span>4/20・1 晚</span></div><div class="bd"><h3>富山マンテンホテル</h3><ul><li>富山站前約 3 分，離電鐵富山最近，立山早起最省時</li><li>有大浴場</li><li>房價待確認</li></ul><div class="alt">備選：ドーミーイン富山（2026/9 整修）、御宿野乃富山（3 人房僅 3 間）</div></div></article>
+      <article class="hotel press"><div class="top-band" style="background:linear-gradient(120deg,var(--ng),#E59A6A)"><b>名古屋</b><span>4/21–24・3 晚</span></div><div class="bd"><h3>ドーミーインPREMIUM名古屋栄</h3><ul><li>伏見站 3–5 分、栄站 5–8 分，走路到 NAGOYA de SHOW!</li><li>ハイダーツイン可住 3 人</li><li>大浴場 15:00–翌 10:00</li><li>2 人 1 房 ¥17,000 起；代收行李</li></ul><div class="alt">備選：三井ガーデン名古屋プレミア（名古屋站旁）</div></div></article>
+    </div>
+    <div class="grid2" style="margin-top:22px">
+      <div class="list-card"><h3>大行李只寄一次</h3><ul>
+        <li><b>4/17–19</b>：放在金澤飯店房間，山代溫泉那天只帶毛巾和換洗內衣。</li>
+        <li><b>4/20 09:30</b>：金澤飯店櫃檯交黑貓宅急便，寄到名古屋飯店，寫「4/21 チェックイン ○○様」，160 尺寸 ¥3,020 現金。</li>
+        <li><b>4/21 20:30</b>：名古屋飯店入住時領。</li>
+      </ul></div>
+      <div class="list-card"><h3>富山、立山兩天的隨身包</h3><ul>
+        <li>兩天換洗衣物、盥洗包、充電器、行動電源</li>
+        <li>立山裝備：羽絨外套、手套、毛帽、墨鏡、防滑鞋、暖暖包、水、乾糧</li>
+        <li>護照、WEB 票 QR、e5489 預約號碼、付款信用卡、¥10,000 現金</li>
+      </ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- RISK -->
+<section class="sec pb" id="risk">
+  <div class="wrap">
+    <div class="head"><div><span class="tag">先知道這幾件事</span><h2>備案與緊急聯絡</h2></div></div>
+    <div class="tbl">
+      <table>
+        <thead><tr><th>狀況</th><th>怎麼辦</th></tr></thead>
+        <tbody>
+          <tr><td>IT206 晚到</td><td>μ-SKY 搭下一班（:07 或 :37）一樣趕得上 15:48；晚超過 1 小時，在 e5489 把しらさぎ改 17:48 的 13 號（領票前免費），金澤 20:36 到</td></tr>
+          <tr><td>立山天氣差</td><td>見立山日專章：前一天 15:00 前改日期，當天 05:30 再確認</td></tr>
+          <tr><td>4/22 沒有競馬夜賽</td><td>改なばなの里燈光秀；兩個都不想去就在栄吃手羽先、錦三喝一杯</td></tr>
+          <tr><td>九谷燒不能寄台灣</td><td>不畫，改在店裡買成品帶走</td></tr>
+          <tr><td>餐廳臨時休或客滿</td><td>每餐有 2–3 家候選；用 Google Maps 篩「營業中」</td></tr>
+          <tr><td>有人身體不適</td><td>兩人一組回飯店休息，其他人照走；立山那天不舒服的人直接搭ひだ到名古屋</td></tr>
+          <tr><td>護照遺失</td><td>先報警取得遺失證明，再到台北駐大阪經濟文化辦事處申請入國證明書</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="grid2" style="margin-top:20px">
+      <div class="list-card"><h3>分團規則</h3><ul>
+        <li>集合以每日行程的藍點時刻為準，遲到的人自己追；LINE 群開位置分享。</li>
+        <li>分頭行動兩人一組，每組至少一支有網路的手機。</li>
+        <li>分工：票務與時刻、公款與記帳、導航、拍照、訂位與點餐。</li>
+      </ul></div>
+      <div class="list-card"><h3>緊急聯絡</h3><ul>
+        <li>日本報警 110、火警與救護車 119</li>
+        <li>石川、富山、愛知屬<b>台北駐大阪經濟文化辦事處</b>：06-6227-8623，急難 090-8794-4568</li>
+        <li>長野屬台北駐日經濟文化代表處：03-3280-7811</li>
+        <li>外交部急難救助全球免付費：+886-800-085-095</li>
+      </ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- SOURCES -->
+<section class="sec tint src" id="sources">
+  <div class="wrap">
+    <div class="head"><div><span class="tag">查證於 2026 年 10 月</span><h2>出發前再確認與資料來源</h2></div></div>
+    <div class="grid2">
+      <div class="list-card"><h3>2027/3 改點後再確認</h3><ul>
+        <li>しらさぎ11號、つるぎ34號、しなの 17:52、大糸線 16:36 的時刻</li>
+        <li>立山 2027 開山日、時刻表、雪之大谷期間、室堂餐廳</li>
+        <li>北鐵加賀巴士 09:50、14:17 班次</li>
+        <li>名古屋競馬 2027 年度賽程、なばなの里巴士班次與套票</li>
+        <li>九谷燒 CoCo 國際寄送；白えび亭營業時間</li>
+        <li>各餐廳臨時休；名古屋城、古總湯等票價</li>
+      </ul></div>
+      <div class="list-card"><h3>主要來源</h3><ol>
+        <li><a href="https://www.tigerairtw.com/zh-tw/print/flight-schedule-table?slug=flight-schedule">台灣虎航時刻表</a></li>
+        <li><a href="https://www.jr-odekake.net/goyoyaku/e5489_corp/outline/">e5489 領票規則</a></li>
+        <li><a href="https://www.alpen-route.com/_wp/information/135365">立山 WEBきっぷ</a>、<a href="https://www.alpen-route.com/_wp/wp-content/uploads/2026/02/2026_timetable_toyama-naganoedit.pdf">2026 時刻表</a></li>
+        <li><a href="https://www.alpico.co.jp/traffic/local/hakuba/ogizawa/">Alpico 扇澤線</a>、<a href="https://timetables.jreast.co.jp/2607/timetable/tt0790/0790020.html">大糸線時刻</a></li>
+        <li><a href="https://www.tabimati.net/rosen_bus_new/">加賀溫泉郷路線巴士</a>、<a href="https://www.tabimati.net/spot/detail_150.html">山代溫泉古總湯</a>、<a href="https://www.tabimati.net/spot/detail_128.html">九谷焼体験 CoCo</a></li>
+        <li><a href="https://kenrokuen.or.jp/information/">兼六園</a>、<a href="https://www.kanazawa21.jp/">21 世紀美術館</a>、<a href="https://www.kanazawa-museum.jp/daisetz/access.html">鈴木大拙館</a></li>
+        <li><a href="https://www.shiroebiya.co.jp/guidance/toyama.html">白えび亭</a>、<a href="https://toyama-glass-art-museum.jp/visitor/">富山市玻璃美術館</a></li>
+        <li><a href="https://www.houraiken.com/access.html">あつた蓬莱軒</a>、<a href="https://www.nagoyajo.city.nagoya.jp/">名古屋城</a>、<a href="https://nagoya-de.show/">NAGOYA de SHOW!</a></li>
+        <li><a href="https://www.nagoyakeiba.com/">名古屋競馬</a>、<a href="https://www.nagashima-onsen.co.jp/nabana/illumination/index.html">なばなの里</a></li>
+        <li><a href="https://dormy-hotels.com/">ドーミーイン</a>、<a href="https://www.kuronekoyamato.co.jp/ytc/info/info_250501_1.html">黑貓運費</a></li>
+      </ol></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>2027 年 4 月・五位大人・八天七夜 ｜ 時刻與票價為 2026 年資料，2027/3 改點後需再確認 ｜ 地圖與插畫為示意圖，照片載不到時顯示插畫</div>
+    <div>照片：Wikimedia Commons — <a href="https://commons.wikimedia.org/wiki/File:%E5%AE%A4%E5%A0%82%E9%9B%AA%E3%81%AE%E5%A4%A7%E8%B0%B701.jpg">立山雪之大谷</a>（くろふね，CC BY-SA 4.0）、<a href="https://commons.wikimedia.org/wiki/File:080504_Murodo-sanso_Mount_Masago_Tateyama_Japan02s5.jpg">室堂與立山連峰</a>（663highland，CC BY 2.5）、<a href="https://commons.wikimedia.org/wiki/File:Ishikawa_Higashi_Chaya_gai_at_night_xl.jpg">夜晚的金澤ひがし茶屋街</a>（Yasuyuki Kawano，CC BY 4.0）、<a href="https://commons.wikimedia.org/wiki/File:Nagoya_TV_Tower_and_Oasis_21.JPG">名古屋電視塔與 Oasis 21</a>（Alpsdake，CC BY-SA 4.0）、<a href="https://commons.wikimedia.org/wiki/File:Kanazawa-STA_Tsuzumi-mon.jpg">金澤站鼓門</a>（MaedaAkihiko，CC BY-SA 4.0）、<a href="https://commons.wikimedia.org/wiki/File:Kenrokuen_2011-04_%285840979505%29.jpg">四月的兼六園霞ヶ池</a>（KimonBerlin，CC BY-SA 2.0）、<a href="https://commons.wikimedia.org/wiki/File:Kotoji_Toro_%28lantern%29_-_Kenroku-en_-_Kanazawa%2C_Japan_-_DSC09657.jpg">兼六園徽軫燈籠</a>（Daderot，CC0）、<a href="https://commons.wikimedia.org/wiki/File:Yamashiro_Onsen_260124_05.jpg">山代溫泉古總湯</a>（Aspere，CC0）、<a href="https://commons.wikimedia.org/wiki/File:Fugan-unga_Kansui_Park_013.jpg">富岩運河環水公園天門橋</a>（えむかとー，Public domain）、<a href="https://commons.wikimedia.org/wiki/File:080504_Tateyama_otani-road_Tateyama_Japan02s3.jpg">巴士開過雪之大谷</a>（663highland，CC BY 2.5）、<a href="https://commons.wikimedia.org/wiki/File:%E5%AE%A4%E5%A0%82%E9%9B%AA%E3%81%AE%E5%A4%A7%E8%B0%B702.jpg">雪之大谷</a>（くろふね，CC BY-SA 4.0）、<a href="https://commons.wikimedia.org/wiki/File:%E9%BB%92%E9%83%A8%E3%83%80%E3%83%A001.jpg">春天殘雪的黑部水壩</a>（くろふね，CC BY-SA 4.0）、<a href="https://commons.wikimedia.org/wiki/File:Atsuta-jing%C5%AB_%28Atsuta-ku%2C_Nagoya%29_VLux5_hdsr_sa01.jpg">熱田神宮</a>（Hyppolyte de Saint-Rambert，CC BY 4.0）、<a href="https://commons.wikimedia.org/wiki/File:Hitsumabushi_by_Daikantei.jpg">ひつまぶし</a>（Miyuki Meinaka，CC BY-SA 4.0）、<a href="https://commons.wikimedia.org/wiki/File:Nagoya_Castle%28Larger%29.jpg">名古屋城</a>（Base64，CC BY-SA 3.0）、<a href="https://commons.wikimedia.org/wiki/File:%E3%82%A2%E3%83%B3%E3%83%87%E3%82%B9%E3%83%93%E3%82%A8%E3%83%B3%E3%83%88_%E9%96%A2%E6%9D%B1%E3%82%AA%E3%83%BC%E3%82%AF%E3%82%B9%E5%85%A5%E7%B7%9A%E6%99%82.jpg">地方競馬夜賽（川崎競馬場）</a>（Hatomizinko，CC BY-SA 4.0）、<a href="https://commons.wikimedia.org/wiki/File:Nagoya_Railway_2000.jpg">名鐵 μ-SKY 機場特急</a>（Sui-setz，Public domain）、<a href="https://commons.wikimedia.org/wiki/File:Nabana_no_Sato_Chapel_Illumination.jpg">なばなの里燈光</a>（Hustvedt，CC BY-SA 3.0）。各依其授權條款使用。網站資料夾有 img/ 時優先用本地照片。</div>
+  </div>
+</footer>
+
+<div class="overlay" id="ov" role="dialog" aria-modal="true" aria-label="日文小卡">
+  <div class="big"><div class="ja" id="ov-ja"></div><div class="zh" id="ov-zh"></div>
+    <div class="row"><button class="btn" type="button" id="ov-copy">複製日文</button><button class="btn ghost" type="button" id="ov-close" style="color:#fff">關閉</button></div>
+  </div>
+</div>
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+(function(){
+  var buzz=function(){ try{ if(navigator.vibrate) navigator.vibrate(10); }catch(e){} };
+  document.addEventListener('pointerdown',function(e){ if(e.target.closest('.press,.btn,.ph-btn,.seg a')) buzz(); },{passive:true});
+  var toast=document.getElementById('toast'),tt;
+  function say(m){ toast.textContent=m; toast.classList.add('on'); clearTimeout(tt); tt=setTimeout(function(){toast.classList.remove('on');},1600); }
+  // print one section
+  document.querySelectorAll('[data-print]').forEach(function(b){ b.addEventListener('click',function(){ document.body.dataset.print=b.dataset.print; window.print(); setTimeout(function(){ delete document.body.dataset.print; },600); }); });
+  // phrase overlay
+  var ov=document.getElementById('ov'),ja=document.getElementById('ov-ja'),zh=document.getElementById('ov-zh'),last=null;
+  document.querySelectorAll('.ph-btn').forEach(function(b){ b.addEventListener('click',function(){ last=b; ja.textContent=b.dataset.ja; zh.textContent=b.dataset.zh; ov.classList.add('on'); document.getElementById('ov-close').focus(); }); });
+  function close(){ ov.classList.remove('on'); if(last) last.focus(); }
+  document.getElementById('ov-close').addEventListener('click',close);
+  ov.addEventListener('click',function(e){ if(e.target===ov) close(); });
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape'&&ov.classList.contains('on')) close(); });
+  document.getElementById('ov-copy').addEventListener('click',function(){
+    var t=ja.textContent;
+    if(navigator.clipboard&&navigator.clipboard.writeText){ navigator.clipboard.writeText(t).then(function(){say('已複製');},function(){say('無法複製，請長按文字');}); } else { say('無法複製，請長按文字'); }
+  });
+  // nav highlight
+  var top=[].slice.call(document.querySelectorAll('.top nav a')), chips=[].slice.call(document.querySelectorAll('.seg a'));
+  var seg=document.querySelector('.seg'), ind=document.querySelector('.seg .ind'), bar=seg?seg.closest('.wrap'):null, prog=document.querySelector('.days-nav .prog'), zone=document.getElementById('days');
+  function moveInd(a){ if(!a||!ind) return; ind.style.width=a.offsetWidth+'px'; ind.style.transform='translateX('+(a.offsetLeft-4)+'px)'; if(bar){ var x=a.offsetLeft+seg.offsetLeft-(bar.clientWidth-a.offsetWidth)/2; bar.scrollTo({left:Math.max(0,x),behavior:'smooth'}); } }
+  chips.forEach(function(a){ a.addEventListener('click',function(){ chips.forEach(function(c){c.classList.toggle('current',c===a);}); moveInd(a); }); });
+  window.addEventListener('resize',function(){ moveInd(document.querySelector('.seg a.current')||chips[0]); });
+  if(chips[0]){ chips[0].classList.add('current'); ind.style.transition='none'; moveInd(chips[0]); ind.offsetWidth; ind.style.transition=''; }
+  var ticking=false; window.addEventListener('scroll',function(){ if(ticking||!zone) return; ticking=true; requestAnimationFrame(function(){ var r=zone.getBoundingClientRect(), h=r.height-window.innerHeight; var t=Math.min(1,Math.max(0,-r.top/(h>0?h:1))); prog.style.transform='scaleX('+t+')'; ticking=false; }); },{passive:true});
+  function mark(list,id){ list.forEach(function(a){ a.classList.toggle('current',a.getAttribute('href')==='#'+id); }); }
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(!e.isIntersecting) return; var id=e.target.id;
+      if(/^d\d$/.test(id)){ mark(chips,id); mark(top,'days'); moveInd(document.querySelector('.seg a[href="#'+id+'"]')); }
+      else mark(top,id); }); },{rootMargin:'-35% 0px -60% 0px'});
+    document.querySelectorAll('main section[id]').forEach(function(s){ io.observe(s); });
+  }
+})();
+</script>
+</body>
+</html>
