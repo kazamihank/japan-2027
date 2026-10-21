@@ -354,6 +354,19 @@ footer a{color:var(--on-night-2)}
 .gone{font-size:13px;color:var(--red);background:var(--red-soft);border-radius:12px;padding:10px 14px;margin:0 12px 14px}
 @media (max-width:1000px){.meals,.shops{grid-template-columns:1fr}.slots{grid-template-columns:1fr 1fr}.taxbox ol{grid-template-columns:1fr}}
 
+/* ── mobile route list ── */
+.route{display:none;list-style:none;margin:22px 0 0;padding:16px 16px 10px;background:var(--night-2);border:1px solid rgba(255,255,255,.07);border-radius:20px;position:relative}
+.route li{position:relative;display:grid;grid-template-columns:22px 1fr;column-gap:12px;padding:0 0 18px}
+.route li::before{content:"";position:absolute;left:10px;top:18px;bottom:-4px;width:2px;background:rgba(212,170,79,.55)}
+.route li.dash::before{background:repeating-linear-gradient(180deg,rgba(212,170,79,.55) 0 5px,transparent 5px 10px)}
+.route li.alp::before{background:#EEF3F7}
+.route li:last-child::before{display:none}
+.route i{width:22px;height:22px;border-radius:50%;background:var(--c,#D4AA4F);border:3px solid var(--night-2);box-shadow:0 0 0 2px rgba(255,255,255,.25);z-index:1}
+.route i.sm{width:14px;height:14px;margin:4px;border-width:2px}
+.route b{display:block;font-size:15.5px;color:var(--on-night);line-height:1.3}
+.route span{display:block;font-size:12.5px;color:var(--on-night-2);margin-top:2px;line-height:1.5}
+.route .n{display:inline-block;font-size:10.5px;font-weight:700;color:var(--night);background:var(--gold);border-radius:999px;padding:0 7px;margin-right:6px;vertical-align:2px}
+
 /* ══════════ MOBILE APP SHELL ══════════ */
 .tabbar,.sheet,.sheet-bg,.now,.m-only,.dots{display:none}
 .optwrap{padding:0 30px 30px}
@@ -399,44 +412,47 @@ footer a{color:var(--on-night-2)}
   /* hero */
   .hero{min-height:88vh;min-height:88svh}
   .hero .media img{animation:none;object-position:center 70%}
-  .hero .wrap{padding-top:96px;padding-bottom:calc(96px + env(safe-area-inset-bottom))}
+  .hero .wrap{padding-top:90px;padding-bottom:calc(92px + env(safe-area-inset-bottom))}
   .kicker{font-size:12px;padding:4px 11px}
   .hero h1{font-size:31px;margin:14px 0 12px}
   .hero .lead{font-size:15px;line-height:1.75}
-  .chips{display:flex;gap:10px;margin:22px -16px 0;padding:0 16px 2px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-inline:16px;scrollbar-width:none;overscroll-behavior-x:contain}
-  .chips::-webkit-scrollbar{display:none}
-  .chip{flex:0 0 46%;scroll-snap-align:start;padding:12px 14px}
-  .chip .v{font-size:21px}
+  .chips{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:20px 0 0}
+  .chip{padding:10px 12px 11px;border-radius:14px}
+  .chip:last-child{grid-column:1/-1;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+  .chip:last-child .v{margin-top:0}
+  .chip .k{font-size:10.5px}
+  .chip .v{font-size:20px}
 
   /* sections */
-  .sec{padding:48px 0}
-  .head{margin-bottom:20px}
-  h2{font-size:26px}
+  .sec{padding:40px 0}
+  .head{margin-bottom:18px}
+  .head p{font-size:14px;line-height:1.65}
+  h2{font-size:25px}
 
   /* overview carousel */
-  .hl{display:flex;gap:12px;margin:0 -16px;padding:4px 16px 16px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-inline:16px;scrollbar-width:none;overscroll-behavior-x:contain}
-  .hl::-webkit-scrollbar{display:none}
-  .hl .card{flex:0 0 84%;min-height:360px;scroll-snap-align:start;border-radius:22px}
+  .hl{display:grid;grid-template-columns:1fr;gap:12px;margin:0;padding:0}
+  .hl .card{min-height:196px;border-radius:20px}
+  .hl .card:first-child{min-height:250px}
+  .card p{max-width:none}
   .hl .card h3,.hl .card:first-child h3{font-size:26px}
   .card .body{padding:20px}
-  .dots{display:flex;justify-content:center;gap:6px;margin-top:2px}
+  .dots{display:none}
   .dots i{width:6px;height:6px;border-radius:3px;background:rgba(255,255,255,.22);transition:width .4s var(--ease),background .4s var(--ease)}
   .dots i.on{width:20px;background:var(--gold)}
 
   /* route map: pan */
-  .mapcard{margin:20px -16px 0;border-radius:0;border-left:0;border-right:0;padding:14px 0 6px;box-shadow:none}
-  .mapcard .pan{overflow-x:auto;scrollbar-width:none;overscroll-behavior-x:contain}
-  .mapcard .pan::-webkit-scrollbar{display:none}
-  .mapcard svg{width:860px;max-width:none;margin:0 16px}
-  .mapcard figcaption{padding:8px 16px 4px}
-  .mapcard figcaption .m-only{display:block;color:var(--gold);font-weight:700;margin-top:2px}
+  .mapcard{display:none}
+  .route{display:block}
 
   /* day switcher */
   .days-nav{top:52px}
-  .days-nav .wrap{padding:8px 12px;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 12px,#000 calc(100% - 12px),transparent);mask-image:linear-gradient(90deg,transparent 0,#000 12px,#000 calc(100% - 12px),transparent)}
-  .seg a{min-width:72px;padding:6px 9px 7px}
-  .seg a b{font-size:12.5px}
-  .seg a span{font-size:11px}
+  .days-nav .wrap{padding:8px 12px;overflow:visible}
+  .seg{display:flex;width:100%;gap:0;padding:3px}
+  .seg a{flex:1 1 0;min-width:0;padding:5px 0 6px;border-radius:9px}
+  .seg a b,.seg a span{display:none}
+  .seg a::before{content:attr(data-d);font-size:15px;font-weight:700;line-height:1.2}
+  .seg a::after{content:attr(data-w);font-size:10.5px;line-height:1.3;opacity:.85}
+  .seg .ind{top:3px;bottom:3px;border-radius:9px}
 
   /* day cards */
   .day{padding:18px 0 4px;scroll-margin-top:var(--dn,62px)}
@@ -468,11 +484,13 @@ footer a{color:var(--on-night-2)}
   .tbl tbody tr:hover{background:var(--card)}
   .tbl td{display:block;padding:0;border:0;white-space:normal!important;line-height:1.6}
   .tbl td+td{margin-top:9px}
-  .tbl td:empty{display:none}
+  .tbl td:empty{display:none!important}
   .tbl td:first-child{font-weight:700;font-size:15.5px;color:var(--ink)}
-  .tbl td[data-label]:not(:first-child)::before{content:attr(data-label);display:block;font-size:11.5px;font-weight:700;letter-spacing:.04em;color:var(--muted);margin-bottom:1px}
+  .tbl td[data-label]:not(:first-child){display:grid;grid-template-columns:5.2em 1fr;column-gap:10px;align-items:start}
+  .tbl td[data-label]:not(:first-child)::before{content:attr(data-label);display:block;font-size:11.5px;font-weight:700;letter-spacing:.04em;color:var(--muted);padding-top:3px;line-height:1.5}
+  .tbl td+td{margin-top:7px}
   .tbl td.t{display:inline-block;font-size:13px;color:var(--glacier-deep);background:var(--ice);padding:2px 10px;border-radius:999px}
-  .tbl td.t+td{margin-top:7px;font-weight:700;font-size:15px}
+  .tbl td.t+td[data-label]{display:block;margin-top:7px;font-weight:700;font-size:15px}
   .tbl td.t+td::before{display:none!important}
   .tbl.compact tbody{gap:0;background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:var(--sh-1)}
   .tbl.compact tr{display:grid;grid-template-columns:1fr auto;column-gap:14px;border:0;border-bottom:1px solid var(--line);border-radius:0;box-shadow:none;padding:11px 16px}
@@ -491,9 +509,10 @@ footer a{color:var(--on-night-2)}
   .panel th{font-size:12px;margin-bottom:2px}
 
   /* tateyama strip carousel */
-  .strip{display:flex;gap:10px;margin:0 -16px 20px;padding:0 16px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-inline:16px;scrollbar-width:none;overscroll-behavior-x:contain}
-  .strip::-webkit-scrollbar{display:none}
-  .strip figure{flex:0 0 80%;height:230px;scroll-snap-align:start;border-radius:18px}
+  .strip{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:0 0 20px;padding:0}
+  .strip figure{height:132px;border-radius:16px}
+  .strip figure:first-child{grid-column:1/-1;height:200px}
+  .strip figcaption{font-size:12.5px;left:10px;bottom:8px}
 
   /* phrases, steps, hotels, budget */
   .phr{grid-template-columns:1fr;gap:10px}
@@ -517,6 +536,7 @@ footer a{color:var(--on-night-2)}
   .taxbox{padding:20px 18px;border-radius:22px}
   .slots{grid-template-columns:1fr;gap:10px}
   .ext{font-size:11.5px;padding:3px 9px}
+  .nm .map{margin-left:0}
   footer{padding-bottom:calc(110px + env(safe-area-inset-bottom))}
 }
 /* touch: springy press feedback */
@@ -530,7 +550,7 @@ footer a{color:var(--on-night-2)}
 /* print */
 @media print{
   body{background:#fff;color:#000;font-size:12px}
-  .top,.days-nav,.btn,.noprint,.media,.overlay,.toast,footer,.tabbar,.sheet,.sheet-bg,.dots,.hl,.mapcard,.strip,.opt .ph{display:none!important}
+  .top,.days-nav,.btn,.noprint,.media,.overlay,.toast,footer,.tabbar,.sheet,.sheet-bg,.dots,.route,.hl,.mapcard,.strip,.opt .ph{display:none!important}
   .hero,.sec.dark,.dhero,.bigsum,.panel{background:#fff!important;color:#000!important;min-height:0;height:auto;box-shadow:none}
   .hero .wrap{padding:0}.hero h1,.hero .lead,.dhero h2,.dhero .sum,.panel li,.panel td,.panel th,.sec.dark p{color:#000!important;text-shadow:none}
   .chip{background:#fff;border-color:#999}.chip .k,.chip .d{color:#333}
@@ -818,15 +838,24 @@ footer a{color:var(--on-night-2)}
         <text x="700" y="58" fill="#EEF3F7" font-size="11.5" font-weight="700">D5 阿爾卑斯路線縱走</text>
         <text x="600" y="282" fill="#D4AA4F" font-size="12">D5 大糸線＋しなの 20:07 到名古屋</text>
       </svg></div>
-      <figcaption>示意圖，非比例。白色是立山黑部阿爾卑斯路線，金色是我們自己買票的段落。<span class="m-only">← 左右滑動看完整路線 →</span></figcaption>
+      <figcaption>示意圖，非比例。白色是立山黑部阿爾卑斯路線，金色是我們自己買票的段落。</figcaption>
     </figure>
+    <ol class="route" aria-label="路線">
+      <li class="dash"><i class="sm" style="--c:#EEF3F7"></i><div><b>中部國際機場</b><span><em class="n">D1</em>μ-SKY 28 分到名古屋，轉しらさぎ＋つるぎ經敦賀 2h47</span></div></li>
+      <li><i style="--c:var(--kz)"></i><div><b>金澤・3 晚</b><span><em class="n">D1–D4</em>兼六園、近江町、茶屋街</span></div></li>
+      <li class="dash"><i class="sm" style="--c:var(--ys)"></i><div><b>山代溫泉・半日來回</b><span><em class="n">D3</em>新幹線 18 分＋巴士 13 分</span></div></li>
+      <li><i style="--c:var(--ty)"></i><div><b>富山・1 晚</b><span><em class="n">D4</em>新幹線 22 分；環水公園、壽司</span></div></li>
+      <li class="alp"><i style="--c:#EEF3F7"></i><div><b>立山黑部阿爾卑斯路線</b><span><em class="n">D5</em>立山站 → 室堂雪之大谷 → 黑部水壩 → 扇澤，約 8 小時</span></div></li>
+      <li><i class="sm"></i><div><b>信濃大町 → 松本</b><span><em class="n">D5</em>Alpico 巴士 35 分＋大糸線 55 分，松本轉しなの 2h15</span></div></li>
+      <li><i style="--c:var(--ng)"></i><div><b>名古屋・3 晚</b><span><em class="n">D5–D8</em>鰻魚飯、競馬、大須、看秀；D8 μ-SKY 回機場</span></div></li>
+    </ol>
   </div>
 </section>
 
 <!-- DAYS -->
 <div class="days-zone" id="days">
 <div class="days-nav noprint">
-  <div class="wrap"><nav class="seg" aria-label="每日行程"><a href="#d1"><b>4/17 六</b><span>抵達金澤</span></a><a href="#d2"><b>4/18 日</b><span>金澤</span></a><a href="#d3"><b>4/19 一</b><span>山代溫泉</span></a><a href="#d4"><b>4/20 二</b><span>富山</span></a><a href="#d5"><b>4/21 三</b><span>立山黑部</span></a><a href="#d6"><b>4/22 四</b><span>名古屋</span></a><a href="#d7"><b>4/23 五</b><span>名古屋</span></a><a href="#d8"><b>4/24 六</b><span>回台北</span></a><i class="ind" aria-hidden="true"></i></nav></div>
+  <div class="wrap"><nav class="seg" aria-label="每日行程"><a href="#d1" data-d="17" data-w="六"><b>4/17 六</b><span>抵達金澤</span></a><a href="#d2" data-d="18" data-w="日"><b>4/18 日</b><span>金澤</span></a><a href="#d3" data-d="19" data-w="一"><b>4/19 一</b><span>山代溫泉</span></a><a href="#d4" data-d="20" data-w="二"><b>4/20 二</b><span>富山</span></a><a href="#d5" data-d="21" data-w="三"><b>4/21 三</b><span>立山黑部</span></a><a href="#d6" data-d="22" data-w="四"><b>4/22 四</b><span>名古屋</span></a><a href="#d7" data-d="23" data-w="五"><b>4/23 五</b><span>名古屋</span></a><a href="#d8" data-d="24" data-w="六"><b>4/24 六</b><span>回台北</span></a><i class="ind" aria-hidden="true"></i></nav></div>
   <div class="prog" aria-hidden="true"></div>
 </div>
 
@@ -1236,7 +1265,7 @@ footer a{color:var(--on-night-2)}
   document.querySelectorAll('.tbl table').forEach(function(t){
     var ths=[].map.call(t.querySelectorAll('thead th'),function(th){return th.textContent.trim();});
     if(!ths.length) return;
-    t.querySelectorAll('tbody tr').forEach(function(tr){ [].forEach.call(tr.children,function(td,i){ if(ths[i]) td.setAttribute('data-label',ths[i]); }); });
+    t.querySelectorAll('tbody tr').forEach(function(tr){ [].forEach.call(tr.children,function(td,i){ if(ths[i]) td.setAttribute('data-label',ths[i]); if(i>0&&td.textContent.trim()&&!td.querySelector('.v')) td.innerHTML='<span class="v">'+td.innerHTML+'</span>'; }); });
   });
 
   // tab bar
@@ -1280,7 +1309,6 @@ footer a{color:var(--on-night-2)}
   measure();
 
   // map: start panned to the middle
-  var pan=document.querySelector('.mapcard .pan'); if(pan&&mq.matches) pan.scrollLeft=(pan.scrollWidth-pan.clientWidth)*0.15;
 
   // reveal on scroll (mobile only)
   if(mq.matches&&'IntersectionObserver' in window&&!window.matchMedia('(prefers-reduced-motion:reduce)').matches){
