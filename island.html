@@ -1,0 +1,1136 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#cfe6ea">
+<title>福岡旅行島</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@500;700;900&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#2f2a25; --muted:#7b7067; --paper:#fbf6ee; --card:#fffdf9; --line:#ece2d4;
+  --accent:#d9653b; --shadow:0 6px 20px rgba(70,45,20,.16);
+  --sat:env(safe-area-inset-top,0px); --sab:env(safe-area-inset-bottom,0px);
+  --sal:env(safe-area-inset-left,0px); --sar:env(safe-area-inset-right,0px);
+  --font:'Noto Sans TC','PingFang TC','Microsoft JhengHei',system-ui,sans-serif;
+  --num:'Space Grotesk',ui-monospace,'SF Mono',monospace;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;height:100%;overflow:hidden;overscroll-behavior:none;background:#cfe6ea;color:var(--ink);font-family:var(--font)}
+button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;padding:0}
+#app{position:fixed;inset:0;overflow:hidden}
+#app canvas{display:block;touch-action:none}
+#labels{position:absolute;inset:0;pointer-events:none;z-index:1}
+
+/* island pills */
+.pill{display:flex;align-items:center;gap:6px;pointer-events:auto;cursor:pointer;user-select:none;-webkit-user-select:none;
+  background:var(--card);border-radius:999px;padding:7px 13px 7px 11px;box-shadow:var(--shadow);
+  font-weight:700;font-size:14px;line-height:1;white-space:nowrap;transition:opacity .3s,background .3s,color .3s}
+.pill b{font-family:var(--num);font-size:13px;color:var(--accent);transition:color .3s}
+.pill.dim{opacity:.38}
+.pill.on{background:var(--dc,var(--accent));color:#fff}
+.pill.on b{color:#fff;opacity:.85}
+#labels.compact .pill{padding:6px 9px;font-size:12px}
+#labels.compact .pill .nm{display:none}
+#labels.compact .pill.on .nm{display:inline}
+.bed{pointer-events:none;font-size:12px;font-weight:700;background:rgba(255,253,249,.92);border-radius:999px;padding:3px 8px;box-shadow:var(--shadow);transition:opacity .3s}
+#labels.far .bed{opacity:0}
+.tag{pointer-events:none;font-size:11px;font-weight:700;color:#fff;border-radius:999px;padding:3px 8px;opacity:0;transition:opacity .3s}
+#labels.tags .tag{opacity:1}
+
+/* brand */
+#brand{position:fixed;z-index:5;top:calc(12px + var(--sat));left:calc(12px + var(--sal));
+  display:flex;align-items:center;gap:12px;background:rgba(251,246,238,.94);border-radius:22px;padding:12px 16px 12px 14px;box-shadow:var(--shadow);max-width:calc(100vw - 112px)}
+#brand .big{font-family:var(--num);font-weight:700;color:var(--accent);font-size:26px;line-height:.92;letter-spacing:-.5px}
+#brand .zh{font-weight:900;font-size:17px;letter-spacing:2px;line-height:1.25}
+#brand .zh small{display:block;font-weight:700;font-size:11.5px;letter-spacing:.5px;color:var(--muted);margin-top:3px}
+#brand .zh small em{font-style:normal;font-family:var(--num);color:var(--accent);letter-spacing:1px}
+
+/* right rail */
+#rail{position:fixed;z-index:5;top:calc(12px + var(--sat));right:calc(12px + var(--sar));display:flex;flex-direction:column;gap:8px}
+.rb{width:66px;height:54px;border-radius:17px;background:var(--card);box-shadow:var(--shadow);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;font-weight:700;font-size:13px}
+.rb i{font-style:normal;font-size:15px;line-height:1}
+.rb.on{background:var(--ink);color:#fff}
+
+/* day bar */
+#days{position:fixed;z-index:6;left:calc(10px + var(--sal));right:calc(10px + var(--sar));bottom:calc(10px + var(--sab));
+  display:flex;gap:3px;background:var(--card);border-radius:20px;padding:5px;box-shadow:var(--shadow);max-width:600px;margin:0 auto}
+.dbtn{flex:1 1 0;min-width:0;border-radius:15px;padding:7px 0 6px;text-align:center;transition:background .25s,color .25s}
+.dbtn b{display:block;font-family:var(--num);font-size:14px;line-height:1.1}
+.dbtn span{display:block;font-size:10.5px;color:var(--muted);margin-top:2px;font-family:var(--num)}
+.dbtn.on{background:var(--dc,var(--ink));color:#fff}
+.dbtn.on span{color:rgba(255,255,255,.85)}
+
+/* time popover */
+#timepop{position:fixed;z-index:7;right:calc(88px + var(--sar));top:calc(12px + var(--sat));background:var(--card);border-radius:18px;box-shadow:var(--shadow);padding:12px;width:220px;display:none}
+#timepop.open{display:block}
+#timepop h5{margin:0 0 8px;font-size:12px;color:var(--muted);font-weight:700}
+.seg{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;margin-bottom:10px}
+.seg button{border-radius:11px;padding:8px 0;font-size:13px;font-weight:700;background:var(--paper)}
+.seg button.on{background:var(--ink);color:#fff}
+.seg2{grid-template-columns:1fr 1fr}
+
+/* sheet */
+#sheet{position:fixed;z-index:8;left:0;right:0;bottom:0;max-height:58dvh;display:flex;flex-direction:column;
+  background:var(--paper);border-radius:24px 24px 0 0;box-shadow:0 -8px 30px rgba(60,40,20,.18);
+  transform:translateY(110%);transition:transform .34s cubic-bezier(.2,.8,.2,1),max-height .3s}
+#sheet.open{transform:none}
+#sheet.full{max-height:88dvh}
+#sheet .grab{flex:none;height:22px;display:flex;align-items:center;justify-content:center;cursor:pointer}
+#sheet .grab::after{content:'';width:42px;height:5px;border-radius:9px;background:#d9cfc1}
+#sh-head{flex:none;padding:0 18px 10px;position:relative}
+#sh-close{position:absolute;right:12px;top:-6px;width:36px;height:36px;border-radius:50%;background:var(--card);box-shadow:0 2px 8px rgba(0,0,0,.08);font-size:18px;line-height:36px;text-align:center}
+#sh-body{flex:1 1 auto;overflow-y:auto;overflow-x:hidden;overscroll-behavior:contain;touch-action:pan-y;-webkit-overflow-scrolling:touch;padding:0 18px calc(20px + var(--sab))}
+.kick{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:700;color:var(--muted);margin-bottom:4px;flex-wrap:wrap;padding-right:44px}
+.kick .no{font-family:var(--num);color:#fff;background:var(--dc,var(--accent));border-radius:8px;padding:2px 8px;font-size:13px}
+#sh-head h2{margin:0;font-size:21px;line-height:1.3;font-weight:900;padding-right:40px}
+#sh-head .sub{margin:6px 0 0;font-size:13.5px;color:var(--muted);line-height:1.6}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.chip{display:inline-flex;align-items:center;gap:4px;border-radius:999px;padding:5px 11px;font-size:12.5px;font-weight:700;background:var(--card);border:1px solid var(--line)}
+button.chip{cursor:pointer}
+.chip.c{color:#fff;border-color:transparent;background:var(--dc)}
+.dayh{display:flex;align-items:center;gap:8px;margin:16px 0 2px;font-size:13px;font-weight:900}
+.dayh i{font-style:normal;font-family:var(--num);color:#fff;background:var(--dc);border-radius:7px;padding:1px 7px}
+.it{display:grid;grid-template-columns:50px 1fr;gap:10px;padding:12px 0;border-top:1px solid var(--line)}
+.dayh + .it{border-top:0}
+.it .tm{font-family:var(--num);font-weight:700;font-size:13.5px;color:var(--dc,var(--accent));padding-top:1px;word-break:keep-all}
+.it h4{margin:0;font-size:15px;line-height:1.45}
+.it p{margin:4px 0 0;font-size:13px;color:var(--muted);line-height:1.6}
+.it .row{display:flex;flex-wrap:wrap;gap:6px;margin-top:7px}
+.lk{display:inline-flex;align-items:center;gap:4px;min-height:32px;padding:0 11px;border-radius:999px;background:var(--card);border:1px solid var(--line);font-size:12.5px;font-weight:700;color:var(--ink);text-decoration:none}
+.lk::after{content:'↗';font-size:11px;color:var(--muted)}
+.at{display:inline-flex;align-items:center;gap:5px;min-height:32px;padding:0 11px;border-radius:999px;background:#f3ebdf;font-size:12.5px;font-weight:700}
+.at b{font-family:var(--num);color:var(--accent)}
+.note{margin:16px 0 0;padding:12px 14px;border-radius:14px;background:#f3ebdf;font-size:13px;line-height:1.65;color:#5b5047}
+.foot{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.foot a{flex:1 1 auto;text-align:center;padding:12px;border-radius:14px;background:var(--ink);color:#fff;text-decoration:none;font-weight:700;font-size:14px}
+.tabs{display:flex;gap:4px;background:#efe6d9;border-radius:14px;padding:4px;margin-top:12px}
+.tabs button{flex:1;border-radius:11px;padding:8px 0;font-weight:700;font-size:13.5px}
+.tabs button.on{background:var(--card);box-shadow:0 1px 4px rgba(0,0,0,.08)}
+.tk{display:grid;grid-template-columns:1fr auto;gap:4px 10px;padding:12px 0;border-top:1px solid var(--line)}
+.tk:first-child{border-top:0}
+.tk h4{margin:0;font-size:14.5px;line-height:1.45}
+.tk p{margin:0;grid-column:1/-1;font-size:13px;color:var(--muted);line-height:1.6}
+.st{align-self:start;font-size:11.5px;font-weight:900;border-radius:999px;padding:3px 9px;white-space:nowrap}
+.st.ok{background:#e1efdc;color:#3c7a35}.st.todo{background:#fbe3d6;color:#b24f22}.st.day{background:#e4ecf3;color:#3e6a8f}
+.crew{display:grid;grid-template-columns:40px 1fr;gap:12px;padding:12px 0;border-top:1px solid var(--line);align-items:start;text-align:left;width:100%}
+.crew:first-child{border-top:0}
+.crew .av{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:900;font-size:15px}
+.crew h4{margin:0;font-size:15px}.crew h4 small{font-weight:700;color:var(--muted);font-size:12px;margin-left:6px}
+.crew p{margin:4px 0 0;font-size:13px;color:var(--muted);line-height:1.6}
+.dl{display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:center;padding:11px 0;border-top:1px solid var(--line);width:100%;text-align:left}
+.dl:first-child{border-top:0}
+.dl i{font-style:normal;font-family:var(--num);font-weight:700;color:#fff;background:var(--dc);border-radius:8px;padding:3px 8px;font-size:13px}
+.dl b{font-size:14.5px;display:block;line-height:1.4}.dl span{font-size:12px;color:var(--muted)}
+.dl em{font-style:normal;color:var(--muted);font-size:18px}
+
+#toast{position:fixed;z-index:9;left:50%;bottom:calc(84px + var(--sab));transform:translate(-50%,40px);opacity:0;transition:transform .35s,opacity .35s;background:var(--ink);color:#fff;border-radius:14px;padding:10px 16px;font-size:13.5px;font-weight:700;box-shadow:var(--shadow);max-width:calc(100vw - 32px);text-align:center}
+#toast.show{transform:translate(-50%,0);opacity:1}
+#fail{position:fixed;inset:0;z-index:20;display:none;align-items:center;justify-content:center;padding:24px;background:var(--paper);text-align:center;line-height:1.7}
+#fail.show{display:flex}
+#fail a{color:var(--accent);font-weight:700}
+
+@media (max-width:420px){
+  #brand{gap:9px;padding:10px 13px 10px 12px;border-radius:19px}
+  #brand .big{font-size:21px}
+  #brand .zh{font-size:15px;letter-spacing:1px}
+  #brand .zh small{font-size:10.5px}
+  .rb{width:58px;height:50px;font-size:12px;border-radius:15px}
+  #timepop{right:calc(78px + var(--sar))}
+  .pill{font-size:13px;padding:6px 11px 6px 9px}
+}
+@media (min-width:900px){
+  #sheet{left:calc(16px + var(--sal));right:auto;top:150px;bottom:16px;width:400px;max-height:none;border-radius:24px;transform:translateX(calc(-100% - 40px))}
+  #sheet.full{max-height:none}
+  #sheet .grab{display:none}
+  #sh-head{padding-top:18px}
+  #sh-close{top:12px}
+  #days{bottom:calc(16px + var(--sab))}
+}
+</style>
+<script type="importmap">
+{"imports":{
+  "three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+  "three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+}}
+</script>
+</head>
+<body>
+<div id="app"></div>
+
+<header id="brand">
+  <div class="big">FUKUOKA<br>7 DAYS.</div>
+  <div class="zh">九州北部 旅行島<small><em>2027.4.17–23</em>・5 人</small></div>
+</header>
+
+<nav id="rail" aria-label="工具">
+  <button class="rb" id="b-all"><i>↗</i>全景</button>
+  <button class="rb" id="b-today"><i>◎</i>今天</button>
+  <button class="rb" id="b-crew"><i>☺</i>角色</button>
+  <button class="rb" id="b-list"><i>≡</i>清單</button>
+  <button class="rb" id="b-time"><i>◷</i>時間</button>
+</nav>
+
+<div id="timepop" role="dialog" aria-label="時間">
+  <h5>天色</h5>
+  <div class="seg" id="tp-sky">
+    <button data-sky="dawn">清晨</button><button data-sky="day">白天</button><button data-sky="dusk">黃昏</button><button data-sky="night">夜晚</button>
+  </div>
+  <h5>動畫（人、船、馬、列車）</h5>
+  <div class="seg seg2" id="tp-anim"><button data-anim="1">開</button><button data-anim="0">關</button></div>
+</div>
+
+<nav id="days" aria-label="選日子"></nav>
+
+<section id="sheet" aria-live="polite">
+  <div class="grab" id="sh-grab" title="展開／收合"></div>
+  <header id="sh-head"></header>
+  <div id="sh-body"></div>
+</section>
+
+<div id="toast"></div>
+<div id="fail"><div>3D 島嶼載入失敗（可能是網路擋了 cdn.jsdelivr.net，或瀏覽器不支援 WebGL）。<br><a href="fukuoka.html">改看文字版手冊 →</a></div></div>
+<noscript><div style="padding:24px">這一頁需要 JavaScript。<a href="fukuoka.html">改看文字版手冊</a></div></noscript>
+
+<script>
+  // 8 秒內 3D 沒起來就顯示備援
+  setTimeout(function(){ if(!window.__islandOK){ document.getElementById('fail').classList.add('show'); } }, 8000);
+</script>
+
+<script type="module">
+import * as THREE from 'three';
+import {OrbitControls} from 'three/addons/controls/OrbitControls.js';
+import {CSS2DRenderer, CSS2DObject} from 'three/addons/renderers/CSS2DRenderer.js';
+import {mergeGeometries} from 'three/addons/utils/BufferGeometryUtils.js';
+window.__islandOK = true;
+
+/* =====================================================================
+   資料區：要改行程、連結、團員，改這一段就好
+   ===================================================================== */
+const gm = q => 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(q);
+const TB = p => 'https://tabelog.com/' + p + '/';
+const HANDBOOK = 'fukuoka.html';
+
+const DAYS = [
+  {d:1, date:'4/17', wd:'六', color:'#e0603a', sleep:'博多', title:'抵達博多', main:'hakata',
+   route:['airport','hakata'],
+   sum:'04:00 起床飛福岡。拉麵、寺町散步、回飯店補眠，傍晚鐵鍋餃子接中洲屋台。'},
+  {d:2, date:'4/18', wd:'日', color:'#e39a2f', sleep:'博多', title:'門司港・唐戶＋佐賀夜間賽馬', main:'mojiko',
+   route:['hakata','mojiko','karato','mojiko','hakata','saga','hakata'],
+   sum:'唯一早起的一天（07:00）。坐船過海峽吃市場壽司，下午回飯店休息，晚上去鳥栖看夜間賽馬。'},
+  {d:3, date:'4/19', wd:'一', color:'#4a9b5a', sleep:'別府', title:'ゆふいんの森 → 由布院 → 別府', main:'yufuin',
+   route:['hakata','yufuin','beppu'],
+   sum:'坐觀光列車進山，由布院吃鰻魚飯、逛湯の坪，傍晚巴士下山到別府吃雞天。大行李留在博多飯店。'},
+  {d:4, date:'4/20', wd:'二', color:'#2f86a6', sleep:'別府', title:'別府地獄・砂湯', main:'beppu',
+   route:['beppu'],
+   sum:'整天在別府：地獄巡禮、地獄蒸し午餐、甘味茶屋點心、竹瓦温泉砂湯，晚上站前喝酒。'},
+  {d:5, date:'4/21', wd:'三', color:'#8b62b0', sleep:'博多', title:'ソニック回博多・太宰府', main:'dazaifu',
+   route:['beppu','hakata','dazaifu','tenjin','hakata'],
+   sum:'特急回博多吃うどん，下午太宰府吃梅ヶ枝餅，傍晚天神購物，晚上博多水炊き。'},
+  {d:6, date:'4/22', wd:'四', color:'#cf4a63', sleep:'博多', title:'柳川・中山大藤', main:'yanagawa',
+   route:['hakata','tenjin','yanagawa','tenjin','ohori','hakata'],
+   sum:'先坐川下り小船到沖端吃鰻魚蒸籠，再去看百年大藤，晚上天神吃焼き鳥。'},
+  {d:7, date:'4/23', wd:'五', color:'#5f8a6a', sleep:'✈ 回家', title:'回台北', main:'ohori',
+   route:['hakata','ohori','tenjin','hakata','airport'],
+   sum:'大濠公園散步，天神吃鯛茶漬け，博多駅買伴手禮，15:30 去機場。'},
+];
+
+// 島：x/z 是相對位置（博多在原點，東 +x、南 +z），r 是島的大小
+const ISLANDS = [
+  {id:'hakata',  no:'01', name:'博多・中洲', jp:'博多・祇園・中洲', x:0,    z:0,     r:5.0, c:'#a9c98a', bed:'🛏 ドーミーイン（4 晚）',
+   desc:'這趟的大本營。飯店在地鐵祇園站旁，走路就到中洲屋台、キャナルシティ、博多駅。'},
+  {id:'tenjin',  no:'02', name:'天神', jp:'天神・警固', x:-9.5, z:1.5, r:3.8, c:'#b8c79f',
+   desc:'福岡最熱鬧的購物區，百貨、Bic Camera、ドンキ都在這；西鉄往太宰府、柳川也從這裡出發。'},
+  {id:'ohori',   no:'03', name:'大濠・福岡塔', jp:'大濠公園・百道', x:-17.5, z:5.5, r:3.8, c:'#9cc98a',
+   desc:'市中心的大湖公園，最後一天早上散步；旁邊是福岡塔（D6 晚上的選配）。'},
+  {id:'airport', no:'04', name:'福岡機場', jp:'福岡空港 國際線', x:9.5,  z:-2.5, r:3.6, c:'#c4cfa8',
+   desc:'離市區超近，地鐵到祇園只要幾分鐘。回程先做免稅確認再託運。'},
+  {id:'mojiko',  no:'05', name:'門司港', jp:'門司港レトロ', x:19.5, z:-14.5, r:3.6, c:'#b3c98f',
+   desc:'九州最北端的港町，紅磚老建築。從這裡坐船 5 分鐘到對岸的下關唐戶。'},
+  {id:'karato',  no:'06', name:'唐戶・下關', jp:'唐戸市場・赤間神宮（山口縣）', x:26.5, z:-19, r:2.5, c:'#a8c890',
+   desc:'對岸已經是本州。週末的唐戶市場「馬関街」是現握壽司攤，本團不吃河豚。'},
+  {id:'saga',    no:'07', name:'佐賀競馬', jp:'佐賀競馬場（鳥栖）', x:3.5,  z:18,  r:4.2, c:'#9fc27f',
+   desc:'全年夜間賽的地方賽馬場，從博多 JR 30 分到鳥栖。5 人包廂一天 ¥3,000，坐滿剛好。'},
+  {id:'yufuin',  no:'08', name:'由布院', jp:'由布院・金鱗湖', x:24,   z:8.5,  r:4.2, c:'#8fbf7a',
+   desc:'由布岳山腳的溫泉小鎮。坐觀光列車ゆふいんの森進來，下午巴士下山去別府。'},
+  {id:'beppu',   no:'09', name:'別府', jp:'別府・鉄輪', x:33,   z:2,    r:4.6, c:'#b7c58f', bed:'🛏 西鉄リゾートイン（2 晚）',
+   desc:'滿城冒煙的溫泉之都。地獄巡禮、地獄蒸し、竹瓦温泉砂湯都在這兩天。'},
+  {id:'dazaifu', no:'10', name:'太宰府', jp:'太宰府天満宮', x:8.5,  z:9.5,  r:3.8, c:'#a7c98c',
+   desc:'學問之神的總本宮，參道上邊走邊吃梅ヶ枝餅。2027 年是式年大祭。'},
+  {id:'yanagawa',no:'11', name:'柳川・大藤', jp:'柳川・中山大藤', x:-5,   z:26.5, r:4.2, c:'#9ccb86',
+   desc:'坐小船穿過水道，終點吃鰻魚蒸籠；下午去看樹齡 300 年的中山大藤（花期每年不同）。'},
+];
+
+// 行程：[島, 第幾天, 時間, 標題, 說明, 連結[[文字, 網址]...]]（同一天依時間順序寫）
+const ITEMS = [
+  // D1
+  ['airport',1,'04:00','起床，06:45 IT240 桃園 T1 → 10:05 福岡','台灣虎航 tigersmart，5 人同一筆訂單。',[['虎航 航班查詢','https://www.tigerairtw.com/']]],
+  ['airport',1,'10:30','地鐵 福岡空港 → 祇園','2 站約 6 分，¥260。先到飯店寄行李。',[['福岡市地下鉄','https://subway.city.fukuoka.lg.jp/']]],
+  ['hakata',1,'12:00','午餐：博多一双 祇園店','泡系豚骨拉麵，飯店走路幾分鐘。本店（食べログ 3.72）週六要排很久又要折回博多駅，所以吃祇園店。',[['博多一双','http://www.hakata-issou.com/access/'],['地圖',gm('博多一双 祇園店')]]],
+  ['hakata',1,'13:00','承天寺通・東長寺・櫛田神社・川端通','祇園的寺町散步，再穿過川端通商店街。',[['櫛田神社 地圖',gm('櫛田神社 博多')]]],
+  ['hakata',1,'15:00','キャナルシティ博多','逛街、拉麵スタジアム都在這。',[['地圖',gm('キャナルシティ博多')]]],
+  ['hakata',1,'16:00','入住，補眠','04:00 起床的一天，晚上要喝，先睡一下。',[]],
+  ['hakata',1,'17:00','博多祇園鉄なべ（鐵鍋餃子）','食べログ 3.53、餃子百名店。17:00 開門就進；餃子只能第一次點、不能追加，一次點足。週日休、不能訂。',[['鉄なべ','https://www.tetsunabe.co.jp/'],['地圖',gm('博多祇園鉄なべ')]]],
+  ['hakata',1,'18:30','中洲屋台','那珂川邊一整排屋台，配啤酒。',[['地圖',gm('中洲 屋台')]]],
+  // D2
+  ['hakata',2,'07:00','起床（這趟唯一早起）','新幹線 16 分到小倉，轉在来線 13 分到門司港。',[['JR九州 時刻表','https://www.jrkyushu-timetable.jp/']]],
+  ['mojiko',2,'09:10','関門汽船 門司港 → 唐戶','船程約 5 分鐘，過海就是本州山口縣。',[['地圖',gm('関門汽船 門司港桟橋')]]],
+  ['karato',2,'上午','唐戶市場「馬関街」現握壽司','週日 7:00–15:00 的壽司攤，一盤一盤挑。本團不吃河豚。',[['地圖',gm('唐戸市場')]]],
+  ['karato',2,'上午','赤間神宮','市場對面的龍宮造神社。',[['地圖',gm('赤間神宮')]]],
+  ['mojiko',2,'中午','走關門隧道人道回九州・焼きカレー','海底隧道走 15 分鐘就回到九州。門司港的焼きカレー（伽哩本舗 3.56）。',[['地圖',gm('伽哩本舗 門司港')]]],
+  ['hakata',2,'15:20','回飯店休息','晚上要去賽馬，先休息。',[]],
+  ['saga',2,'16:40','JR 博多 → 鳥栖 ¥660，計程車 15 分','也可以搭 43 系統巴士，但回程末班 19:48 太早。',[['JR九州 時刻表','https://www.jrkyushu-timetable.jp/'],['佐賀競馬 交通','https://www.sagakeiba.net/']]],
+  ['saga',2,'17:30','佐賀競馬 夜間賽','入場 ¥100；5 人グループ席 ¥3,000，不接受預約、先到先得。晚餐在場內吃。2027 年度賽程約 2 月下旬公布，2026 年並非每個週日都有賽。',[['佐賀競馬','https://www.sagakeiba.net/']]],
+  ['saga',2,'21:00','回程：友の会バス → 新鳥栖 → 新幹線 13 分','最後一場確定 10 分後發車，¥300；非會員能否搭要先問 0942-83-4538。',[]],
+  // D3
+  ['hakata',3,'09:30','退房，大行李寄放飯店','4/21 回來再入住，只帶兩晚的東西去別府。',[]],
+  ['yufuin',3,'10:11','ゆふいんの森 3 號 博多 → 由布院（約 12:30）','BOX 一格 3–4 人：訂 BOX 3 席＋一般席 2 席。3/19 10:00 開賣，要用搶的。',[['ゆふいんの森','https://www.jrkyushu.co.jp/trains/yufuinnomori/']]],
+  ['yufuin',3,'12:40','午餐：由布まぶし 心 駅前店','本店離站 1.3 km，吃駅前店。現場候位。',[['由布まぶし 心','https://yufumabushi-shin.com/']]],
+  ['yufuin',3,'13:40','湯の坪街道 → 金鱗湖','邊走邊吃的老街，盡頭是早上會起霧的金鱗湖。',[['由布院温泉観光協会','https://www.yufuin.gr.jp/'],['金鱗湖 地圖',gm('金鱗湖')]]],
+  ['yufuin',3,'15:35','亀の井バス 36 → 16:27 別府','下山約 50 分。',[['亀の井バス','https://kamenoibus.com/']]],
+  ['beppu',3,'16:30','入住 西鉄リゾートイン別府','別府駅走 1 分。',[]],
+  ['beppu',3,'17:00','晚餐：東洋軒（雞天發源店）','第 2 個週二休（4/13），4/19 有開。',[['東洋軒','https://www.toyoken-beppu.co.jp/']]],
+  // D4
+  ['beppu',4,'09:30','巴士到鉄輪','MyべっぷFree 巴士一日券 ¥1,100。',[]],
+  ['beppu',4,'10:00','地獄蒸し工房 鉄輪：先抽號','10:00–19:00，第 3 個週三休。抽完號去逛地獄。',[['地獄蒸し工房','https://jigokumushi.com/pages/17/']]],
+  ['beppu',4,'10:15','海地獄・鬼石坊主地獄・かまど地獄','單處 ¥500；共通券 ¥2,400，官網線上 ¥2,200。',[['別府地獄めぐり','http://www.beppu-jigoku.com/'],['海地獄','https://www.umijigoku.co.jp/fee/']]],
+  ['beppu',4,'12:00','午餐：地獄蒸し','用溫泉蒸氣蒸海鮮、蔬菜。',[]],
+  ['beppu',4,'13:30','血の池地獄・龍巻地獄','紅色的池子和定時噴發的間歇泉。',[['別府地獄めぐり','http://www.beppu-jigoku.com/']]],
+  ['beppu',4,'15:45','甘味茶屋 下午點心','食べログ 3.58，10:00–21:00。4/1–10 請飯店代訂。',[['地圖',gm('甘味茶屋 別府')]]],
+  ['beppu',4,'17:00','竹瓦温泉 砂湯登記','砂湯 ¥1,500（最終受付 21:30），普通浴 ¥300。第 3 個週三休。',[['竹瓦温泉','https://www.takegawara-onsen.com/fee.html']]],
+  ['beppu',4,'19:30','晚餐：別府駅前','不訂位，配合砂湯叫號：ろばた仁，或站前居酒屋街自己挑。',[['地圖',gm('ろばた仁 別府駅前')]]],
+  // D5
+  ['beppu',5,'09:48','ソニック 18 号 別府 → 11:50 博多','2026 年沒有 10:00 這班。九州ネット早特 3：3/21 10:00 開賣。',[['JR九州 時刻表','https://www.jrkyushu-timetable.jp/']]],
+  ['hakata',5,'12:05','午餐：牧のうどん 博多バスターミナル店','軟到會吸湯的博多うどん，ごぼう天必點；桌上的壺是加湯用。',[['牧のうどん','https://www.makinoudon.jp/']]],
+  ['hakata',5,'13:00','回飯店再入住，領回大行李','',[]],
+  ['dazaifu',5,'13:40','西鉄 天神 → 太宰府','約 35 分，¥480（2026/4 漲價後）。',[['Google 路線','https://www.google.com/maps/dir/?api=1&origin='+encodeURIComponent('西鉄福岡(天神)駅')+'&destination='+encodeURIComponent('太宰府駅')+'&travelmode=transit']]],
+  ['dazaifu',5,'14:30','參道：梅ヶ枝餅 かさの家','現烤的才好吃。',[['かさの家','https://www.kasanoya.com/']]],
+  ['dazaifu',5,'15:00','太宰府天満宮','2027 年是 1125 年式年大祭，4 月有沒有特別活動出發前查。',[['太宰府天満宮','https://www.dazaifutenmangu.or.jp/']]],
+  ['tenjin',5,'16:45','天神購物','岩田屋、PARCO、Bic Camera、ドンキ天神本店。',[['岩田屋','https://www.iwataya-mitsukoshi.mistore.jp/iwataya.html'],['ドンキ 地圖',gm('ドン・キホーテ 天神本店')]]],
+  ['hakata',5,'18:30','晚餐：水炊き とり田 博多本店','食べログ 3.66。先喝湯、再吃雞、最後雑炊。2/18 起食べログ線上訂，有包廂。',[['食べログ',TB('fukuoka/A4001/A400102/40037654')]]],
+  ['hakata',5,'20:30','自由活動（選：那珂川夜間遊船）','繞中洲一圈約 30 分；下雨、風大停航。',[['地圖',gm('那珂川 クルーズ 福博であい橋')]]],
+  // D6
+  ['tenjin',6,'09:30','西鉄 天神 → 10:19 柳川','¥960。',[['Google 路線','https://www.google.com/maps/dir/?api=1&origin='+encodeURIComponent('西鉄福岡(天神)駅')+'&destination='+encodeURIComponent('西鉄柳川駅')+'&travelmode=transit']]],
+  ['yanagawa',6,'10:40','川下り → 沖端','船夫撐篙穿過水道，約 70 分。',[['川下り 船班','https://www.yanagawakk.co.jp/kawakudari/passenger.html']]],
+  ['yanagawa',6,'12:00','午餐：元祖本吉屋 沖端店 せいろ蒸し','11:00–15:00，週一休；4/1–10 請飯店代訂。客滿改若松屋（週三休、不能訂）。',[['元祖本吉屋','https://www.motoyoshiya.jp/access/']]],
+  ['yanagawa',6,'13:45','計程車 → 中山大藤','樹齡 300 年的紫藤。花期每年不同，4/22 不一定全開。',[['中山大藤まつり','https://www.crossroadfukuoka.jp/event/10473']]],
+  ['yanagawa',6,'15:30','回柳川駅 → 16:00／16:30 特急回天神','',[]],
+  ['tenjin',6,'晚餐','八兵衛 上人橋通り店（焼き鳥）','在警固。週四有沒有開要先打 092-732-5379；4/1–10 請飯店代訂。',[['八兵衛','https://hachibei.com/']]],
+  ['ohori',6,'夜','自由活動（選：福岡タワー夜景）','',[['福岡タワー','https://www.fukuokatower.co.jp/']]],
+  // D7
+  ['hakata',7,'09:45','退房，行李寄櫃檯','',[]],
+  ['ohori',7,'10:00','大濠公園 → 福岡城跡','地鐵祇園 → 大濠公園約 10 分。',[['大濠公園','https://www.ohorikouen.jp/']]],
+  ['tenjin',7,'12:00','午餐：割烹よし田 本店 鯛茶漬け','2025/6 搬回天神 1-14-14。午餐 11:30–14:30，可訂 092-721-0171。',[['割烹よし田','https://www.kappo-yoshida.jp/honten/']]],
+  ['hakata',7,'13:30','博多駅 マイング・博多阪急 B1：伴手禮','明太子、博多通りもん。要在日本吃的分開結帳。',[['マイング','https://www.ming.or.jp/']]],
+  ['hakata',7,'15:15','回飯店取行李 → 地鐵去機場','',[]],
+  ['airport',7,'16:15','國際線：先免稅確認，再託運','2026/11/1 起免稅新制：店裡先付含稅價，出境時海關確認後才退。',[['觀光廳 免稅制度','https://www.mlit.go.jp/kankocho/tax-free/page01_000001_00019.html']]],
+  ['airport',7,'19:00','IT721 福岡 → 20:25 桃園','',[['虎航 航班查詢','https://www.tigerairtw.com/']]],
+].map(([i,d,t,title,note,links])=>({i,d,t,title,note,links}));
+
+const TICKETS = [
+  ['ok','機票 虎航 IT240／IT721','每人 TWD 13,861，5 人同一筆訂單。'],
+  ['todo','飯店 博多 ドーミーインPREMIUM（4/17–19、4/21–23）','現在訂，選免費取消；分兩筆，備註 4/19–21 寄放大行李。備選：三井ガーデン福岡祇園、カンデオ福岡天神。'],
+  ['todo','飯店 別府 西鉄リゾートイン別府（4/19–21）','現在訂，選免費取消。備選：KITAHAMA BASE、おにやまホテル、杉乃井。'],
+  ['todo','とり田 4/21 18:30','2/18 起食べログ線上訂，備註「5名・同じテーブル希望」。'],
+  ['todo','ゆふいんの森 3 號 4/19','3/19 10:00 開賣，訂 2 號車 BOX 3 席＋一般 2 席。'],
+  ['todo','ソニック 18 号 早特 3 4/21','3/21 10:00 開賣，乘車 3 天前截止。'],
+  ['todo','本吉屋 4/22、甘味茶屋 4/20、八兵衛 4/22','4/1–4/10 請飯店代打電話。'],
+  ['day','佐賀競馬 グループ席','不接受預約，當天先到先得；2027/2 下旬看賽程，確認 4/18 有賽。'],
+  ['day','當天才能排的','竹瓦砂湯、地獄蒸し抽號、川下り、由布まぶし候位、中洲屋台。'],
+];
+const STAYS = [
+  ['4/17–4/19','博多 2 晚','ドーミーインPREMIUM博多・キャナルシティ前（首選，未訂）；地鐵祇園站旁。','hakata'],
+  ['4/19–4/21','別府 2 晚','西鉄リゾートイン別府（首選，未訂）；別府駅走 1 分。大行李留在博多飯店。','beppu'],
+  ['4/21–4/23','博多 2 晚','回同一間博多飯店，領回大行李。','hakata'],
+];
+// 團員：名字和分工是建議，直接改
+const CREW = [
+  {name:'Taco',  role:'團長',     color:'#e0603a', hat:'#2f2a25', job:'行程、飯店：現在先訂兩間飯店，選免費取消。'},
+  {name:'團員 B', role:'票券管家', color:'#2f86a6', hat:null,      job:'3/19 10:00 搶ゆふいんの森 3 號；3/21 10:00 買ソニック早特 3。'},
+  {name:'團員 C', role:'訂位隊長', color:'#4a9b5a', hat:null,      job:'2/18 起訂とり田；4/1–10 請飯店代打本吉屋、甘味茶屋、八兵衛。'},
+  {name:'團員 D', role:'賽馬顧問', color:'#e39a2f', hat:'#f4efe6', job:'2027/2 下旬看佐賀競馬賽程；4/18 提早到搶グループ席。'},
+  {name:'團員 E', role:'購物・退稅', color:'#8b62b0', hat:null,     job:'整理必買清單；記得新制要在機場託運前先做免稅確認。'},
+];
+
+/* =====================================================================
+   以下是 3D 與介面程式
+   ===================================================================== */
+const $ = s => document.querySelector(s);
+const ISL = Object.fromEntries(ISLANDS.map(I=>[I.id,I]));
+const Q = new URLSearchParams(location.search);
+const LOW = Q.get('q') === 'low';
+const COARSE = matchMedia('(pointer:coarse)').matches;
+const TOP = 1.0;
+let seed = 20270417;
+const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+const R = (a,b) => a + (b-a)*rnd();
+const pick = arr => arr[Math.floor(rnd()*arr.length)];
+
+/* ---------- renderer / scene / camera ---------- */
+const app = $('#app');
+const renderer = new THREE.WebGLRenderer({antialias:true, powerPreference:'high-performance'});
+renderer.setPixelRatio(Math.min(devicePixelRatio, COARSE ? 1.5 : 2));
+renderer.shadowMap.enabled = !LOW;
+renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+app.appendChild(renderer.domElement);
+const labelR = new CSS2DRenderer();
+labelR.domElement.id = 'labels';
+app.appendChild(labelR.domElement);
+const labelsEl = labelR.domElement;
+
+const scene = new THREE.Scene();
+scene.background = new THREE.Color('#cfe6ea');
+scene.fog = new THREE.Fog('#cfe6ea', 120, 340);
+const camera = new THREE.PerspectiveCamera(32, 1, 0.5, 1200);
+const hemi = new THREE.HemisphereLight('#ffffff', '#8aa07a', 1.05);
+scene.add(hemi);
+const sun = new THREE.DirectionalLight('#fff3e0', 1.6);
+sun.castShadow = !LOW;
+sun.shadow.mapSize.set(COARSE ? 1024 : 2048, COARSE ? 1024 : 2048);
+Object.assign(sun.shadow.camera, {left:-48, right:48, top:48, bottom:-48, near:1, far:220});
+sun.shadow.bias = -0.0008;
+sun.target.position.set(8, 0, 4);
+scene.add(sun, sun.target);
+
+/* ---------- geometry kit ---------- */
+function prep(geo, norm = true){
+  geo = geo.index ? geo.toNonIndexed() : geo;
+  if (geo.attributes.uv) geo.deleteAttribute('uv');
+  geo.computeBoundingBox();
+  const b = geo.boundingBox, s = new THREE.Vector3(); b.getSize(s);
+  geo.translate(-(b.min.x+b.max.x)/2, -b.min.y, -(b.min.z+b.max.z)/2);
+  if (norm) geo.scale(1/s.x, 1/s.y, 1/s.z);
+  geo.computeVertexNormals();
+  return geo;
+}
+const roofShape = new THREE.Shape([new THREE.Vector2(-.5,0), new THREE.Vector2(.5,0), new THREE.Vector2(0,1)]);
+const GEO = {
+  box:  prep(new THREE.BoxGeometry(1,1,1)),
+  cyl:  prep(new THREE.CylinderGeometry(.5,.5,1,8)),
+  disc: prep(new THREE.CylinderGeometry(.5,.5,1,18)),
+  cone: prep(new THREE.ConeGeometry(.5,1,6)),
+  pyr:  prep(new THREE.ConeGeometry(.5,1,4).rotateY(Math.PI/4)),
+  ball: prep(new THREE.IcosahedronGeometry(.5,0)),
+  roof: prep(new THREE.ExtrudeGeometry(roofShape, {depth:1, bevelEnabled:false})),
+  hex:  prep(new THREE.CylinderGeometry(1,1,1,6), false),
+};
+const MAT = new THREE.MeshLambertMaterial({color:'#ffffff'});
+const GLOW = {
+  lamp:    {geo:'ball', off:'#8f7c64', on:'#ffd27a'},
+  lantern: {geo:'ball', off:'#c0503f', on:'#ff7050'},
+  win:     {geo:'box',  off:'#a9bcc6', on:'#ffd98c'},
+};
+for (const g of Object.values(GLOW)) g.mat = new THREE.MeshBasicMaterial({color:g.off});
+
+const INST = {};
+const _m = new THREE.Matrix4(), _q = new THREE.Quaternion(), _e = new THREE.Euler(), _p = new THREE.Vector3(), _s = new THREE.Vector3();
+function put(kind, x, y, z, sx, sy, sz, color, ry = 0, rx = 0, rz = 0){
+  _e.set(rx, ry, rz); _q.setFromEuler(_e);
+  _m.compose(_p.set(x,y,z), _q, _s.set(sx,sy,sz));
+  (INST[kind] ??= []).push([_m.clone(), new THREE.Color(color)]);
+}
+function buildInstances(){
+  for (const [k, arr] of Object.entries(INST)){
+    const glow = GLOW[k];
+    const im = new THREE.InstancedMesh(GEO[glow ? glow.geo : k], glow ? glow.mat : MAT, arr.length);
+    arr.forEach(([m,c],i)=>{ im.setMatrixAt(i,m); im.setColorAt(i,c); });
+    im.castShadow = !glow; im.receiveShadow = !glow;
+    scene.add(im);
+  }
+}
+
+/* ---------- small builders (world coords) ---------- */
+const TRUNK = '#8b6a4c';
+const tree  = (x,z,s=1,col='#6f9f5a',y=TOP)=>{ put('cyl',x,y,z,.16*s,.45*s,.16*s,TRUNK); put('cone',x,y+.32*s,z,1.0*s,1.45*s,1.0*s,col); };
+const rtree = (x,z,s=1,col='#86b06a',y=TOP)=>{ put('cyl',x,y,z,.14*s,.4*s,.14*s,TRUNK); put('ball',x,y+.3*s,z,1.0*s,.9*s,1.0*s,col); };
+const house = (x,z,w,d,h,wall,roof,ry=0,y=TOP)=>{ put('box',x,y,z,w,h,d,wall,ry); put('roof',x,y+h,z,w*1.14,h*.6,d*1.08,roof,ry); };
+const flat  = (x,z,w,d,col,ry=0,y=TOP)=>put('box',x,y-.05,z,w,.09,d,col,ry);
+const disc  = (x,z,r,col,y=TOP)=>put('disc',x,y-.05,z,r*2,.09,r*2,col);
+const torii = (x,z,s=1,ry=0)=>{
+  const c=Math.cos(ry), sn=Math.sin(ry);
+  for (const o of [-.4,.4]) put('cyl',x+o*s*c,TOP,z-o*s*sn,.1*s,.85*s,.1*s,'#d2452f');
+  put('box',x,TOP+.82*s,z,1.15*s,.1*s,.13*s,'#2f2b28',ry);
+  put('box',x,TOP+.66*s,z,.95*s,.07*s,.1*s,'#d2452f',ry);
+};
+const WALLS = ['#f1e8da','#efe1cc','#e8dccb','#f4ede2','#e6d5c0'];
+const ROOFS = ['#d9734e','#c9604a','#5b6d78','#7a5b4a','#e08a5a','#4f5b66'];
+const GREENS = ['#6f9f5a','#7fae63','#5f9455','#8bb56c'];
+
+/* ---------- islands ---------- */
+const pickables = [];
+const sandMat = new THREE.MeshLambertMaterial({color:'#eadcc1'});
+const rimMat  = new THREE.MeshLambertMaterial({color:'#e3a07c'});
+const haloMat = new THREE.MeshLambertMaterial({color:'#a3d6d1'});
+function islandBase(I, interactive = true){
+  const g = new THREE.Group(); g.position.set(I.x, 0, I.z);
+  const halo = new THREE.Mesh(GEO.hex, haloMat); halo.scale.set(I.r+2.3, .04, I.r+2.3); halo.position.y = .01; halo.receiveShadow = true;
+  const sand = new THREE.Mesh(GEO.hex, sandMat); sand.scale.set(I.r+.6, .95, I.r+.6); sand.position.y = -.2;
+  const rim  = new THREE.Mesh(GEO.hex, rimMat);  rim.scale.set(I.r+.66, .12, I.r+.66); rim.position.y = .5;
+  const grass = new THREE.Mesh(GEO.hex, new THREE.MeshLambertMaterial({color:I.c})); grass.scale.set(I.r, .35, I.r); grass.position.y = TOP-.35;
+  for (const m of [sand, rim, grass]){ m.castShadow = true; m.receiveShadow = true; }
+  g.add(halo, sand, rim, grass);
+  scene.add(g);
+  if (interactive){ for (const m of [sand, grass]){ m.userData.island = I.id; pickables.push(m); } }
+}
+
+// 每座島的佔位（避免亂撒的房子樹木壓到地標）
+function makeLayout(I){
+  const occ = [];
+  const X = lx=>I.x+lx, Z = lz=>I.z+lz;
+  const mark = (lx,lz,rad)=>occ.push([lx,lz,rad]);
+  const free = (lx,lz,rad)=>Math.hypot(lx,lz) < I.r*.8 - rad*.4 && occ.every(([a,b,r])=>Math.hypot(lx-a,lz-b) > r+rad);
+  const scatter = (n, rad, fn, tries = 60)=>{
+    for (let k=0;k<n;k++){ for (let t=0;t<tries;t++){ const ang=R(0,Math.PI*2), d=Math.sqrt(rnd())*I.r*.82, lx=Math.cos(ang)*d, lz=Math.sin(ang)*d; if (free(lx,lz,rad)){ mark(lx,lz,rad); fn(X(lx),Z(lz),lx,lz); break; } } }
+  };
+  const freePts = ()=>{ const pts=[]; for (let lx=-I.r;lx<=I.r;lx+=.5) for (let lz=-I.r;lz<=I.r;lz+=.5) if (free(lx,lz,.15)) pts.push(new THREE.Vector3(X(lx),TOP,Z(lz))); return pts; };
+  return {X,Z,mark,free,scatter,freePts,occ};
+}
+
+const ANIM = [];      // 每幀更新的函式
+const steamSrc = [];  // 蒸氣出口
+const walkSpots = {}; // 每座島可以走的點
+const markers = [];   // 🛏 標記
+
+const BUILD = {
+  hakata(I,L){
+    const {X,Z,mark,scatter}=L, a=.35, s=Math.sin(a), c=Math.cos(a);
+    const cl=(t,o)=>[1.2+t*s+o*c, .2+t*c-o*s];
+    put('box',X(1.2),TOP-.06,Z(.2),1.0,.1,8.8,'#6fb4c6',a);           // 那珂川
+    for (let t=-4.4;t<=4.4;t+=.7){ const [px,pz]=cl(t,0); mark(px,pz,.7); }
+    for (const t of [-2.7, 2.2]){ const [px,pz]=cl(t,0); put('box',X(px),TOP-.02,Z(pz),1.7,.16,.55,'#dccbab',a); }
+    for (const t of [-1.6,-.8,0,.8]){                                   // 中洲屋台
+      const [px,pz]=cl(t,-.95); mark(px,pz,.45);
+      put('box',X(px),TOP,Z(pz),.58,.4,.42,'#c9a27b',a);
+      put('box',X(px),TOP+.4,Z(pz),.05,.22,.05,'#5d4636',a);
+      put('roof',X(px),TOP+.6,Z(pz),.74,.24,.56,pick(['#e0553e','#e88a3a']),a);
+      put('lantern',X(px-.3*c),TOP+.48,Z(pz+.3*s),.14,.19,.14,'#fff');
+    }
+    // キャナルシティ
+    put('box',X(-1.7),TOP,Z(-2.5),1.8,1.1,1.1,'#e58b6d',.1); put('box',X(-.6),TOP,Z(-2.6),.9,1.7,.9,'#f1c56b',.1);
+    put('cyl',X(-1.1),TOP,Z(-1.75),1.3,.7,.9,'#7fb7c9'); put('win',X(-1.7),TOP+.35,Z(-1.94),1.4,.4,.02,'#fff',.1);
+    mark(-1.3,-2.3,1.3);
+    // 飯店（祇園）
+    put('box',X(-2.9),TOP,Z(-.2),.95,2.4,.95,'#efe6d6'); put('box',X(-2.9),TOP+2.4,Z(-.2),1.05,.12,1.05,'#5a5550');
+    for (let k=0;k<4;k++) put('win',X(-2.9),TOP+.4+k*.5,Z(.28),.7,.22,.02,'#fff');
+    mark(-2.9,-.2,.8); markers.push(['hakata',X(-2.9),TOP+3.2,Z(-.2)]);
+    // 櫛田神社
+    house(X(-2.0),Z(2.0),1.2,.9,.6,'#c4483a','#3c3533'); torii(X(-2.0),Z(2.9),.8); mark(-2.0,2.4,.9);
+    // 博多駅
+    put('box',X(3.0),TOP,Z(1.5),2.0,.9,1.0,'#ece7de',.1); put('box',X(3.0),TOP+.9,Z(1.5),2.1,.12,1.1,'#7da6b8',.1);
+    put('win',X(3.0),TOP+.3,Z(2.01),1.6,.35,.02,'#fff',.1); mark(3.0,1.5,1.1);
+    scatter(9,.55,(x,z)=>house(x,z,R(.6,.9),R(.6,.9),R(.45,.9),pick(WALLS),pick(ROOFS),R(0,Math.PI)));
+    scatter(8,.35,(x,z)=>rtree(x,z,R(.7,1),pick(GREENS)));
+  },
+  tenjin(I,L){
+    const {X,Z,mark,scatter}=L;
+    const spots=[[-1.5,-1.3],[0,-1.7],[1.5,-1.2],[-1.7,.3],[.1,0],[1.6,.4],[-.8,1.6],[.9,1.8]];
+    spots.forEach(([lx,lz],k)=>{
+      const h=k===4?4.4:R(1.6,3.6), w=R(.8,1.05), col=pick(['#ece7df','#dcd6cc','#cfd8dc','#e7dfd2']);
+      put('box',X(lx),TOP,Z(lz),w,h,w,col);
+      for (let y=.4;y<h-.3;y+=.55) put('win',X(lx),TOP+y,Z(lz+w/2+.01),w*.72,.22,.02,'#fff');
+      for (let y=.4;y<h-.3;y+=.55) put('win',X(lx+w/2+.01),TOP+y,Z(lz),.02,.22,w*.72,'#fff');
+      put('lamp',X(lx),TOP+h+.05,Z(lz),.12,.12,.12,'#ffb0a0');
+      mark(lx,lz,w*.75);
+    });
+    scatter(6,.3,(x,z)=>rtree(x,z,R(.6,.85),pick(GREENS)));
+  },
+  ohori(I,L){
+    const {X,Z,mark,scatter}=L;
+    disc(X(-.3),Z(.3),2.1,'#7cbccb'); mark(-.3,.3,2.2);
+    put('ball',X(-.6),TOP-.25,Z(0),.9,.6,.7,'#86b06a'); put('ball',X(.2),TOP-.25,Z(.7),.6,.5,.5,'#86b06a');
+    put('box',X(-.3),TOP-.02,Z(.35),.22,.08,1.9,'#e9dcc6',.3);
+    for (let k=0;k<3;k++) put('box',X(-2.6+k*.05),TOP+k*.22,Z(-1.6),1.2-k*.15,.22,.6,'#9c9890',.5);  // 福岡城跡石垣
+    mark(-2.6,-1.6,.8);
+    put('box',X(2.4),TOP,Z(-1.6),.55,6.4,.4,'#bcd3df'); put('box',X(2.4),TOP+6.4,Z(-1.6),.2,.9,.2,'#d9dde0');  // 福岡タワー
+    put('lamp',X(2.4),TOP+7.35,Z(-1.6),.16,.16,.16,'#ff8a80');
+    for (let y=1;y<6.2;y+=.8) put('win',X(2.4),TOP+y,Z(-1.39),.4,.3,.02,'#fff');
+    mark(2.4,-1.6,.6);
+    scatter(16,.3,(x,z)=>rtree(x,z,R(.6,.95),pick(GREENS)));
+  },
+  airport(I,L){
+    const {X,Z,mark,scatter}=L, a=-.2;
+    put('box',X(0),TOP-.04,Z(-.6),6.0,.09,.95,'#5b616b',a);
+    for (let k=-2.4;k<=2.4;k+=.8) put('box',X(k*Math.cos(a)),TOP+.06,Z(-.6-k*Math.sin(a)),.4,.02,.07,'#f4f1ea',a);
+    for (let k=-3;k<=3;k+=.5) mark(k*Math.cos(a),-.6-k*Math.sin(a),.6);
+    put('box',X(.3),TOP,Z(1.9),2.8,.7,.9,'#efebe4',a); put('win',X(.4),TOP+.25,Z(2.37),2.3,.3,.02,'#fff',a); mark(.3,1.9,1.4);
+    put('cyl',X(-2.2),TOP,Z(1.5),.3,1.6,.3,'#e6e2da'); put('box',X(-2.2),TOP+1.6,Z(1.5),.6,.35,.6,'#9cc3d3'); mark(-2.2,1.5,.4);
+    scatter(5,.3,(x,z)=>rtree(x,z,R(.6,.85),pick(GREENS)));
+    // 飛機：停一下就起飛
+    const plane = new THREE.Group();
+    const pm = (geo,col,sx,sy,sz,x,y,z)=>{ const m=new THREE.Mesh(GEO[geo], new THREE.MeshLambertMaterial({color:col})); m.scale.set(sx,sy,sz); m.position.set(x,y,z); m.castShadow=true; plane.add(m); return m; };
+    pm('box','#f6f3ee',1.9,.32,.34,0,0,0); pm('box','#f6f3ee',.55,.06,2.0,.1,.08,0); pm('box','#f08a2a',.32,.5,.06,-.85,.25,0); pm('box','#f08a2a',.22,.05,.75,-.85,.12,0);
+    scene.add(plane);
+    const dir = new THREE.Vector3(Math.cos(a),0,-Math.sin(a));
+    const start = new THREE.Vector3(X(-2.6*Math.cos(a)), TOP+.05, Z(-.6+2.6*Math.sin(a)));
+    plane.rotation.y = a;
+    let ph = 0;
+    ANIM.push(dt=>{
+      ph = (ph + dt) % 16;
+      if (ph < 6){ plane.position.copy(start); plane.visible = true; }
+      else { const t = ph-6, d = 0.35*t*t*1.2; plane.position.copy(start).addScaledVector(dir, d); plane.position.y = TOP+.05 + Math.max(0,d-4)*.35; plane.rotation.z = Math.min(.25, Math.max(0,d-4)*.05); plane.visible = t < 9.5; }
+    });
+  },
+  mojiko(I,L){
+    const {X,Z,mark,scatter}=L;
+    house(X(-.6),Z(.8),2.0,1.0,.9,'#efdcc2','#4c6b6a'); mark(-.6,.8,1.1);                 // 門司港駅
+    house(X(1.4),Z(1.3),1.2,.8,.8,'#b5563d','#4a3b36',.2); mark(1.4,1.3,.8);             // 紅磚倉庫
+    put('box',X(-1.8),TOP,Z(-1.2),.8,3.0,.8,'#dcd8cf'); put('lamp',X(-1.8),TOP+3.05,Z(-1.2),.15,.15,.15,'#fff');
+    for (let y=.5;y<2.8;y+=.5) put('win',X(-1.8),TOP+y,Z(-.79),.6,.2,.02,'#fff'); mark(-1.8,-1.2,.7);
+    put('cyl',X(2.5),TOP,Z(-.4),.35,1.4,.35,'#f4f1ea'); put('cyl',X(2.5),TOP+1.4,Z(-.4),.42,.3,.42,'#d9473a'); put('lamp',X(2.5),TOP+1.75,Z(-.4),.2,.2,.2,'#fff'); mark(2.5,-.4,.4);
+    scatter(5,.5,(x,z)=>house(x,z,R(.6,.85),R(.6,.8),R(.45,.7),pick(WALLS),pick(['#4c6b6a','#b5563d','#5b6d78']),R(0,3)));
+    scatter(5,.3,(x,z)=>rtree(x,z,R(.6,.85),pick(GREENS)));
+  },
+  karato(I,L){
+    const {X,Z,mark,scatter}=L;
+    house(X(-.3),Z(.4),2.2,.9,.6,'#ebe3d3','#4d7fa6',.4); mark(-.3,.4,1.1);              // 唐戸市場
+    house(X(.6),Z(-1.0),.9,.7,.6,'#f4efe7','#d24b35',.4); put('box',X(1.0),TOP,Z(-.4),.5,.75,.3,'#d24b35',.4); mark(.7,-.8,.6); // 赤間神宮
+    scatter(4,.3,(x,z)=>rtree(x,z,R(.55,.8),pick(GREENS)));
+  },
+  saga(I,L){
+    const {X,Z,mark,scatter}=L, cz=-.4;
+    put('disc',X(0),TOP-.05,Z(cz),5.8,.09,3.6,'#c79a6b'); put('disc',X(0),TOP-.03,Z(cz),4.2,.09,2.1,'#86b86c');
+    mark(0,cz,2.5); mark(-1.6,cz,1.6); mark(1.6,cz,1.6);
+    put('box',X(0),TOP,Z(2.25),3.6,.8,.75,'#ebe6dd'); put('box',X(0),TOP+.95,Z(2.4),3.8,.1,1.1,'#5a6570',0,-.25); mark(0,2.3,1.2);
+    put('win',X(0),TOP+.35,Z(1.86),3.0,.25,.02,'#fff');
+    for (const [lx,lz] of [[-2.8,-2.2],[2.8,-2.2],[-2.9,1.6],[2.9,1.6]]){ put('cyl',X(lx),TOP,Z(lz),.13,3.0,.13,'#9aa0a6'); put('lamp',X(lx),TOP+3.0,Z(lz),.5,.22,.5,'#fff'); mark(lx,lz,.3); }
+    scatter(4,.3,(x,z)=>rtree(x,z,R(.55,.8),pick(GREENS)));
+    // 跑的馬
+    const horses=[];
+    const jock=['#e0603a','#2f86a6','#f2c94c','#8b62b0'];
+    for (let k=0;k<4;k++){
+      const h=new THREE.Group(), body=pick(['#6b4a35','#3d2c22','#8a5a3b']);
+      const add=(sx,sy,sz,x,y,z,col)=>{ const m=new THREE.Mesh(GEO.box,new THREE.MeshLambertMaterial({color:col})); m.scale.set(sx,sy,sz); m.position.set(x,y,z); m.castShadow=true; h.add(m); };
+      add(.55,.22,.18,0,.28,0,body); add(.14,.26,.12,.28,.38,0,body); add(.2,.1,.1,.36,.58,0,body);
+      for (const [lx,lz] of [[-.2,-.06],[-.2,.06],[.2,-.06],[.2,.06]]) add(.05,.28,.05,lx,0,lz,body);
+      add(.14,.2,.16,0,.5,0,jock[k]);
+      h.scale.setScalar(1.15); scene.add(h); horses.push({g:h, sp:.55+k*.06, ph:k*.5, lane:k*.12});
+    }
+    ANIM.push((dt,t)=>{ for (const o of horses){ const th=t*o.sp+o.ph, rx=2.5+o.lane, rz=1.38+o.lane*.6; o.g.position.set(X(Math.cos(th)*rx), TOP+.02+Math.abs(Math.sin(t*12+o.ph))*.05, Z(cz+Math.sin(th)*rz)); o.g.rotation.y=Math.atan2(-Math.cos(th)*rz, -Math.sin(th)*rx)+Math.PI; } });
+  },
+  yufuin(I,L){
+    const {X,Z,mark,scatter}=L;
+    put('cone',X(-1.2),TOP-.2,Z(-1.6),3.6,3.6,3.2,'#7f9b62'); put('cone',X(-.1),TOP-.2,Z(-2.0),2.4,2.6,2.2,'#8ba86c');  // 由布岳
+    put('cone',X(-1.2),TOP+2.45,Z(-1.6),.9,.95,.8,'#a69878'); mark(-1.0,-1.7,1.9);
+    disc(X(1.9),Z(.4),.9,'#8cc8c8'); mark(1.9,.4,1.0); steamSrc.push([X(1.9),TOP,Z(.4),.5]);   // 金鱗湖晨霧
+    for (let k=0;k<4;k++){ house(X(-2.5+k*.85),Z(1.1),.65,.6,.5,pick(WALLS),'#4a4440'); mark(-2.5+k*.85,1.1,.45); }      // 湯の坪
+    put('box',X(0),TOP-.02,Z(2.55),6.6,.08,.42,'#6b5f55'); mark(0,2.55,.5); for (let k=-3;k<=3;k+=.8) mark(k,2.55,.45);
+    house(X(2.6),Z(1.6),.9,.6,.5,'#6a4b37','#2f2b28'); mark(2.6,1.6,.6);
+    scatter(8,.3,(x,z)=>tree(x,z,R(.6,.9),pick(GREENS)));
+    // ゆふいんの森
+    const train=new THREE.Group();
+    for (let k=0;k<3;k++){ const car=new THREE.Mesh(GEO.box,new THREE.MeshLambertMaterial({color:'#2f6b45'})); car.scale.set(1.05,.42,.36); car.position.x=k*1.12; car.castShadow=true; train.add(car);
+      const st=new THREE.Mesh(GEO.box,new THREE.MeshLambertMaterial({color:'#c9a24a'})); st.scale.set(1.06,.06,.37); st.position.set(k*1.12,.12,0); train.add(st); }
+    train.position.set(0,TOP+.04,Z(2.55)); scene.add(train);
+    let p=0; ANIM.push(dt=>{ p=(p+dt*.18)%2; const u=p<1?p:2-p, e=u*u*(3-2*u); train.position.x=X(-3.0+e*3.8); });
+  },
+  beppu(I,L){
+    const {X,Z,mark,scatter}=L;
+    const pools=[[-1.7,-1.0,.85,'#3fb3d9'],[1.2,-1.9,.75,'#b4442e'],[-.2,-2.7,.5,'#8e8b86'],[-2.9,.5,.5,'#d9a25a']];
+    for (const [lx,lz,r,col] of pools){ disc(X(lx),Z(lz),r+.18,'#d8cdb8'); disc(X(lx),Z(lz),r,col,TOP+.03); mark(lx,lz,r+.25); steamSrc.push([X(lx),TOP,Z(lz),r*.6]); }
+    put('box',X(2.6),TOP,Z(.2),.45,3.4,.45,'#c9cfd2'); put('box',X(2.6),TOP+2.6,Z(.2),.5,.35,.5,'#d24b3a'); put('lamp',X(2.6),TOP+3.45,Z(.2),.15,.15,.15,'#ff8a80'); mark(2.6,.2,.5);  // 別府タワー
+    house(X(0),Z(1.5),1.5,1.0,.6,'#f0e6d4','#3e3a39'); mark(0,1.5,.9);   // 竹瓦温泉
+    put('box',X(2.1),TOP,Z(2.3),.9,1.8,.8,'#e6dccb'); for (let y=.35;y<1.7;y+=.45) put('win',X(2.1),TOP+y,Z(2.71),.7,.2,.02,'#fff'); mark(2.1,2.3,.7);
+    markers.push(['beppu',X(2.1),TOP+2.6,Z(2.3)]);
+    scatter(12,.5,(x,z,lx,lz)=>{ house(x,z,R(.55,.8),R(.55,.75),R(.4,.65),pick(WALLS),pick(ROOFS),R(0,3)); if (rnd()<.35) steamSrc.push([x+R(-.2,.2),TOP+.6,z,.15]); });
+    scatter(4,.3,(x,z)=>rtree(x,z,R(.55,.8),pick(GREENS)));
+  },
+  dazaifu(I,L){
+    const {X,Z,mark,scatter}=L;
+    flat(X(0),Z(1.2),.85,4.4,'#e4dccd'); for (let k=-1;k<=3.4;k+=.6) mark(0,k,.6);
+    torii(X(0),Z(2.7),1.2); mark(0,2.7,.8);
+    put('box',X(0),TOP,Z(-1.6),2.0,.8,1.1,'#c9442f'); put('roof',X(0),TOP+.8,Z(-1.6),2.6,.7,1.6,'#2f2b28'); mark(0,-1.6,1.3);
+    for (const sd of [-1,1]) for (let k=0;k<3;k++){ house(X(sd*.95),Z(.6+k*.85),.6,.65,.45,pick(WALLS),'#3e3a39'); mark(sd*.95,.6+k*.85,.4); }
+    disc(X(-2.1),Z(-.1),.6,'#7cbccb'); put('box',X(-2.1),TOP+.02,Z(-.1),1.3,.1,.22,'#d2452f',.5); mark(-2.1,-.1,.7);
+    scatter(10,.3,(x,z)=>rtree(x,z,R(.55,.85),pick(['#f3a6b8','#f6dfe4','#ef8fa6','#7fae63'])));
+  },
+  yanagawa(I,L){
+    const {X,Z,mark,scatter}=L;
+    flat(X(0),Z(.4),8.0,.75,'#6aaec2'); flat(X(-.7),Z(0),.75,7.6,'#6aaec2');
+    for (let k=-3.6;k<=3.6;k+=.6){ mark(k,.4,.55); mark(-.7,k,.55); }
+    // 中山大藤
+    for (const [lx,lz] of [[1.4,-2.3],[2.9,-2.3],[1.4,-1.2],[2.9,-1.2]]) put('cyl',X(lx),TOP,Z(lz),.1,.95,.1,'#7a5b4a');
+    put('box',X(2.15),TOP+.95,Z(-1.75),1.8,.08,1.4,'#7a5b4a');
+    for (let k=0;k<14;k++) put('ball',X(R(1.4,2.9)),TOP+R(.45,.8),Z(R(-2.3,-1.2)),.3,R(.35,.5),.3,pick(['#a283c9','#b99ad9','#8e6fbf']));
+    mark(2.15,-1.75,1.1);
+    house(X(-2.6),Z(-1.6),1.0,.8,.55,'#efe1cc','#3e3a39'); mark(-2.6,-1.6,.7); steamSrc.push([X(-2.4),TOP+.7,Z(-1.6),.12]);  // 鰻魚蒸籠
+    scatter(10,.3,(x,z)=>put('cone',x,TOP,z,.55,R(1.1,1.5),.55,pick(['#b6d27d','#a9c97a','#9fc06d'])));   // 柳樹
+    scatter(5,.45,(x,z)=>house(x,z,R(.55,.75),R(.55,.75),R(.4,.6),pick(WALLS),pick(ROOFS),R(0,3)));
+    // 川下り小船
+    const boats=[];
+    for (let k=0;k<3;k++){
+      const b=new THREE.Group();
+      const hull=new THREE.Mesh(GEO.box,new THREE.MeshLambertMaterial({color:'#8a6a48'})); hull.scale.set(1.0,.12,.3); b.add(hull);
+      const man=new THREE.Mesh(GEO.cone,new THREE.MeshLambertMaterial({color:'#e9d8a6'})); man.scale.set(.3,.18,.3); man.position.set(-.35,.42,0); b.add(man);
+      const bd=new THREE.Mesh(GEO.box,new THREE.MeshLambertMaterial({color:'#3e4a5a'})); bd.scale.set(.12,.3,.12); bd.position.set(-.35,.12,0); b.add(bd);
+      b.traverse(m=>m.castShadow=true); scene.add(b); boats.push({b, axis:k%2, ph:k*1.3});
+    }
+    ANIM.push((dt,t)=>{ for (const o of boats){ const u=((t*.06+o.ph)%1)*2, v=u<1?u:2-u, pos=-3.4+v*6.8;
+      if (o.axis===0){ o.b.position.set(X(pos),TOP+.02,Z(.4)); o.b.rotation.y = u<1?0:Math.PI; }
+      else { o.b.position.set(X(-.7),TOP+.02,Z(pos)); o.b.rotation.y = u<1?-Math.PI/2:Math.PI/2; } } });
+  },
+};
+
+for (const I of ISLANDS){
+  islandBase(I);
+  const L = makeLayout(I);
+  BUILD[I.id](I, L);
+  walkSpots[I.id] = L.freePts();
+}
+
+/* ---------- 關門橋＋渡輪 ---------- */
+{
+  const A = new THREE.Vector3(ISL.mojiko.x+2.2, 0, ISL.mojiko.z-2.0), B = new THREE.Vector3(ISL.karato.x-1.3, 0, ISL.karato.z+.2);
+  for (const P of [A,B]) put('box',P.x,0,P.z,.3,3.4,.3,'#efe9de');
+  const d = B.clone().sub(A), len = d.length(), mid = A.clone().add(B).multiplyScalar(.5);
+  put('box',mid.x,1.55,mid.z,.5,.14,len,'#efe9de',Math.atan2(d.x,d.z));
+  const cable = new THREE.CatmullRomCurve3([A.clone().setY(3.4), mid.clone().setY(1.9), B.clone().setY(3.4)]);
+  const tube = new THREE.Mesh(new THREE.TubeGeometry(cable,20,.05,5), new THREE.MeshLambertMaterial({color:'#efe9de'})); scene.add(tube);
+  const F0 = new THREE.Vector3(ISL.mojiko.x+3.6, .05, ISL.mojiko.z+.2), F1 = new THREE.Vector3(ISL.karato.x-2.5, .05, ISL.karato.z+1.2);
+  const ferry = new THREE.Group();
+  const hull = new THREE.Mesh(GEO.box,new THREE.MeshLambertMaterial({color:'#f5f2ec'})); hull.scale.set(1.2,.25,.5); ferry.add(hull);
+  const cab = new THREE.Mesh(GEO.box,new THREE.MeshLambertMaterial({color:'#3f6f9a'})); cab.scale.set(.55,.28,.4); cab.position.y=.25; ferry.add(cab);
+  ferry.traverse(m=>m.castShadow=true); scene.add(ferry);
+  const fd = F1.clone().sub(F0); const fang = Math.atan2(-fd.z, fd.x);
+  let fp = 0; ANIM.push(dt=>{ fp=(fp+dt*.09)%2; const u=fp<1?fp:2-fp, e=u*u*(3-2*u); ferry.position.lerpVectors(F0,F1,e); ferry.position.y=.05+Math.sin(fp*20)*.02; ferry.rotation.y = fang; });
+}
+
+/* ---------- 海、遠景、雲 ---------- */
+const seaMat = new THREE.MeshLambertMaterial({color:'#7cbcc6'});
+const sea = new THREE.Mesh(new THREE.CircleGeometry(400,48), seaMat); sea.rotation.x = -Math.PI/2; sea.receiveShadow = true; scene.add(sea);
+// 本州的山（東北方）與遠方小島
+for (let k=0;k<9;k++){ const x=24+k*7+R(-2,2), z=-36-R(0,6); put('ball',x,-2.2,z,R(10,15),R(5,8),R(7,10),pick(['#9db88a','#a7c08f','#93b081'])); }
+for (let k=0;k<7;k++){ const x=-40+k*6+R(-2,2), z=46+R(0,6); put('ball',x,-2.4,z,R(9,13),R(4,7),R(6,9),pick(['#9db88a','#a7c08f'])); }
+const far = [[-30,-12,2.2],[-26,22,1.8],[44,22,2.4],[12,-30,1.6],[-36,10,1.4],[40,-24,1.8]];
+for (const [x,z,r] of far){ islandBase({x,z,r,c:'#b4cc96'}, false); for (let k=0;k<Math.round(r*3);k++) rtree(x+R(-r*.6,r*.6), z+R(-r*.6,r*.6), R(.5,.8), pick(GREENS)); }
+// 風車
+const mills=[];
+for (const [x,z] of [[-30.8,-12.6],[-29.2,-11.2]]){
+  put('cyl',x,TOP,z,.15,2.4,.15,'#f4f1ea');
+  const bl=new THREE.Group(); for (let k=0;k<3;k++){ const m=new THREE.Mesh(GEO.box,new THREE.MeshLambertMaterial({color:'#f4f1ea'})); m.scale.set(.08,1.1,.05); m.geometry=GEO.box; m.position.y=0; const p=new THREE.Group(); m.position.y=.55; p.add(m); p.rotation.z=k*Math.PI*2/3; bl.add(p); }
+  bl.position.set(x,TOP+2.4,z+.12); scene.add(bl); mills.push(bl);
+}
+ANIM.push(dt=>{ for (const b of mills) b.rotation.z += dt*1.2; });
+// 雲
+const cloudMat = new THREE.MeshLambertMaterial({color:'#ffffff', transparent:true, opacity:.92});
+const clouds=[];
+for (let k=0;k<7;k++){
+  const g=new THREE.Group();
+  for (let j=0;j<4;j++){ const m=new THREE.Mesh(GEO.ball,cloudMat); const s=R(1.6,3); m.scale.set(s*1.3,s*.8,s); m.position.set(j*1.4-2,R(-.3,.3),R(-.6,.6)); g.add(m); }
+  g.position.set(R(-50,70), R(11,15), R(-30,30)); scene.add(g); clouds.push(g);
+}
+ANIM.push(dt=>{ for (const c of clouds){ c.position.x += dt*.5; if (c.position.x > 80) c.position.x = -60; } });
+
+/* ---------- 蒸氣 ---------- */
+const STEAM_N = LOW ? 30 : 80;
+const steamMat = new THREE.MeshLambertMaterial({color:'#ffffff', transparent:true, opacity:.6, depthWrite:false});
+const steam = new THREE.InstancedMesh(GEO.ball, steamMat, STEAM_N);
+const puffs = Array.from({length:STEAM_N}, (_,k)=>({src:steamSrc[k % steamSrc.length], ph:R(0,1), sp:R(.18,.3), dx:R(-.3,.3), dz:R(-.3,.3)}));
+scene.add(steam);
+function updateSteam(dt){
+  puffs.forEach((p,k)=>{
+    p.ph = (p.ph + dt*p.sp) % 1;
+    const [x,y,z,r] = p.src, u = p.ph, sz = (.25 + r*.6) * Math.sin(u*Math.PI) * 1.4;
+    _m.compose(_p.set(x+p.dx*r*2+u*.6, y+.15+u*2.6, z+p.dz*r*2), _q.identity(), _s.set(sz,sz*.85,sz));
+    steam.setMatrixAt(k,_m);
+  });
+  steam.instanceMatrix.needsUpdate = true;
+}
+
+/* ---------- 人 ---------- */
+function colored(geo, col){
+  geo = geo.index ? geo.toNonIndexed() : geo;
+  if (geo.attributes.uv) geo.deleteAttribute('uv');
+  geo.computeVertexNormals();
+  const c = new THREE.Color(col), n = geo.attributes.position.count, a = new Float32Array(n*3);
+  for (let i=0;i<n;i++){ a[i*3]=c.r; a[i*3+1]=c.g; a[i*3+2]=c.b; }
+  geo.setAttribute('color', new THREE.BufferAttribute(a,3));
+  return geo;
+}
+function personGeo(shirt, pants='#3d4652', hair='#2c2420', hat=null){
+  const parts = [
+    colored(new THREE.BoxGeometry(.24,.34,.15),pants).translate(0,.17,0),
+    colored(new THREE.BoxGeometry(.32,.36,.2),shirt).translate(0,.52,0),
+    colored(new THREE.BoxGeometry(.08,.3,.1),shirt).translate(.2,.5,0),
+    colored(new THREE.BoxGeometry(.08,.3,.1),shirt).translate(-.2,.5,0),
+    colored(new THREE.IcosahedronGeometry(.15,0),'#efc6a0').translate(0,.84,0),
+    colored(new THREE.BoxGeometry(.27,.08,.27),hair).translate(0,.95,0),
+  ];
+  if (hat) parts.push(colored(new THREE.CylinderGeometry(.2,.21,.1,8),hat).translate(0,1.0,0), colored(new THREE.BoxGeometry(.18,.03,.14),hat).translate(0,.97,.16));
+  return mergeGeometries(parts);
+}
+const personMat = new THREE.MeshLambertMaterial({vertexColors:true});
+const NPC_SHIRTS = ['#e8e1d4','#9fb3c8','#d9b48f','#c7d6b3','#e4a58a','#b8a6c9','#f2d38a'];
+const npcGeos = NPC_SHIRTS.map(c=>personGeo(c, pick(['#3d4652','#5b5148','#2f3a44'])));
+const walkers = [];
+function addWalker(mesh, island, speed){ const w={mesh, island, speed, to:null, wait:R(0,2), hop:null}; place(w); walkers.push(w); return w; }
+function place(w){ const pts=walkSpots[w.island]; const p=pts[Math.floor(rnd()*pts.length)]; w.mesh.position.copy(p); w.to=null; }
+const NPC_PER = {hakata:7, tenjin:4, ohori:3, airport:2, mojiko:3, karato:3, saga:5, yufuin:4, beppu:6, dazaifu:5, yanagawa:3};
+for (const [id,n] of Object.entries(NPC_PER)){
+  for (let k=0;k<(LOW?Math.ceil(n/2):n);k++){ const m=new THREE.Mesh(pick(npcGeos), personMat); m.scale.setScalar(.82); m.castShadow=true; scene.add(m); addWalker(m,id,R(.35,.6)); }
+}
+// 團員
+const crew = CREW.map((c,k)=>{
+  const m = new THREE.Mesh(personGeo(c.color,'#2f3540','#2c2420',c.hat), personMat);
+  m.scale.setScalar(1.05); m.castShadow = true; m.userData.crew = k; scene.add(m); pickables.push(m);
+  const el = document.createElement('div'); el.className='tag'; el.textContent=c.name; el.style.background=c.color;
+  const t = new CSS2DObject(el); t.position.set(0,1.45,0); m.add(t);
+  return addWalker(m,'hakata',R(.55,.75));
+});
+function updateWalkers(dt, t){
+  for (const w of walkers){
+    if (w.hop){ // 團員換島：跳過去
+      w.hop.k = Math.min(1, w.hop.k + dt/w.hop.dur);
+      const e = w.hop.k; w.mesh.position.lerpVectors(w.hop.a, w.hop.b, e); w.mesh.position.y = TOP + Math.sin(e*Math.PI)*w.hop.h;
+      if (e >= 1){ w.hop = null; w.to = null; w.wait = R(.5,1.5); }
+      continue;
+    }
+    if (w.wait > 0){ w.wait -= dt; w.mesh.position.y = TOP; continue; }
+    if (!w.to){ const pts = walkSpots[w.island]; w.to = pts[Math.floor(rnd()*pts.length)]; }
+    const p = w.mesh.position, dx = w.to.x-p.x, dz = w.to.z-p.z, d = Math.hypot(dx,dz);
+    if (d < .05){ w.to = null; w.wait = R(1,4); continue; }
+    const step = Math.min(d, w.speed*dt); p.x += dx/d*step; p.z += dz/d*step;
+    p.y = TOP + Math.abs(Math.sin(t*9 + w.speed*10))*.05;
+    w.mesh.rotation.y = Math.atan2(dx,dz);
+  }
+}
+function crewTo(id){
+  crew.forEach((w,k)=>{
+    if (w.island === id && !w.hop) return;
+    const pts = walkSpots[id]; const b = pts[Math.floor(rnd()*pts.length)].clone();
+    w.island = id; w.hop = {a:w.mesh.position.clone(), b, k:-k*.12, dur:1.4, h:3 + w.mesh.position.distanceTo(b)*.12};
+  });
+}
+
+/* ---------- 路線 ---------- */
+const dotGeo = prep(new THREE.CylinderGeometry(.5,.5,1,10));
+const routeLayers = DAYS.map((D,k)=>{
+  const pts = [];
+  const seq = D.route.filter((id,i,a)=>i===0 || id!==a[i-1]);
+  for (let i=0;i<seq.length-1;i++){
+    const A=ISL[seq[i]], B=ISL[seq[i+1]];
+    const a=new THREE.Vector3(A.x,TOP+.4,A.z), b=new THREE.Vector3(B.x,TOP+.4,B.z), len=a.distanceTo(b);
+    const side=new THREE.Vector3(-(b.z-a.z),0,b.x-a.x).normalize().multiplyScalar((k-3)*.28);
+    const mid=a.clone().add(b).multiplyScalar(.5).add(side); mid.y = TOP + 1.6 + len*.13;
+    const curve=new THREE.QuadraticBezierCurve3(a,mid,b);
+    const n=Math.max(2,Math.round(curve.getLength()/.75));
+    for (let j=0;j<=n;j++){ const q=curve.getPoint(j/n); if (Math.hypot(q.x-A.x,q.z-A.z) > A.r*.85 && Math.hypot(q.x-B.x,q.z-B.z) > B.r*.85) pts.push(q); }
+  }
+  const mat = new THREE.MeshBasicMaterial({color:D.color, transparent:true, opacity:.55});
+  const im = new THREE.InstancedMesh(dotGeo, mat, Math.max(1,pts.length));
+  pts.forEach((p,i)=>{ _m.compose(p,_q.identity(),_s.set(.26,.07,.26)); im.setMatrixAt(i,_m); });
+  im.count = pts.length; scene.add(im);
+  return {im, mat, pts};
+});
+const traveler = new THREE.Mesh(GEO.ball, new THREE.MeshBasicMaterial({color:'#ffffff'}));
+traveler.scale.setScalar(.6); traveler.visible = false; scene.add(traveler);
+const travelerRing = new THREE.Mesh(GEO.ball, new THREE.MeshBasicMaterial({color:'#ffffff', transparent:true, opacity:.35}));
+travelerRing.scale.setScalar(1.1); traveler.add(travelerRing);
+let travelT = 0;
+
+/* ---------- 光 ---------- */
+const nightLights = [
+  new THREE.PointLight('#ffb27a',0,14,1.6), new THREE.PointLight('#fff3d6',0,16,1.6), new THREE.PointLight('#ffc48a',0,16,1.6),
+];
+nightLights[0].position.set(ISL.hakata.x+.5,TOP+2.2,ISL.hakata.z+.2);
+nightLights[1].position.set(ISL.saga.x,TOP+3.4,ISL.saga.z-.4);
+nightLights[2].position.set(ISL.beppu.x,TOP+2.4,ISL.beppu.z);
+nightLights.forEach(l=>scene.add(l));
+
+buildInstances();
+
+/* ---------- 標籤 ---------- */
+const pills = {};
+for (const I of ISLANDS){
+  const el = document.createElement('div'); el.className='pill'; el.innerHTML = `<b>${I.no}</b><span class="nm">${I.name}</span>`;
+  el.addEventListener('click', e=>{ e.stopPropagation(); openIsland(I.id); });
+  const o = new CSS2DObject(el); o.position.set(I.x, TOP + 2.7 + (I.id==='ohori'?0:0), I.z); scene.add(o);
+  pills[I.id] = el;
+}
+for (const [id,x,y,z] of markers){
+  const el=document.createElement('div'); el.className='bed'; el.textContent=ISL[id].bed;
+  const o=new CSS2DObject(el); o.position.set(x,y,z); scene.add(o);
+}
+
+/* ---------- 天色 ---------- */
+const SKY = {
+  dawn: {bg:'#f3dccb', sky:'#ffe3cc', gnd:'#7d8a6a', hi:.95, sun:'#ffbe92', si:1.15, sp:[-50,22,10], sea:'#8fbec6', glow:.35},
+  day:  {bg:'#cfe6ea', sky:'#ffffff', gnd:'#8aa07a', hi:1.05, sun:'#fff3e0', si:1.6,  sp:[-30,50,28], sea:'#7cbcc6', glow:0},
+  dusk: {bg:'#f0bf98', sky:'#ffd2ad', gnd:'#6f6a7a', hi:.8,  sun:'#ff9a5e', si:1.15, sp:[50,18,22],  sea:'#7aa4b6', glow:.7},
+  night:{bg:'#1f2c46', sky:'#7184b8', gnd:'#1b2230', hi:.55, sun:'#a9b8ff', si:.4,   sp:[-20,40,-10],sea:'#2b4a68', glow:1},
+};
+const cur = {bg:new THREE.Color(), sky:new THREE.Color(), gnd:new THREE.Color(), sun:new THREE.Color(), sea:new THREE.Color(), hi:1, si:1, glow:0, sp:new THREE.Vector3()};
+let skyKey = 'day';
+function skyTarget(){ return SKY[skyKey]; }
+function applySky(k){
+  const T = skyTarget(), c = new THREE.Color();
+  cur.bg.lerp(c.set(T.bg),k); cur.sky.lerp(c.set(T.sky),k); cur.gnd.lerp(c.set(T.gnd),k); cur.sun.lerp(c.set(T.sun),k); cur.sea.lerp(c.set(T.sea),k);
+  cur.hi += (T.hi-cur.hi)*k; cur.si += (T.si-cur.si)*k; cur.glow += (T.glow-cur.glow)*k; cur.sp.lerp(_p.set(...T.sp),k);
+  scene.background.copy(cur.bg); scene.fog.color.copy(cur.bg);
+  hemi.color.copy(cur.sky); hemi.groundColor.copy(cur.gnd); hemi.intensity = cur.hi;
+  sun.color.copy(cur.sun); sun.intensity = cur.si; sun.position.copy(cur.sp).add(sun.target.position);
+  seaMat.color.copy(cur.sea);
+  for (const g of Object.values(GLOW)) g.mat.color.set(g.off).lerp(c.set(g.on), cur.glow);
+  nightLights.forEach(l=>l.intensity = cur.glow*18);
+  cloudMat.opacity = .92 - cur.glow*.55;
+  document.querySelector('meta[name=theme-color]').content = '#' + cur.bg.getHexString();
+}
+function setSky(k, instant=false){
+  skyKey = k;
+  document.querySelectorAll('#tp-sky button').forEach(b=>b.classList.toggle('on', b.dataset.sky===k));
+  if (instant) applySky(1);
+}
+{ const h = new Date().getHours(); setSky(h>=5&&h<7?'dawn':h>=7&&h<16?'day':h>=16&&h<18?'dusk':'night', true); }
+
+/* ---------- 相機 ---------- */
+const controls = new OrbitControls(camera, renderer.domElement);
+controls.enableDamping = true; controls.dampingFactor = .09;
+controls.screenSpacePanning = false;
+controls.minPolarAngle = .35; controls.maxPolarAngle = 1.12;
+controls.minDistance = 7; controls.maxDistance = 260;
+controls.mouseButtons = {LEFT:THREE.MOUSE.PAN, MIDDLE:THREE.MOUSE.DOLLY, RIGHT:THREE.MOUSE.ROTATE};
+controls.touches = {ONE:THREE.TOUCH.PAN, TWO:THREE.TOUCH.DOLLY_ROTATE};
+controls.zoomToCursor = true;
+controls.addEventListener('start', ()=>{ tween = null; });
+controls.addEventListener('change', ()=>{ const t=controls.target; t.x=THREE.MathUtils.clamp(t.x,-30,45); t.z=THREE.MathUtils.clamp(t.z,-30,38); });
+
+let W = 1, H = 1, offCur = {x:0,y:0}, offGoal = {x:0,y:0};
+function uiRect(){
+  const narrow = W < 700, desk = W >= 900;
+  let l = 8, r = W-8, t = 8, b = H-8;
+  const rail = $('#rail').getBoundingClientRect(); r = Math.min(r, rail.left-6);
+  const brand = $('#brand').getBoundingClientRect(); if (narrow) t = brand.bottom + 6;
+  b = Math.min(b, $('#days').getBoundingClientRect().top - 6);
+  if (sheetOpen){
+    const sh = $('#sheet');
+    if (desk) l = Math.max(l, 16 + sh.offsetWidth + 10);
+    else b = Math.min(b, H - sh.offsetHeight - 6);
+  }
+  if (b - t < 120) t = Math.max(8, b - 120);
+  return {l,r,t,b};
+}
+function setOffsetGoal(){ const u = uiRect(); offGoal = {x: W/2 - (u.l+u.r)/2, y: H/2 - (u.t+u.b)/2}; return u; }
+function applyOffset(cam, o){ cam.setViewOffset(W,H,o.x,o.y,W,H); cam.updateProjectionMatrix(); }
+
+const tmpCam = camera.clone();
+function fitView(ids, {pol=null, extra=2.9, pad=1, search=false} = {}){
+  const u = setOffsetGoal();
+  const pts = [];
+  for (const id of ids){ const I=ISL[id]; const rr=I.r*pad; for (const [dx,dz] of [[0,0],[rr,0],[-rr,0],[0,rr],[0,-rr]]) pts.push(new THREE.Vector3(I.x+dx,TOP,I.z+dz)); pts.push(new THREE.Vector3(I.x,TOP+extra,I.z)); }
+  const box = new THREE.Box3().setFromPoints(pts), center = box.getCenter(new THREE.Vector3()); center.y = TOP;
+  const sph = new THREE.Spherical().setFromVector3(camera.position.clone().sub(controls.target));
+  tmpCam.fov = camera.fov; tmpCam.aspect = W/H; applyOffset(tmpCam, offGoal);
+  const nx0 = 2*u.l/W-1, nx1 = 2*u.r/W-1, ny0 = 1-2*u.b/H, ny1 = 1-2*u.t/H;
+  const solve = (phi, theta)=>{
+    const ok = d=>{ tmpCam.position.setFromSpherical(new THREE.Spherical(d,phi,theta)).add(center); tmpCam.lookAt(center); tmpCam.updateMatrixWorld();
+      return pts.every(p=>{ const v=p.clone().project(tmpCam); return v.z<1 && v.x>=nx0 && v.x<=nx1 && v.y>=ny0 && v.y<=ny1; }); };
+    let lo = 6, hi = 400; for (let i=0;i<26;i++){ const m=(lo+hi)/2; ok(m)?hi=m:lo=m; } return hi; };
+  let best;
+  if (search){ // 直式螢幕：找最省空間的角度（相機大致在南邊，北方朝上）
+    for (const th of [-.9,-.6,-.3,0,.3,.6,.9]) for (const ph of [.6,.75,.86]){ const d = solve(ph, th) * (1 + Math.abs(th)*.12); if (!best || d < best.d) best = {d, ph, th}; }
+    best.d /= (1 + Math.abs(best.th)*.12);
+  } else { const ph = pol ?? THREE.MathUtils.clamp(sph.phi, .62, .98); best = {ph, th:sph.theta, d:solve(ph, sph.theta)}; }
+  flyTo(center, new THREE.Spherical(Math.min(best.d, 260), best.ph, best.th));
+}
+let tween = null;
+function flyTo(target, sph, ms=950){
+  const s0 = new THREE.Spherical().setFromVector3(camera.position.clone().sub(controls.target));
+  let dth = sph.theta - s0.theta; dth = Math.atan2(Math.sin(dth), Math.cos(dth));
+  tween = {t0:performance.now(), ms, T0:controls.target.clone(), T1:target.clone(), s0, s1:new THREE.Spherical(sph.radius, sph.phi, s0.theta+dth)};
+}
+function stepTween(now){
+  if (!tween) return;
+  const k = Math.min(1,(now-tween.t0)/tween.ms), e = 1-Math.pow(1-k,3);
+  controls.target.lerpVectors(tween.T0, tween.T1, e);
+  const s = new THREE.Spherical(tween.s0.radius+(tween.s1.radius-tween.s0.radius)*e, tween.s0.phi+(tween.s1.phi-tween.s0.phi)*e, tween.s0.theta+(tween.s1.theta-tween.s0.theta)*e);
+  camera.position.setFromSpherical(s).add(controls.target);
+  if (k>=1) tween = null;
+}
+const ALL = ISLANDS.map(I=>I.id);
+function overview(){ fitView(ALL, W < H ? {search:true} : {pol:.86}); }
+
+/* ---------- 介面 ---------- */
+const state = {day:0, island:null, panel:null};
+let sheetOpen = false;
+const sheet = $('#sheet'), head = $('#sh-head'), body = $('#sh-body');
+
+const daysEl = $('#days');
+daysEl.innerHTML = `<button class="dbtn" data-day="0"><b>全部</b><span>7 天</span></button>` + DAYS.map(D=>`<button class="dbtn" data-day="${D.d}" style="--dc:${D.color}"><b>D${D.d}</b><span>${D.date}</span></button>`).join('');
+daysEl.addEventListener('click', e=>{ const b=e.target.closest('[data-day]'); if (b) selectDay(+b.dataset.day); });
+
+function linksHTML(links){ return links && links.length ? `<div class="row">${links.map(([t,u])=>`<a class="lk" href="${u}" target="_blank" rel="noopener noreferrer">${t}</a>`).join('')}</div>` : ''; }
+function itemHTML(it, showIsland){
+  const I = ISL[it.i], D = DAYS[it.d-1];
+  return `<div class="it" style="--dc:${D.color}"><div class="tm">${it.t}</div><div><h4>${it.title}</h4>${it.note?`<p>${it.note}</p>`:''}${showIsland||it.links.length?`<div class="row">${showIsland?`<button class="at" data-isl="${I.id}"><b>${I.no}</b>${I.name}</button>`:''}${it.links.map(([t,u])=>`<a class="lk" href="${u}" target="_blank" rel="noopener noreferrer">${t}</a>`).join('')}</div>`:''}</div></div>`;
+}
+const handbookLink = `<div class="foot"><a href="${HANDBOOK}">📖 完整手冊（時刻表、票價、日文小卡）</a></div>`;
+
+function showSheet(headHTML, bodyHTML, dc){
+  head.innerHTML = headHTML + `<button id="sh-close" aria-label="關閉">✕</button>`;
+  head.style.setProperty('--dc', dc || 'var(--accent)');
+  body.innerHTML = bodyHTML; body.scrollTop = 0;
+  sheet.classList.add('open'); sheetOpen = true;
+}
+function closeSheet(){ sheet.classList.remove('open','full'); sheetOpen = false; state.panel = null; state.island = null; setRail(); refreshPills(); setOffsetGoal(); }
+head.addEventListener('click', e=>{
+  if (e.target.id==='sh-close'){ closeSheet(); setHash(state.day?'d'+state.day:''); return; }
+  const d = e.target.closest('[data-day]'); if (d) selectDay(+d.dataset.day);
+  const tb = e.target.closest('[data-tab]'); if (tb) renderList(tb.dataset.tab);
+});
+body.addEventListener('click', e=>{
+  const a = e.target.closest('[data-isl]'); if (a){ openIsland(a.dataset.isl); return; }
+  const d = e.target.closest('[data-day]'); if (d){ selectDay(+d.dataset.day); return; }
+  const c = e.target.closest('[data-crew]'); if (c){ const w=crew[+c.dataset.crew]; fitView([w.island]); }
+});
+$('#sh-grab').addEventListener('click', ()=>{ sheet.classList.toggle('full'); setTimeout(setOffsetGoal, 320); });
+
+function refreshPills(){
+  const D = state.day ? DAYS[state.day-1] : null;
+  for (const I of ISLANDS){
+    const el = pills[I.id]; el.classList.remove('on','dim'); el.style.removeProperty('--dc');
+    if (D){ if (D.route.includes(I.id)){ el.classList.add('on'); el.style.setProperty('--dc', D.color); } else el.classList.add('dim'); }
+    if (state.island === I.id){ el.classList.add('on'); el.classList.remove('dim'); if (!D) el.style.setProperty('--dc','var(--accent)'); }
+  }
+  routeLayers.forEach((L,k)=>{ const on = !state.day || state.day===k+1; L.im.visible = on; L.mat.opacity = state.day ? 1 : .5;
+    for (let i=0;i<L.pts.length;i++){ _m.compose(L.pts[i],_q.identity(),_s.set(state.day?.34:.24,.07,state.day?.34:.24)); L.im.setMatrixAt(i,_m); } L.im.instanceMatrix.needsUpdate = true; });
+  traveler.visible = !!(D && routeLayers[state.day-1].pts.length);
+  if (D) traveler.material.color.set(D.color), travelerRing.material.color.set(D.color);
+  daysEl.querySelectorAll('.dbtn').forEach(b=>b.classList.toggle('on', +b.dataset.day === state.day));
+}
+function setRail(){ for (const [id,p] of [['b-crew','crew'],['b-list','list']]) $('#'+id).classList.toggle('on', state.panel===p); }
+function setHash(h){ history.replaceState(null,'', h ? '#'+h : location.pathname + location.search); }
+
+function selectDay(d){
+  state.day = d; state.island = null; state.panel = null; setRail();
+  if (!d){ closeSheet(); refreshPills(); overview(); crewTo('hakata'); setHash(''); return; }
+  const D = DAYS[d-1];
+  const items = ITEMS.filter(it=>it.d===d);
+  showSheet(
+    `<div class="kick"><span class="no">D${d}</span>${D.date}（${D.wd}）<span class="chip" style="padding:2px 9px">🛏 ${D.sleep}</span></div><h2>${D.title}</h2><p class="sub">${D.sum}</p>`,
+    items.map(it=>itemHTML(it,true)).join('') + handbookLink, D.color);
+  refreshPills();
+  fitView([...new Set(D.route)]);
+  crewTo(D.main); travelT = 0;
+  setHash('d'+d);
+}
+function openIsland(id){
+  const I = ISL[id]; state.island = id; state.panel = null; setRail();
+  const its = ITEMS.filter(it=>it.i===id);
+  const days = [...new Set(its.map(it=>it.d))];
+  if (state.day && days.includes(state.day)) days.sort((a,b)=>(b===state.day)-(a===state.day));
+  const bodyHTML = days.map(d=>{ const D=DAYS[d-1]; return `<div class="dayh" style="--dc:${D.color}"><i>D${d}</i>${D.date}（${D.wd}）${D.title}</div>` + its.filter(it=>it.d===d).map(it=>itemHTML(it,false)).join(''); }).join('')
+    + (I.bed ? `<div class="note">${I.bed}：${id==='hakata'?'ドーミーインPREMIUM博多・キャナルシティ前（首選，還沒訂）。4/19–21 大行李寄放在這。':'西鉄リゾートイン別府（首選，還沒訂），別府駅走 1 分。'}</div>` : '')
+    + handbookLink;
+  showSheet(
+    `<div class="kick"><span class="no">${I.no}</span>${I.jp}</div><h2>${I.name}</h2><p class="sub">${I.desc}</p><div class="chips">${days.slice().sort().map(d=>`<button class="chip c" data-day="${d}" style="--dc:${DAYS[d-1].color}">D${d} ${DAYS[d-1].date}</button>`).join('')}</div>`,
+    bodyHTML, 'var(--accent)');
+  refreshPills();
+  fitView([id], {extra:3.4, pad:1.35});
+  setHash(id);
+}
+function renderList(tab='days'){
+  state.panel = 'list'; state.island = null; setRail(); refreshPills();
+  const tabs = `<div class="tabs">${[['days','行程'],['tix','票券・預約'],['stay','住宿']].map(([k,t])=>`<button data-tab="${k}" class="${k===tab?'on':''}">${t}</button>`).join('')}</div>`;
+  let html = '';
+  if (tab==='days') html = DAYS.map(D=>`<button class="dl" data-day="${D.d}" style="--dc:${D.color}"><i>D${D.d}</i><div><b>${D.title}</b><span>${D.date}（${D.wd}）・住${D.sleep.replace('✈ ','')}・${ITEMS.filter(it=>it.d===D.d).length} 個點</span></div><em>›</em></button>`).join('');
+  if (tab==='tix') html = TICKETS.map(([st,t,p])=>`<div class="tk"><h4>${t}</h4><span class="st ${st}">${{ok:'已訂',todo:'未訂',day:'當天'}[st]}</span><p>${p}</p></div>`).join('') + `<div class="note">訂位時間軸以 2026/10 查到的規則為準，2027/3 JR 改點後要再確認一次。</div>`;
+  if (tab==='stay') html = STAYS.map(([d,t,p,id])=>`<div class="tk"><h4>${d}　${t}</h4><button class="at" data-isl="${id}"><b>${ISL[id].no}</b>${ISL[id].name}</button><p>${p}</p></div>`).join('');
+  showSheet(`<div class="kick"><span class="no">≡</span>THE TRIP INDEX</div><h2>清單</h2>${tabs}`, html + handbookLink);
+}
+function renderCrew(){
+  state.panel = 'crew'; state.island = null; setRail(); refreshPills();
+  showSheet(`<div class="kick"><span class="no">☺</span>THE CREW</div><h2>五個人，各管一件事</h2><p class="sub">島上穿彩色衣服的就是你們，會跟著你選的日子跳到那天的島。點名字可以找人。</p>`,
+    CREW.map((c,k)=>`<button class="crew" data-crew="${k}"><span class="av" style="background:${c.color}">${c.name.replace('團員 ','')[0]}</span><div><h4>${c.name}<small>${c.role}</small></h4><p>${c.job}</p></div></button>`).join('')
+    + `<div class="note">分工是建議。名字和工作直接改 island.html 上方的 <b>CREW</b>。</div>`);
+}
+
+$('#b-all').onclick = ()=>overview();
+$('#b-list').onclick = ()=>{ if (state.panel==='list'){ closeSheet(); return; } renderList(); labelsEl.classList.remove('tags'); };
+$('#b-crew').onclick = ()=>{ if (state.panel==='crew'){ closeSheet(); labelsEl.classList.remove('tags'); return; } renderCrew(); labelsEl.classList.add('tags'); fitView([crew[0].island]); };
+$('#b-today').onclick = ()=>{
+  const tokyo = new Date(new Date().toLocaleString('en-US',{timeZone:'Asia/Tokyo'}));
+  const start = new Date(2027,3,17), diff = Math.floor((new Date(tokyo.getFullYear(),tokyo.getMonth(),tokyo.getDate()) - start)/864e5);
+  if (diff >= 0 && diff < 7){ selectDay(diff+1); toast(`今天是 D${diff+1}`); }
+  else if (diff < 0){ selectDay(1); toast(`還沒出發：距離 4/17 還有 ${-diff} 天`); }
+  else { selectDay(7); toast('旅程已經結束了'); }
+};
+const tp = $('#timepop');
+$('#b-time').onclick = e=>{ e.stopPropagation(); tp.classList.toggle('open'); $('#b-time').classList.toggle('on', tp.classList.contains('open')); };
+tp.addEventListener('click', e=>{ e.stopPropagation(); const s=e.target.closest('[data-sky]'); if (s) setSky(s.dataset.sky); const a=e.target.closest('[data-anim]'); if (a) setAnim(a.dataset.anim==='1'); });
+document.addEventListener('click', ()=>{ tp.classList.remove('open'); $('#b-time').classList.remove('on'); });
+let animOn = !LOW;
+function setAnim(on){ animOn = on; document.querySelectorAll('#tp-anim button').forEach(b=>b.classList.toggle('on', (b.dataset.anim==='1')===on)); }
+setAnim(animOn);
+addEventListener('keydown', e=>{ if (e.key==='Escape') closeSheet(); });
+
+let toastT; function toast(msg, ms=2600){ const t=$('#toast'); t.textContent=msg; t.classList.add('show'); clearTimeout(toastT); toastT=setTimeout(()=>t.classList.remove('show'), ms); }
+
+/* ---------- 點擊 3D 物件 ---------- */
+const ray = new THREE.Raycaster(), ndc = new THREE.Vector2();
+let down = null;
+renderer.domElement.addEventListener('pointerdown', e=>{ down = {x:e.clientX, y:e.clientY, t:performance.now()}; });
+renderer.domElement.addEventListener('pointerup', e=>{
+  if (!down || Math.hypot(e.clientX-down.x, e.clientY-down.y) > 7 || performance.now()-down.t > 450) return;
+  ndc.set(e.clientX/W*2-1, -(e.clientY/H)*2+1);
+  ray.setFromCamera(ndc, camera);
+  const hit = ray.intersectObjects(pickables, false)[0];
+  if (!hit) return;
+  if (hit.object.userData.crew !== undefined){ renderCrew(); labelsEl.classList.add('tags'); }
+  else if (hit.object.userData.island) openIsland(hit.object.userData.island);
+});
+
+/* ---------- 尺寸與迴圈 ---------- */
+function resize(){
+  W = app.clientWidth; H = app.clientHeight;
+  renderer.setSize(W,H); labelR.setSize(W,H);
+  camera.aspect = W/H; setOffsetGoal(); offCur = {...offGoal}; applyOffset(camera, offCur);
+}
+addEventListener('resize', ()=>{ resize(); });
+resize();
+
+// 初始畫面
+camera.position.set(0, 60, 60); controls.target.set(0,TOP,0);
+{
+  const h = decodeURIComponent(location.hash.slice(1)), q = Q.get('focus');
+  const key = q || h;
+  const m = /^d([1-7])$/.exec(key);
+  if (m) { overviewInstant(); selectDay(+m[1]); }
+  else if (key && ISL[key]) { overviewInstant(); openIsland(key); }
+  else { overviewInstant(); refreshPills(); }
+}
+function overviewInstant(){ overview(); if (tween){ tween.t0 = -1e9; stepTween(performance.now()); } }
+if (!location.hash) setTimeout(()=>toast(COARSE ? '單指拖曳移動・雙指縮放旋轉・點標籤看細節' : '拖曳移動・右鍵旋轉・滾輪縮放・點標籤看細節', 4200), 600);
+
+const clock = new THREE.Clock();
+let acc = 0, simT = 0, hidden = false;
+document.addEventListener('visibilitychange', ()=>{ hidden = document.hidden; });
+const FRAME = COARSE ? 1/30 : 1/60;
+renderer.setAnimationLoop(now=>{
+  if (hidden) return;
+  const dt = Math.min(clock.getDelta(), .1);
+  acc += dt; if (acc < FRAME*.92) return;
+  const step = Math.min(acc, .1); acc = 0;
+  if (animOn){ simT += step; for (const f of ANIM) f(step, simT); updateWalkers(step, simT); updateSteam(step); }
+  else { for (const w of crew) if (w.hop) updateWalkers(step, simT); }
+  if (traveler.visible){
+    const P = routeLayers[state.day-1].pts; travelT = (travelT + step*9) % (P.length + 12);
+    const i = Math.min(P.length-1, Math.floor(travelT)); traveler.position.copy(P[i]); traveler.position.y += .35;
+    travelerRing.scale.setScalar(1.1 + Math.sin(simT*6)*.25);
+  }
+  applySky(Math.min(1, step*2.2));
+  offCur.x += (offGoal.x-offCur.x)*Math.min(1,step*7); offCur.y += (offGoal.y-offCur.y)*Math.min(1,step*7); applyOffset(camera, offCur);
+  stepTween(performance.now());
+  controls.update();
+  const dist = camera.position.distanceTo(controls.target);
+  scene.fog.near = dist + 40; scene.fog.far = dist + 260;
+  const ppu = H / (2*dist*Math.tan(THREE.MathUtils.degToRad(camera.fov/2)));
+  labelsEl.classList.toggle('compact', ppu < 11 && W < 900 || ppu < 7);
+  labelsEl.classList.toggle('far', ppu < 30);
+  renderer.render(scene, camera);
+  labelR.render(scene, camera);
+});
+</script>
+</body>
+</html>
