@@ -379,6 +379,47 @@ footer a{color:var(--on-night-2)}
 a.ttl{display:inline-block;font-size:12px;font-weight:700;color:var(--glacier);text-decoration:none;border:1px solid rgba(47,107,154,.35);border-radius:999px;padding:0 8px;margin:2px 2px 0 0;white-space:nowrap;line-height:1.7}
 .sec.dark a.ttl{color:#9FD3DC;border-color:rgba(159,211,220,.4)}
 .tg.gg{background:#E6F0FB;color:#1F5FAD}
+
+/* 住宿：房型與價格 */
+.rm-wrap{display:grid;gap:26px;margin-top:22px}
+.rm-sum{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:18px;align-items:center;background:var(--card);border-radius:var(--r-lg);box-shadow:var(--sh-2);padding:18px 20px}
+.rm-big{display:grid;gap:2px}.rm-big .k{font-size:12px;font-weight:700;letter-spacing:.08em;color:var(--muted)}
+.rm-big .v{font-family:var(--f-display);font-size:clamp(32px,6vw,44px);font-weight:900;line-height:1.1;font-variant-numeric:tabular-nums}
+.rm-big .d{font-size:13px;color:var(--muted)}
+.rm-split{display:grid;gap:7px;font-size:13.5px}.rm-split div{display:flex;justify-content:space-between;gap:12px;border-bottom:1px dashed var(--line);padding-bottom:5px}
+.rm-split div:last-child{border-bottom:0;font-weight:700}.rm-split b{font-variant-numeric:tabular-nums;white-space:nowrap}
+.rm-status{font-size:13.5px;background:var(--gold-soft);color:var(--gold-ink);border-radius:var(--r-md);padding:10px 14px}.rm-status b{margin-right:8px}
+.rm-stay{display:grid;gap:12px}
+.rm-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 12px}.rm-head h3{font-family:var(--f-display);font-size:22px;margin:0}
+.rm-dates{font-size:13px;color:var(--muted);font-weight:700}
+.rm-hotel{display:flex;flex-wrap:wrap;gap:4px 12px;align-items:baseline;font-size:14px}.rm-hotel span{font-size:12.5px;color:var(--muted)}
+.rm-chips{display:flex;flex-wrap:wrap;gap:6px}.rm-chip{font-size:12px;font-weight:700;padding:2px 10px;border-radius:999px;background:var(--ice);color:var(--glacier-deep)}
+.rm-chip.on{background:var(--ok-soft);color:var(--ok)}
+.rm-note{font-size:13.5px;color:var(--muted);margin:0}
+.rm-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.rm-card{background:var(--card);border-radius:var(--r-md);box-shadow:var(--sh-1);border:1px solid var(--line);padding:14px;display:grid;gap:10px;align-content:start;min-width:0}
+.rm-card.opt{border-style:dashed}
+.rm-top{display:grid;gap:2px}.rm-top h4{font-size:16px;margin:0}
+.rm-who{font-size:12px;font-weight:700;letter-spacing:.06em;color:var(--muted)}.rm-en{font-size:11.5px;color:var(--muted);overflow-wrap:anywhere}
+.rm-flag{font-style:normal;display:inline-block;font-size:11px;font-weight:700;padding:1px 8px;border-radius:999px;margin-left:6px}
+.rm-flag.a{background:var(--ok-soft);color:var(--ok)}.rm-flag.b{background:var(--gold-soft);color:var(--gold-ink)}
+.rm-ph{display:block;position:relative;border-radius:var(--r-sm);overflow:hidden;aspect-ratio:4/3;background:var(--ice-2);max-width:420px}
+.rm-ph img{width:100%;height:100%;object-fit:cover;display:block}
+.rm-ph span{position:absolute;left:8px;bottom:8px;font-size:12px;font-weight:700;color:#fff;background:rgba(0,0,0,.55);padding:2px 8px;border-radius:999px}
+.rm-ph em{display:none}
+.rm-ph.nf{display:grid;place-items:center;border:1.5px dashed var(--line);aspect-ratio:auto;padding:18px}.rm-ph.nf img,.rm-ph.nf span{display:none}
+.rm-ph.nf em{display:block;font-style:normal;font-size:13px;font-weight:700;color:var(--glacier)}
+.rm-ph.wide{max-width:360px;aspect-ratio:16/10}
+.rm-bed{width:100%;height:auto;display:block}
+.rm-sleep{font-size:13.5px;margin:0}.rm-sleep.warn{color:var(--gold-ink);font-weight:700}
+.rm-price{display:grid;grid-template-columns:1fr auto;gap:3px 12px;font-size:13.5px;border-top:1px solid var(--line);padding-top:8px}
+.rm-price b{text-align:right;font-variant-numeric:tabular-nums}.rm-price .sum{font-weight:700}
+.rm-btn{justify-self:start;font-size:13.5px;font-weight:700;text-decoration:none;padding:7px 12px;border-radius:10px;background:var(--glacier);color:#fff}
+.rm-alt{font-size:13px;background:var(--ice-2);border:1px solid var(--line);border-radius:var(--r-sm);padding:9px 12px;margin:0}
+.rm-links{display:flex;flex-wrap:wrap;gap:8px}.rm-links a{font-size:13px;font-weight:700;text-decoration:none;padding:6px 11px;border-radius:10px;border:1.5px solid var(--glacier);color:var(--glacier)}
+.rm-cols .panel ol{margin:0;padding-left:1.3em;display:grid;gap:6px}
+@media (max-width:760px){.rm-sum,.rm-grid{grid-template-columns:1fr}}
+
 /* budget: excluded rows */
 .bar.off span{color:var(--on-night-2)}
 .bar.off i{height:0;border-top:1.5px dashed rgba(255,255,255,.25);background:none}
@@ -1231,7 +1272,7 @@ a.ttl{display:inline-block;font-size:12px;font-weight:700;color:var(--glacier);t
             <tr><td><b>交通小計</b></td><td><b>約 31,900</b></td><td></td></tr>
             <tr><td>門票與體驗</td><td>8,800</td><td>地獄線上券 2,200（只看 3 處就 1,500）、地獄蒸し釜 400、砂湯 1,500、別府タワー 800、川下り 2,200、中山大藤 100、佐賀競馬 入場 100＋グループ席分攤 1,000、町家 200、門司港展望室 300；可選：福岡タワー 1,000、むし湯 920、夜間遊船 約 1,500</td></tr>
             <tr><td><b>合計（交通＋門票）</b></td><td><b>約 40,700</b></td><td>2026 年票價</td></tr>
-            <tr><td>住宿 6 晚</td><td>未計入</td><td>博多 3＋1 晚＋別府 2 晚；2026/11 查的參考價：6 人三晚 3 間雙床房約 NT$45,000（每人 7,500）、別府兩晚約 NT$28,500（每人 5,700）、最後一晚約 NT$10,000（每人 2,000）</td></tr>
+            <tr><td>住宿 6 晚</td><td>未計入</td><td>還沒訂；2026/11/1 Agoda 查價：5 人每人約 NT$15,000、朋友約 NT$7,500，明細見「住宿與行李」章</td></tr>
             <tr><td>餐費、喝酒</td><td>未計入</td><td>依各餐選店再補；屋台、市場、賽馬場內都很便宜，水炊き、鰻是比較貴的兩餐</td></tr>
           </tbody>
         </table>
@@ -1244,11 +1285,88 @@ a.ttl{display:inline-block;font-size:12px;font-weight:700;color:var(--glacier);t
 <!-- STAY + LUGGAGE -->
 <section class="sec tint pb" id="stay">
   <div class="wrap">
-    <div class="head"><div><span class="tag">兩個城市，兩間飯店</span><h2>住宿與行李</h2><p>博多前後兩段住同一間，行李留著不搬；兩間都有大浴場、走路到車站或屋台。房型、照片、價格和訂房連結在另一頁「訂房確認」，2026/11 查的價格，訂房時以訂房網為準，一律選免費取消。</p></div></div>
+    <div class="head"><div><span class="tag">兩個城市，兩間飯店</span><h2>住宿與行李</h2><p>博多前後兩段住同一間，行李留著不搬；兩間都有大浴場、走路到車站或屋台。下面先看三張飯店卡，再往下是每段的房型照片、床位、價格和 Agoda 訂房連結（2026/11/1 查價，訂房時以 Agoda 當下為準，一律選免費取消）。訂好之後會把訂單資訊補在這一章。</p></div></div>
     <div class="hotels">
-      <article class="hotel press"><div class="top-band" style="background:linear-gradient(120deg,var(--fk),#E58A6A)"><b>博多</b><span>4/17–20（6 人）・4/22–23（5 人）</span></div><div class="bd"><h3>クロスライフ博多天神（CROSS life Hakata Tenjin）</h3><ul><li>春吉：中洲屋台走 5 分、天神南駅走 6 分、運河城走 8 分、博多駅七隈線 3 站；2021 年開幕，Agoda 8.8・Google 4.4</li><li>大浴場＋三溫暖；早餐自助要加購</li><li>6 人那三晚：3 間雙床房（舒適房兩床 17㎡，人人有床）約 NT$45,000，或 2 間「兩床＋沙發床」房約 NT$38,000</li><li>最後一晚：兩床＋沙發床（3 人）＋雙床（2 人）約 NT$10,000</li><li>兩筆訂單同一間，中間兩晚 5 件行李寄櫃檯（寫信確認）</li></ul><div class="alt">備選：Dormy Inn 博多祇園（天然溫泉；三人房是和洋室，一人睡榻榻米地鋪）；三井ガーデン福岡祇園的三人房 2026/11 已無空房</div></div></article>
-      <article class="hotel press"><div class="top-band" style="background:linear-gradient(120deg,var(--bp),#4FB0C9)"><b>別府</b><span>4/20–22・2 晚（5 人）</span></div><div class="bd"><h3>御宿 野乃 別府（Onyado Nono Beppu）</h3><ul><li>別府駅東口走 1 分，亀の井巴士西口走 3 分、竹瓦温泉走 8 分；Booking 9.0、Google 4.5</li><li>13 樓天然溫泉：室內、壺湯、露天、三溫暖；7 間免費包場風呂；免費夜鳴きそば、冰棒</li><li>三人房 32㎡ 三張 Serta 床（全館只有 6 間，先訂）＋雙床房 21㎡，兩晚約 NT$28,500</li><li>全館榻榻米、脫鞋；每日不打掃，要打掃加價</li></ul><div class="alt">備選：亀の井ホテル別府（62㎡ 六床家庭房，5 人同房但飯店舊）；想住鉄輪就おにやまホテル</div></div></article>
+      <article class="hotel press"><div class="top-band" style="background:linear-gradient(120deg,var(--fk),#E58A6A)"><b>博多</b><span>4/17–20（6 人）・4/22–23（5 人）</span></div><div class="bd"><h3>クロスライフ博多天神（CROSS life Hakata Tenjin）</h3><ul><li>春吉：中洲屋台走 5 分、天神南駅走 6 分、運河城走 8 分、博多駅七隈線 3 站；2021 年開幕，Agoda 8.8・Google 4.4</li><li>大浴場＋三溫暖；早餐自助要加購</li><li>6 人那三晚：方案 A 3 間雙床房（人人有床）約 NT$45,100，方案 B 2 間「兩床＋沙發床」約 NT$37,800</li><li>最後一晚：兩床＋沙發床（3 人）＋雙床（2 人）約 NT$10,100</li><li>兩筆訂單同一間，中間兩晚 5 件行李寄櫃檯（寫信確認）</li></ul><div class="alt">備選：Dormy Inn 博多祇園（天然溫泉；三人房是和洋室，一人睡榻榻米地鋪）；三井ガーデン福岡祇園的三人房 2026/11 已無空房</div></div></article>
+      <article class="hotel press"><div class="top-band" style="background:linear-gradient(120deg,var(--bp),#4FB0C9)"><b>別府</b><span>4/20–22・2 晚（5 人）</span></div><div class="bd"><h3>御宿 野乃 別府（Onyado Nono Beppu）</h3><ul><li>別府駅東口走 1 分，亀の井巴士西口走 3 分、竹瓦温泉走 8 分；Booking 9.0、Google 4.5</li><li>13 樓天然溫泉：室內、壺湯、露天、三溫暖；7 間免費包場風呂；免費夜鳴きそば、冰棒</li><li>三人房 32㎡ 三張 Serta 床（全館只有 6 間，先訂）＋雙床房 21㎡，兩晚約 NT$27,400（Agoda）</li><li>全館榻榻米、脫鞋；每日不打掃，要打掃加價</li></ul><div class="alt">備選：亀の井ホテル別府（62㎡ 六床家庭房，5 人同房但飯店舊）；想住鉄輪就おにやまホテル</div></div></article>
       <article class="hotel press"><div class="top-band" style="background:linear-gradient(120deg,var(--yf),#8BBF7A)"><b>行李</b><span>只搬一次</span></div><div class="bd"><h3>大行李留博多，別府用隨身包</h3><ul><li><b>4/20 08:30</b>：退房時 5 件大行李交櫃檯，拿好寄物單；朋友的行李寄到中午</li><li><b>4/20–22</b>：每人一個後背包：兩天換洗、盥洗包、充電器、毛巾兩條、¥15,000 現金；野乃有浴衣</li><li><b>4/22 18:15</b>：回博多飯店再入住、領行李</li><li>由布院、別府買的東西裝得下再買；B-speak 當天吃掉</li></ul><div class="alt">免稅品：4/22 以後買的放行李箱，4/23 託運前先在機場 Kiosk 確認；朋友 4/20 自己辦</div></div></article>
+    </div>
+
+    <div class="rm-wrap">
+      <div class="rm-sum">
+        <div class="rm-big"><span class="k">6 晚住宿・5 人每人（含稅估算）</span><span class="v">NT$15,004</span><span class="d">朋友只住前三晚：約 NT$7,521・不含早餐・選可免費取消的方案・2026/11/1 Agoda 實查</span></div>
+        <div class="rm-split"><div><span>博多 第一段・3 晚・6 人</span><b>NT$45,124</b></div><div><span>別府・2 晚・5 人</span><b>NT$27,359</b></div><div><span>博多 第二段・1 晚・5 人</span><b>NT$10,058</b></div><div><span>6 晚合計（方案 A）</span><b>NT$82,542</b></div></div>
+      </div>
+      <div class="rm-status"><b>狀態：還沒訂</b>訂好之後這裡會換成訂單資訊（訂單編號、取消期限、確認信）。</div>
+      <div class="rm-stay" id="room-h1">
+<div class="rm-head"><h3>博多 第一段</h3><span class="rm-dates">4/17（六）– 4/20（二）・3 晚・6 人</span></div>
+<div class="rm-hotel"><b>十字生活博多天神</b><span>クロスライフ博多天神（CROSS life Hakata Tenjin）</span></div>
+<div class="rm-chips"><span class="rm-chip on">Agoda 8.8（21,299 則）</span><span class="rm-chip on">Google 4.4</span><span class="rm-chip">2021 年開幕</span><span class="rm-chip">大浴場＋三溫暖</span><span class="rm-chip">中洲屋台走 5 分</span><span class="rm-chip">天神南駅走 6 分</span></div>
+<p class="rm-note">6 個人住三晚，朋友 4/20 中午從這裡去機場。4/17 是週六，比後兩晚貴。</p>
+<div class="rm-grid"><article class="rm-card"><div class="rm-top"><span class="rm-who">方案 A：2 人房 ×3 間<i class="rm-flag a">建議</i></span><h4>舒適房（兩床）・17㎡</h4><span class="rm-en">Agoda 房名：Comfort Twin Room - Non-Smoking</span></div>
+<a class="rm-ph" href="cross-r2.jpg" target="_blank" rel="noopener"><img src="cross-r2.jpg" alt="房間照片" loading="lazy" decoding="async" onerror="this.closest('.rm-ph').classList.add('nf')"><em>照片在 Agoda ↗</em></a><svg class="rm-bed" viewBox="0 0 234 150" role="img" aria-label="舒適房（兩床） 床位" style="max-width:187px"><rect x="10" y="8" width="96" height="112" rx="9" fill="var(--ice)" stroke="var(--glacier)" stroke-width="2"/><rect x="27.3" y="16" width="61.4" height="16" rx="6" fill="#fff" stroke="var(--glacier)" stroke-width="1.2"/><text x="58.0" y="142" text-anchor="middle" font-size="15" font-weight="700" fill="var(--ink)">單人床</text><rect x="128" y="8" width="96" height="112" rx="9" fill="var(--ice)" stroke="var(--glacier)" stroke-width="2"/><rect x="145.3" y="16" width="61.4" height="16" rx="6" fill="#fff" stroke="var(--glacier)" stroke-width="1.2"/><text x="176.0" y="142" text-anchor="middle" font-size="15" font-weight="700" fill="var(--ink)">單人床</text></svg>
+<p class="rm-sleep">每間 2 張單人床，6 個人都有自己的床</p>
+<div class="rm-price"><span>每間每晚（Agoda 未稅）</span><b>NT$4,558</b><span class="sum">3 間・3 晚・含稅估算</span><b>NT$45,124</b></div>
+<a class="rm-btn" href="https://www.agoda.com/zh-tw/cross-life-hakata-tenjin/hotel/fukuoka-jp.html?checkIn=2027-04-17&los=3&adults=6&children=0&rooms=3&currencyCode=TWD" target="_blank" rel="noopener">Agoda 看這間・訂房 ↗</a></article><article class="rm-card opt"><div class="rm-top"><span class="rm-who">方案 B：3 人房 ×2 間<i class="rm-flag b">省錢</i></span><h4>標準房（兩床＋沙發床）・20㎡</h4><span class="rm-en">Agoda 房名：Standard Twin Room with Sofa Bed - Non-Smoking</span></div>
+<a class="rm-ph" href="cross-r3.jpg" target="_blank" rel="noopener"><img src="cross-r3.jpg" alt="房間照片" loading="lazy" decoding="async" onerror="this.closest('.rm-ph').classList.add('nf')"><em>照片在 Agoda ↗</em></a><svg class="rm-bed" viewBox="0 0 352 150" role="img" aria-label="標準房（兩床＋沙發床） 床位" style="max-width:282px"><rect x="10" y="8" width="96" height="112" rx="9" fill="var(--ice)" stroke="var(--glacier)" stroke-width="2"/><rect x="27.3" y="16" width="61.4" height="16" rx="6" fill="#fff" stroke="var(--glacier)" stroke-width="1.2"/><text x="58.0" y="142" text-anchor="middle" font-size="15" font-weight="700" fill="var(--ink)">單人床</text><rect x="128" y="8" width="96" height="112" rx="9" fill="var(--ice)" stroke="var(--glacier)" stroke-width="2"/><rect x="145.3" y="16" width="61.4" height="16" rx="6" fill="#fff" stroke="var(--glacier)" stroke-width="1.2"/><text x="176.0" y="142" text-anchor="middle" font-size="15" font-weight="700" fill="var(--ink)">單人床</text><rect x="246" y="28" width="96" height="92" rx="14" fill="var(--gold-soft)" stroke="var(--gold-ink)" stroke-width="2" stroke-dasharray="6 4"/><rect x="252" y="34" width="84" height="14" rx="5" fill="#fff" stroke="var(--gold-ink)" stroke-width="1.2"/><text x="294.0" y="142" text-anchor="middle" font-size="15" font-weight="700" fill="var(--gold-ink)">沙發床</text></svg>
+<p class="rm-sleep warn">每間 2 張單人床＋1 張沙發床，2 人睡沙發床 3 晚</p>
+<div class="rm-price"><span>每間每晚（Agoda 未稅）</span><b>NT$5,729</b><span class="sum">2 間・3 晚・含稅估算（不算進總價）</span><b>NT$37,811</b></div>
+<a class="rm-btn" href="https://www.agoda.com/zh-tw/cross-life-hakata-tenjin/hotel/fukuoka-jp.html?checkIn=2027-04-17&los=3&adults=6&children=0&rooms=3&currencyCode=TWD" target="_blank" rel="noopener">Agoda 看這間・訂房 ↗</a></article></div>
+<p class="rm-alt">方案 B 不算進總價：三晚含稅約 NT$37,800，每人約 NT$6,300，比方案 A 每人省約 NT$1,200。</p>
+<a class="rm-ph wide" href="cross-ext.jpg" target="_blank" rel="noopener"><img src="cross-ext.jpg" alt="飯店外觀" loading="lazy" decoding="async" onerror="this.closest('.rm-ph').classList.add('nf')"><span>飯店外觀</span><em>照片在 Agoda ↗</em></a>
+<div class="rm-links"><a href="https://www.agoda.com/zh-tw/cross-life-hakata-tenjin/hotel/fukuoka-jp.html?checkIn=2027-04-17&los=3&adults=6&children=0&rooms=3&currencyCode=TWD" target="_blank" rel="noopener">Agoda 看這家（04/17 起 3 晚・6 人 3 間）↗</a><a href="https://www.gltjp.com/ja/article/item/20871/" target="_blank" rel="noopener">館內介紹 ↗</a><a href="https://www.google.com/maps/search/?api=1&query=%E3%82%AF%E3%83%AD%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%95%E5%8D%9A%E5%A4%9A%E5%A4%A9%E7%A5%9E%EF%BC%88CROSS%20life%20Hakata%20Tenjin%EF%BC%89&query_place_id=ChIJlZDi2JaRQTURxGdb1977HPI" target="_blank" rel="noopener">Google 地圖・評論 ↗</a></div>
+</div><div class="rm-stay" id="room-bp">
+<div class="rm-head"><h3>別府</h3><span class="rm-dates">4/20（二）– 4/22（四）・2 晚・5 人</span></div>
+<div class="rm-hotel"><b>御宿 野乃 別府</b><span>別府八湯 御宿 野乃別府（Onyado Nono Beppu）</span></div>
+<div class="rm-chips"><span class="rm-chip on">頂樓天然溫泉露天</span><span class="rm-chip on">Booking 9.0</span><span class="rm-chip">別府駅走 1 分</span><span class="rm-chip">宵夜免費拉麵</span></div>
+<p class="rm-note">5 個人，只帶後背包過來。三人房全館只有 6 間，先訂。</p>
+<div class="rm-grid"><article class="rm-card"><div class="rm-top"><span class="rm-who">3 人房</span><h4>標準三人房・32㎡</h4><span class="rm-en">Agoda 房名：Standard Triple Room - Non-Smoking</span></div>
+<a class="rm-ph" href="nono-r3.jpg" target="_blank" rel="noopener"><img src="nono-r3.jpg" alt="房間照片" loading="lazy" decoding="async" onerror="this.closest('.rm-ph').classList.add('nf')"><em>照片在 Agoda ↗</em></a><svg class="rm-bed" viewBox="0 0 352 150" role="img" aria-label="標準三人房 床位" style="max-width:282px"><rect x="10" y="8" width="96" height="112" rx="9" fill="var(--ice)" stroke="var(--glacier)" stroke-width="2"/><rect x="27.3" y="16" width="61.4" height="16" rx="6" fill="#fff" stroke="var(--glacier)" stroke-width="1.2"/><text x="58.0" y="142" text-anchor="middle" font-size="15" font-weight="700" fill="var(--ink)">單人床</text><rect x="128" y="8" width="96" height="112" rx="9" fill="var(--ice)" stroke="var(--glacier)" stroke-width="2"/><rect x="145.3" y="16" width="61.4" height="16" rx="6" fill="#fff" stroke="var(--glacier)" stroke-width="1.2"/><text x="176.0" y="142" text-anchor="middle" font-size="15" font-weight="700" fill="var(--ink)">單人床</text><rect x="246" y="8" width="96" height="112" rx="9" fill="var(--ice)" stroke="var(--glacier)" stroke-width="2"/><rect x="263.3" y="16" width="61.4" height="16" rx="6" fill="#fff" stroke="var(--glacier)" stroke-width="1.2"/><text x="294.0" y="142" text-anchor="middle" font-size="15" font-weight="700" fill="var(--ink)">單人床</text></svg>
+<p class="rm-sleep">3 張 Serta 單人床，人人有床</p>
+<div class="rm-price"><span>每間每晚（Agoda 未稅）</span><b>NT$7,139</b><span class="sum">2 晚・含稅估算</span><b>NT$15,706</b></div>
+<a class="rm-btn" href="https://www.agoda.com/zh-tw/onyado-nono-beppu-hot-spring/hotel/oita-jp.html?checkIn=2027-04-20&los=2&adults=5&children=0&rooms=2&currencyCode=TWD" target="_blank" rel="noopener">Agoda 看這間・訂房 ↗</a></article><article class="rm-card"><div class="rm-top"><span class="rm-who">2 人房</span><h4>標準房（兩床）・21㎡</h4><span class="rm-en">Agoda 房名：Standard Twin Room - Non-Smoking</span></div>
+<a class="rm-ph" href="nono-r2.jpg" target="_blank" rel="noopener"><img src="nono-r2.jpg" alt="房間照片" loading="lazy" decoding="async" onerror="this.closest('.rm-ph').classList.add('nf')"><em>照片在 Agoda ↗</em></a><svg class="rm-bed" viewBox="0 0 234 150" role="img" aria-label="標準房（兩床） 床位" style="max-width:187px"><rect x="10" y="8" width="96" height="112" rx="9" fill="var(--ice)" stroke="var(--glacier)" stroke-width="2"/><rect x="27.3" y="16" width="61.4" height="16" rx="6" fill="#fff" stroke="var(--glacier)" stroke-width="1.2"/><text x="58.0" y="142" text-anchor="middle" font-size="15" font-weight="700" fill="var(--ink)">單人床</text><rect x="128" y="8" width="96" height="112" rx="9" fill="var(--ice)" stroke="var(--glacier)" stroke-width="2"/><rect x="145.3" y="16" width="61.4" height="16" rx="6" fill="#fff" stroke="var(--glacier)" stroke-width="1.2"/><text x="176.0" y="142" text-anchor="middle" font-size="15" font-weight="700" fill="var(--ink)">單人床</text></svg>
+<p class="rm-sleep">2 張小型雙人床</p>
+<div class="rm-price"><span>每間每晚（Agoda 未稅）</span><b>NT$5,297</b><span class="sum">2 晚・含稅估算</span><b>NT$11,653</b></div>
+<a class="rm-btn" href="https://www.agoda.com/zh-tw/onyado-nono-beppu-hot-spring/hotel/oita-jp.html?checkIn=2027-04-20&los=2&adults=5&children=0&rooms=2&currencyCode=TWD" target="_blank" rel="noopener">Agoda 看這間・訂房 ↗</a></article></div>
+<p class="rm-alt">想住寬一點：3 人房改訂<b>標準家庭房 41㎡</b>（Standard Family Room，4 張小型雙人床），每晚約 NT$8,900，兩晚總共多約 NT$3,800。</p>
+<a class="rm-ph wide" href="nono-onsen.jpg" target="_blank" rel="noopener"><img src="nono-onsen.jpg" alt="13 樓天然溫泉大浴場" loading="lazy" decoding="async" onerror="this.closest('.rm-ph').classList.add('nf')"><span>13 樓天然溫泉大浴場</span><em>照片在 Agoda ↗</em></a>
+<div class="rm-links"><a href="https://www.agoda.com/zh-tw/onyado-nono-beppu-hot-spring/hotel/oita-jp.html?checkIn=2027-04-20&los=2&adults=5&children=0&rooms=2&currencyCode=TWD" target="_blank" rel="noopener">Agoda 看這家（04/20 起 2 晚・5 人 2 間）↗</a><a href="https://dormy-hotels.com/dormyinn/hotels/nono_beppu/" target="_blank" rel="noopener">飯店官網 ↗</a><a href="https://www.google.com/maps/search/?api=1&query=%E5%88%A5%E5%BA%9C%E5%85%AB%E6%B9%AF%20%E5%BE%A1%E5%AE%BF%20%E9%87%8E%E4%B9%83%E5%88%A5%E5%BA%9C%EF%BC%88Onyado%20Nono%20Beppu%EF%BC%89&query_place_id=ChIJBQEhjoqnRjURLL7t1YFt-kY" target="_blank" rel="noopener">Google 地圖・評論 ↗</a></div>
+</div><div class="rm-stay" id="room-h2">
+<div class="rm-head"><h3>博多 第二段</h3><span class="rm-dates">4/22（四）– 4/23（五）・1 晚・5 人</span></div>
+<div class="rm-hotel"><b>十字生活博多天神</b><span>クロスライフ博多天神（CROSS life Hakata Tenjin）</span></div>
+<div class="rm-chips"><span class="rm-chip on">Agoda 8.8（21,299 則）</span><span class="rm-chip on">Google 4.4</span><span class="rm-chip">2021 年開幕</span><span class="rm-chip">大浴場＋三溫暖</span><span class="rm-chip">中洲屋台走 5 分</span><span class="rm-chip">天神南駅走 6 分</span></div>
+<p class="rm-note">跟第一段同一家，從別府回來直接拿寄放的行李，只住一晚。</p>
+<div class="rm-grid"><article class="rm-card"><div class="rm-top"><span class="rm-who">3 人房</span><h4>標準房（兩床＋沙發床）・20㎡</h4><span class="rm-en">Agoda 房名：Standard Twin Room with Sofa Bed - Non-Smoking</span></div>
+<a class="rm-ph" href="cross-r3.jpg" target="_blank" rel="noopener"><img src="cross-r3.jpg" alt="房間照片" loading="lazy" decoding="async" onerror="this.closest('.rm-ph').classList.add('nf')"><em>照片在 Agoda ↗</em></a><svg class="rm-bed" viewBox="0 0 352 150" role="img" aria-label="標準房（兩床＋沙發床） 床位" style="max-width:282px"><rect x="10" y="8" width="96" height="112" rx="9" fill="var(--ice)" stroke="var(--glacier)" stroke-width="2"/><rect x="27.3" y="16" width="61.4" height="16" rx="6" fill="#fff" stroke="var(--glacier)" stroke-width="1.2"/><text x="58.0" y="142" text-anchor="middle" font-size="15" font-weight="700" fill="var(--ink)">單人床</text><rect x="128" y="8" width="96" height="112" rx="9" fill="var(--ice)" stroke="var(--glacier)" stroke-width="2"/><rect x="145.3" y="16" width="61.4" height="16" rx="6" fill="#fff" stroke="var(--glacier)" stroke-width="1.2"/><text x="176.0" y="142" text-anchor="middle" font-size="15" font-weight="700" fill="var(--ink)">單人床</text><rect x="246" y="28" width="96" height="92" rx="14" fill="var(--gold-soft)" stroke="var(--gold-ink)" stroke-width="2" stroke-dasharray="6 4"/><rect x="252" y="34" width="84" height="14" rx="5" fill="#fff" stroke="var(--gold-ink)" stroke-width="1.2"/><text x="294.0" y="142" text-anchor="middle" font-size="15" font-weight="700" fill="var(--gold-ink)">沙發床</text></svg>
+<p class="rm-sleep warn">2 張單人床＋1 張沙發床</p>
+<div class="rm-price"><span>每間每晚（Agoda 未稅）</span><b>NT$4,590</b><span class="sum">1 晚・含稅估算</span><b>NT$5,049</b></div>
+<a class="rm-btn" href="https://www.agoda.com/zh-tw/cross-life-hakata-tenjin/hotel/fukuoka-jp.html?checkIn=2027-04-22&los=1&adults=5&children=0&rooms=2&currencyCode=TWD" target="_blank" rel="noopener">Agoda 看這間・訂房 ↗</a></article><article class="rm-card"><div class="rm-top"><span class="rm-who">2 人房</span><h4>舒適房（兩床）・17㎡</h4><span class="rm-en">Agoda 房名：Comfort Twin Room - Non-Smoking</span></div>
+<a class="rm-ph" href="cross-r2.jpg" target="_blank" rel="noopener"><img src="cross-r2.jpg" alt="房間照片" loading="lazy" decoding="async" onerror="this.closest('.rm-ph').classList.add('nf')"><em>照片在 Agoda ↗</em></a><svg class="rm-bed" viewBox="0 0 234 150" role="img" aria-label="舒適房（兩床） 床位" style="max-width:187px"><rect x="10" y="8" width="96" height="112" rx="9" fill="var(--ice)" stroke="var(--glacier)" stroke-width="2"/><rect x="27.3" y="16" width="61.4" height="16" rx="6" fill="#fff" stroke="var(--glacier)" stroke-width="1.2"/><text x="58.0" y="142" text-anchor="middle" font-size="15" font-weight="700" fill="var(--ink)">單人床</text><rect x="128" y="8" width="96" height="112" rx="9" fill="var(--ice)" stroke="var(--glacier)" stroke-width="2"/><rect x="145.3" y="16" width="61.4" height="16" rx="6" fill="#fff" stroke="var(--glacier)" stroke-width="1.2"/><text x="176.0" y="142" text-anchor="middle" font-size="15" font-weight="700" fill="var(--ink)">單人床</text></svg>
+<p class="rm-sleep">2 張單人床</p>
+<div class="rm-price"><span>每間每晚（Agoda 未稅）</span><b>NT$4,554</b><span class="sum">1 晚・含稅估算</span><b>NT$5,009</b></div>
+<a class="rm-btn" href="https://www.agoda.com/zh-tw/cross-life-hakata-tenjin/hotel/fukuoka-jp.html?checkIn=2027-04-22&los=1&adults=5&children=0&rooms=2&currencyCode=TWD" target="_blank" rel="noopener">Agoda 看這間・訂房 ↗</a></article></div>
+<p class="rm-alt">要 3 人都睡正規床：3 人房改訂<b>相鄰房 41㎡</b>（Adjoining Room with Private Door，1 雙人床＋2 單人床），這晚 NT$8,205。</p>
+
+<div class="rm-links"><a href="https://www.agoda.com/zh-tw/cross-life-hakata-tenjin/hotel/fukuoka-jp.html?checkIn=2027-04-22&los=1&adults=5&children=0&rooms=2&currencyCode=TWD" target="_blank" rel="noopener">Agoda 看這家（04/22 起 1 晚・5 人 2 間）↗</a><a href="https://www.gltjp.com/ja/article/item/20871/" target="_blank" rel="noopener">館內介紹 ↗</a><a href="https://www.google.com/maps/search/?api=1&query=%E3%82%AF%E3%83%AD%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%95%E5%8D%9A%E5%A4%9A%E5%A4%A9%E7%A5%9E%EF%BC%88CROSS%20life%20Hakata%20Tenjin%EF%BC%89&query_place_id=ChIJlZDi2JaRQTURxGdb1977HPI" target="_blank" rel="noopener">Google 地圖・評論 ↗</a></div>
+</div>
+      <div class="cols2 rm-cols">
+        <div class="panel"><h3>需要大家點頭的 5 件事</h3><ol class="small">
+          <li><b>博多前三晚 6 人：3 間雙床房，還是 2 間沙發床房</b>。方案 A 人人有床；方案 B 每間有 1 人睡沙發床 3 晚，每人省約 NT$1,200。建議 A。</li>
+          <li><b>最後一晚 3 人房有 1 人睡沙發床</b>。只住一晚，用「兩床＋沙發床」最划算；要人人有床就改訂相鄰房。</li>
+          <li><b>大行李寄放在十字生活</b>。4/20 去別府只帶後背包，4/22 回同一家拿；下訂後寫信確認可以寄放 2 天。</li>
+          <li><b>怎麼分攤</b>。前三晚 6 人平分（朋友只付這段），別府和最後一晚 5 人平分。</li>
+          <li><b>早餐不包</b>。行程大多在外面吃，想吃再現場加點。</li>
+        </ol></div>
+        <div class="panel"><h3>在 Agoda 怎麼訂</h3><ol class="small">
+          <li>點每段的「Agoda 看這家」，日期、人數、間數已經帶好。</li>
+          <li>往下捲到房型列表、要捲到底，用卡片上的中英文房名找那一間。</li>
+          <li>選有綠色「免費取消」的方案，再選房間數；第一段方案 A 是同一房型訂 3 間。</li>
+          <li>訂完寫信給飯店確認訂單；十字生活兩筆訂單另外寫明 4/20–22 寄放 5 件行李。</li>
+          <li>價格不含稅，這裡一律加 10% 估算；福岡住宿稅、別府入湯稅現場另付。最後一晚雙床房是 3 人報價，2 人住可能更便宜。</li>
+        </ol>
+        <p class="small muted" style="margin:8px 0 0">也比較過：Dormy Inn 博多祇園同日期合計約 NT$78,000，比方案 A 貴約 NT$23,000，而且三人房有人睡榻榻米地鋪；三井花園福岡祇園的三人房已無空房。</p></div>
+      </div>
     </div>
   </div>
 </section>
@@ -1361,7 +1479,7 @@ a.ttl{display:inline-block;font-size:12px;font-weight:700;color:var(--glacier);t
   <a href="#shop"><span class="ic" style="background:#E3F0F6;color:var(--ty)"><svg viewBox="0 0 24 24"><path d="M5 7.5h14l-1.2 12.5H6.2z"/><path d="M9 7.5V6a3 3 0 0 1 6 0v1.5"/></svg></span>購物與退稅<small>都不必排</small></a>
   <a href="#booking"><span class="ic" style="background:var(--gold-soft);color:var(--gold-ink)"><svg viewBox="0 0 24 24"><circle cx="12" cy="13" r="7.5"/><path d="M12 9v4l2.5 2M9.5 3h5"/></svg></span>訂票時程<small>3/20・3/22 10:00 開搶</small></a>
   <a href="#budget"><span class="ic" style="background:var(--ok-soft);color:var(--ok)"><svg viewBox="0 0 24 24"><path d="M7 4.5 12 11l5-6.5M6.5 11h11M6.5 15h11M12 11v9"/></svg></span>預算<small>交通門票約 ¥40,700</small></a>
-  <a href="#stay"><span class="ic" style="background:#EFE9F7;color:var(--yn)"><svg viewBox="0 0 24 24"><path d="M3.5 19V8M3.5 15h17v4M20.5 15v-3a3 3 0 0 0-3-3H11v6"/><circle cx="7.3" cy="11.5" r="1.8"/></svg></span>住宿與行李<small>2 間飯店</small></a>
+  <a href="#stay"><span class="ic" style="background:#EFE9F7;color:var(--yn)"><svg viewBox="0 0 24 24"><path d="M3.5 19V8M3.5 15h17v4M20.5 15v-3a3 3 0 0 0-3-3H11v6"/><circle cx="7.3" cy="11.5" r="1.8"/></svg></span>住宿與行李<small>還沒訂・每人約 NT$15,000</small></a>
   <a href="#risk"><span class="ic" style="background:var(--red-soft);color:var(--red)"><svg viewBox="0 0 24 24"><path d="M12 3.5 21 19.5H3z"/><path d="M12 10v4.5M12 17v.3"/></svg></span>備案與緊急聯絡</a>
   <a href="#sources"><span class="ic" style="background:#E9EEF2;color:var(--muted)"><svg viewBox="0 0 24 24"><path d="M5 5.5h14M5 10h14M5 14.5h9"/><path d="m15 18 2 2 3.5-4"/></svg></span>出發前再確認</a>
 </div>
